@@ -262,10 +262,10 @@ html[data-theme="dark"] .site-header { background: rgba(20,21,28,.9); }
    ------------------------------------------------------------ */
 .splash-overlay {
   position: fixed; inset: 0; z-index: 999;
-  background: #0a0a0c;
+  background: #0057ff;
   display: flex; align-items: center; justify-content: center; flex-direction: column;
   transform: translateY(0);
-  transition: transform .7s cubic-bezier(.65,0,.35,1);
+  transition: transform .45s cubic-bezier(.65,0,.35,1);
 }
 .splash-overlay.hide { transform: translateY(-100%); pointer-events: none; }
 .splash-text {
@@ -277,7 +277,7 @@ html[data-theme="dark"] .site-header { background: rgba(20,21,28,.9); }
 .splash-overlay.show .splash-text { opacity: 1; transform: translateY(0); }
 .splash-sub {
   display: block; margin-top: .7rem; font-size: .82rem; font-weight: 500;
-  color: #b9bccc; letter-spacing: .04em;
+  color: #dbe6ff; letter-spacing: .04em;
 }
 
 /* ------------------------------------------------------------
@@ -364,7 +364,7 @@ html[data-theme="dark"] .site-header { background: rgba(20,21,28,.9); }
 .course-card { position: relative; overflow: hidden; }
 .course-num {
   position: absolute; top: 1rem; right: 1.2rem; font-size: 2.6rem; font-weight: 800;
-  color: var(--color-bg-soft); line-height: 1; z-index: 0;
+  color: #0057ff; line-height: 1; z-index: 0;
 }
 .course-card > * { position: relative; z-index: 1; }
 .tool-badge {

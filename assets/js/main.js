@@ -70,8 +70,8 @@
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { splash.classList.add("show"); });
     });
-    setTimeout(function () { splash.classList.add("hide"); }, 1300);
-    setTimeout(function () { if (splash.parentNode) splash.remove(); }, 2000);
+    setTimeout(function () { splash.classList.add("hide"); }, 850);
+    setTimeout(function () { if (splash.parentNode) splash.remove(); }, 1350);
   }
 
   /* ------------------------------------------------------------
