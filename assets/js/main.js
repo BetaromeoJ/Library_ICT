@@ -42,20 +42,30 @@
 
   /* ------------------------------------------------------------
      1. スプラッシュ演出
+     ------------------------------------------------------------
+     トップページ(#splash に data-repeat 属性なし)は、
+     sessionStorageを使ってセッション中1回だけ表示する。
+     各講座ページ(#splash に data-repeat="true")は、
+     ページを開くたびに毎回表示する(「各講座に入った時」の演出)。
      ------------------------------------------------------------ */
   function initSplash() {
     var splash = qs("#splash");
     if (!splash) return;
 
+    var repeat = splash.getAttribute("data-repeat") === "true";
     var alreadyShown = false;
-    try { alreadyShown = sessionStorage.getItem("sl-ict-portal-splash-shown") === "1"; } catch (e) { /* 無視 */ }
+    if (!repeat) {
+      try { alreadyShown = sessionStorage.getItem("sl-ict-portal-splash-shown") === "1"; } catch (e) { /* 無視 */ }
+    }
 
     if (prefersReducedMotion || alreadyShown) {
       splash.remove();
       return;
     }
 
-    try { sessionStorage.setItem("sl-ict-portal-splash-shown", "1"); } catch (e) { /* 無視 */ }
+    if (!repeat) {
+      try { sessionStorage.setItem("sl-ict-portal-splash-shown", "1"); } catch (e) { /* 無視 */ }
+    }
 
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { splash.classList.add("show"); });
