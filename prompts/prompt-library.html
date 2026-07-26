@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>今日から使えるプロンプト集 | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="図書館だより・POP・おすすめ本紹介・イベント企画・集計など、学校図書館で使えるChatGPTプロンプトをカテゴリ・校種・キーワードで検索し、ワンクリックでコピーできます。">
+<link rel="canonical" href="【ここにこのページの公開URLを入力】">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="sr-only">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
+    <nav class="nav-desktop" aria-label="メインメニュー">
+      <a href="../index.html">ホーム</a>
+      <a href="../index.html#courses">本日の講座</a>
+      <a href="prompt-library.html">プロンプト集</a>
+      <a href="../cases/dx-cases.html">DX事例</a>
+      <a href="../community/share.html">実践共有</a>
+      <a href="../resources/resources.html">資料</a>
+      <a href="../index.html#instructor">講師紹介</a>
+    </nav>
+    <div class="flex items-center gap-sm">
+      <button class="theme-toggle" data-theme-toggle aria-label="ダークモードに切り替え">🌙</button>
+      <button id="menuBtn" class="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="drawer" class="drawer" aria-label="サイト内メニュー">
+  <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
+  <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
+  <h3>本日の講座</h3>
+  <ul>
+    <li><a href="../index.html#courses">講座一覧(全5講座)</a></li>
+    <li><a href="../courses/course01-chatgpt.html">講座1: ChatGPT</a></li>
+    <li><a href="../courses/course02-gemini-notebook.html">講座2: Gemini Notebook</a></li>
+    <li><a href="../courses/course03-slido.html">講座3: Slido</a></li>
+    <li><a href="../courses/course04-canva-website.html">講座4: Canva</a></li>
+    <li><a href="../courses/course05-gas-dx.html">講座5: GAS</a></li>
+  </ul>
+  <h3>研修後も使う</h3>
+  <ul>
+    <li><a href="prompt-library.html" data-nav-link>プロンプト集</a></li>
+    <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+    <li><a href="../community/share.html">実践共有・質問</a></li>
+    <li><a href="../resources/resources.html">資料・リンク集</a></li>
+  </ul>
+  <h3>講師について</h3>
+  <ul><li><a href="../index.html#instructor">講師紹介</a></li><li><a href="../index.html#books">著作紹介</a></li></ul>
+  <ul style="border-top:1px solid var(--color-border); padding-top:1rem; margin-top:1rem;">
+    <li><a href="../index.html#faq">よくある質問</a></li>
+    <li><a href="../index.html#privacy">個人情報の取扱い</a></li>
+  </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<main id="main">
+  <section class="course-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><span>今日から使えるプロンプト集</span></p>
+      <p class="eyebrow">Prompt Library</p>
+      <h1 class="h-section">今日から使えるプロンプト集</h1>
+      <p class="lead">図書館だより、POP、イベント企画、おすすめ本紹介などのプロンプトを、キーワード・カテゴリ・対象校種から探して、ワンクリックでコピーできます。研修後もこのページをブックマークしてご活用ください。</p>
+      <div class="caution-card" style="margin-bottom:1.5rem;">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <p class="mb-0">プロンプトの【　】部分に、児童生徒名や住所などの個人情報を入力しないでください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 検索・フィルター -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="filter-bar">
+        <div class="search-input-wrap">
+          <input type="search" id="itemSearch" class="search-input" placeholder="キーワードで検索(例: POP、イベント、集計)" aria-label="プロンプトをキーワードで検索">
+        </div>
+        <div class="filter-row">
+          <label>カテゴリ</label>
+          <div class="chip-group" role="group" aria-label="カテゴリで絞り込み">
+            <button class="chip" data-filter-category="all" aria-pressed="true">すべて</button>
+            <button class="chip" data-filter-category="letter" aria-pressed="false">図書館だより</button>
+            <button class="chip" data-filter-category="pop" aria-pressed="false">POP</button>
+            <button class="chip" data-filter-category="recommend" aria-pressed="false">おすすめ本紹介</button>
+            <button class="chip" data-filter-category="event" aria-pressed="false">イベント企画</button>
+            <button class="chip" data-filter-category="week" aria-pressed="false">読書週間</button>
+            <button class="chip" data-filter-category="newbook" aria-pressed="false">新刊紹介</button>
+            <button class="chip" data-filter-category="exhibit" aria-pressed="false">展示企画</button>
+            <button class="chip" data-filter-category="orientation" aria-pressed="false">図書館オリエンテーション</button>
+            <button class="chip" data-filter-category="quiz" aria-pressed="false">クイズ</button>
+            <button class="chip" data-filter-category="worksheet" aria-pressed="false">ワークシート</button>
+            <button class="chip" data-filter-category="survey" aria-pressed="false">アンケート</button>
+            <button class="chip" data-filter-category="analysis" aria-pressed="false">集計・分析</button>
+            <button class="chip" data-filter-category="parent" aria-pressed="false">保護者向け文書</button>
+            <button class="chip" data-filter-category="video" aria-pressed="false">動画構成</button>
+            <button class="chip" data-filter-category="website" aria-pressed="false">ホームページ文章</button>
+            <button class="chip" data-filter-category="office" aria-pressed="false">校務効率化</button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <label>対象校種</label>
+          <div class="chip-group" role="group" aria-label="対象校種で絞り込み">
+            <button class="chip" data-filter-school="all" aria-pressed="true">すべて</button>
+            <button class="chip" data-filter-school="elementary" aria-pressed="false">小学校</button>
+            <button class="chip" data-filter-school="middle" aria-pressed="false">中学校</button>
+            <button class="chip" data-filter-school="high" aria-pressed="false">高等学校</button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <button id="favOnlyToggle" class="fav-toggle" aria-pressed="false">★ お気に入りのみ表示</button>
+        </div>
+      </div>
+      <p id="resultCount" class="result-count">読み込み中…</p>
+    </div>
+  </section>
+
+  <!-- プロンプト一覧 -->
+  <section class="section-tight">
+    <div class="container">
+      <div id="itemList">
+
+        <article class="prompt-card" id="letter-01" data-item="letter-01" data-category="letter" data-school="elementary middle high" data-search="図書館だより letter">
+          <div class="prompt-head">
+            <div><h4>図書館だより作成プロンプト<span class="beginner-label">初心者向け</span></h4><p class="prompt-scene">カテゴリ: 図書館だより ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="letter-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-letter"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-letter" class="prompt-body">学校図書館だよりを作成します。
+対象:
+【児童・生徒・保護者・教職員など】
+発行時期:
+【月や季節】
+今回伝えたい内容:
+【新刊、読書週間、イベント、利用案内など】
+条件:
+・親しみやすい文章にする
+・見出しを3〜4個付ける
+・対象学年に合わせた言葉を使う
+・文章が長くなりすぎないようにする
+・最後に図書館からの一言を入れる
+・そのまま紙面へ貼り付けられる形で出力する</div>
+        </article>
+
+        <article class="prompt-card" id="pop-01" data-item="pop-01" data-category="pop" data-school="elementary middle high" data-search="POP ポップ">
+          <div class="prompt-head">
+            <div><h4>POP作成プロンプト<span class="beginner-label">初心者向け</span></h4><p class="prompt-scene">カテゴリ: POP ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="pop-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-pop"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-pop" class="prompt-body">次の本を紹介する、学校図書館用のPOP案を作成してください。
+書名:
+【書名】
+著者名:
+【著者名】
+対象学年:
+【学年】
+本の特徴:
+【分かる範囲で入力】
+条件:
+・本の結末や重要なネタバレは書かない
+・児童生徒が続きを読みたくなる内容にする
+・キャッチコピーは20文字以内
+・紹介文は80文字以内
+・おすすめポイントを3つ示す
+・手書きPOPに配置しやすい構成にする
+・本の表紙や本文を無断で再現しない</div>
+        </article>
+
+        <article class="prompt-card" id="recommend-01" data-item="recommend-01" data-category="recommend" data-school="elementary middle high" data-search="おすすめ本 紹介文">
+          <div class="prompt-head">
+            <div><h4>おすすめ本紹介プロンプト</h4><p class="prompt-scene">カテゴリ: おすすめ本紹介 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="recommend-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-recommend"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-recommend" class="prompt-body">次の本を、【対象学年】の児童生徒に紹介する文章を作成してください。
+書名:
+【書名】
+著者:
+【著者名】
+紹介したい理由:
+【理由】
+条件:
+・対象学年に合った言葉を使う
+・ネタバレを避ける
+・150文字程度
+・読みたくなる問いかけを1つ入れる
+・図書館だより、校内放送、Webサイトの3種類に書き分ける</div>
+        </article>
+
+        <article class="prompt-card" id="event-01" data-item="event-01" data-category="event" data-school="elementary middle high" data-search="イベント 企画 読書イベント">
+          <div class="prompt-head">
+            <div><h4>読書イベント企画プロンプト</h4><p class="prompt-scene">カテゴリ: イベント企画 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="event-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-event"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-event" class="prompt-body">学校図書館で実施する読書イベントを企画してください。
+対象:
+【学年・全校など】
+時期:
+【実施時期】
+目的:
+【貸出促進、読書習慣、異学年交流など】
+使用できる時間:
+【時間】
+使用できるもの:
+【本、タブレット、掲示物、QRコードなど】
+条件:
+・準備の負担が大きすぎない
+・児童生徒が参加したくなるイベント名を5案示す
+・実施手順を時系列で示す
+・必要な準備物を一覧にする
+・ICTを使う案と使わない案の両方を示す</div>
+        </article>
+
+        <article class="prompt-card" id="week-01" data-item="week-01" data-category="week" data-school="elementary middle high" data-search="読書週間">
+          <div class="prompt-head">
+            <div><h4>読書週間案内文プロンプト</h4><p class="prompt-scene">カテゴリ: 読書週間 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="week-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-week"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-week" class="prompt-body">読書週間の案内文を作成してください。
+実施期間:
+【期間】
+今年のテーマ:
+【テーマ】
+実施内容:
+【スタンプラリー、おすすめ本紹介、読み聞かせなど】
+条件:
+・読書への興味を高める前向きな文章にする
+・参加方法を分かりやすく示す
+・対象学年に合った言葉を使う
+・掲示物・お便り・校内放送の3パターンで作成する</div>
+        </article>
+
+        <article class="prompt-card" id="newbook-01" data-item="newbook-01" data-category="newbook" data-school="elementary middle high" data-search="新刊 紹介 新着図書">
+          <div class="prompt-head">
+            <div><h4>新刊紹介プロンプト</h4><p class="prompt-scene">カテゴリ: 新刊紹介 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="newbook-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-newbook"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-newbook" class="prompt-body">新しく図書館に入った本を紹介する文章を作成してください。
+書名リスト:
+【書名を複数入力】
+対象学年:
+【学年】
+条件:
+・本ごとに2〜3行で簡潔に紹介する
+・ジャンルが分かるようにする
+・ネタバレを避ける
+・「まずはこの1冊」というおすすめを1冊選ぶ
+・一覧表の形式で出力する</div>
+        </article>
+
+        <article class="prompt-card" id="exhibit-01" data-item="exhibit-01" data-category="exhibit" data-school="elementary middle high" data-search="展示 テーマ展示 掲示">
+          <div class="prompt-head">
+            <div><h4>テーマ展示企画プロンプト</h4><p class="prompt-scene">カテゴリ: 展示企画 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="exhibit-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-exhibit"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-exhibit" class="prompt-body">学校図書館のテーマ展示を企画してください。
+実施時期:
+【時期】
+きっかけ・行事:
+【季節行事、学習単元など】
+使用できる本の冊数:
+【冊数】
+条件:
+・テーマ案を5つ提示する
+・展示タイトル案を各3つ示す
+・POPに使えるキャッチコピーを添える
+・準備にかかる時間の目安を示す</div>
+        </article>
+
+        <article class="prompt-card" id="orientation-01" data-item="orientation-01" data-category="orientation" data-school="elementary middle high" data-search="オリエンテーション ガイダンス">
+          <div class="prompt-head">
+            <div><h4>図書館オリエンテーション作成プロンプト</h4><p class="prompt-scene">カテゴリ: 図書館オリエンテーション ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="orientation-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-orientation"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-orientation" class="prompt-body">新年度の学校図書館オリエンテーション資料の構成案を作成してください。
+対象学年:
+【学年】
+実施時間:
+【時間】
+伝えたい内容:
+【利用ルール、本の探し方、貸出方法、静かに過ごす理由など】
+条件:
+・対象学年に合った言葉を使う
+・見出しごとに箇条書きで整理する
+・実演やクイズを交える案も加える
+・所要時間内に収まる分量にする
+・最後に「困ったときは司書に聞いてください」という一言を入れる</div>
+        </article>
+
+        <article class="prompt-card" id="quiz-01" data-item="quiz-01" data-category="quiz" data-school="elementary middle high" data-search="クイズ">
+          <div class="prompt-head">
+            <div><h4>図書館クイズ作成プロンプト</h4><p class="prompt-scene">カテゴリ: クイズ ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="quiz-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-quiz"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-quiz" class="prompt-body">学校図書館に関するクイズを作成してください。
+対象学年:
+【学年】
+出題数:
+【問題数】
+テーマ:
+【日本十進分類法、本の探し方、図書館のルールなど】
+条件:
+・対象学年に合った言葉を使う
+・正解と簡単な解説を付ける
+・楽しく参加できる雰囲気にする
+・○×クイズと三択クイズを両方含める</div>
+        </article>
+
+        <article class="prompt-card" id="worksheet-01" data-item="worksheet-01" data-category="worksheet" data-school="elementary middle high" data-search="ワークシート 探究学習">
+          <div class="prompt-head">
+            <div><h4>調べ学習ワークシート作成プロンプト</h4><p class="prompt-scene">カテゴリ: ワークシート ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="worksheet-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-worksheet"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-worksheet" class="prompt-body">学校図書館を使った調べ学習用のワークシートを作成してください。
+対象学年:
+【学年】
+学習テーマ:
+【テーマ】
+授業時間:
+【時間】
+条件:
+・記入欄を含む構成にする
+・情報の探し方を確認する項目を入れる
+・出典を書く欄を設ける
+・対象学年に合った言葉を使う</div>
+        </article>
+
+        <article class="prompt-card" id="survey-01" data-item="survey-01" data-category="survey" data-school="elementary middle high" data-search="アンケート 読書アンケート">
+          <div class="prompt-head">
+            <div><h4>読書アンケート作成プロンプト</h4><p class="prompt-scene">カテゴリ: アンケート ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="survey-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-survey"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-survey" class="prompt-body">学校図書館の利用に関するアンケートの質問項目を作成してください。
+対象:
+【学年・全校など】
+知りたいこと:
+【利用頻度、好きなジャンル、要望など】
+条件:
+・Googleフォームにそのまま入力できる形式で出力する
+・選択式と自由記述を組み合わせる
+・質問数は10問以内にする
+・個人が特定される質問は含めない</div>
+        </article>
+
+        <article class="prompt-card" id="analysis-01" data-item="analysis-01" data-category="analysis" data-school="elementary middle high" data-search="集計 分析 貸出冊数">
+          <div class="prompt-head">
+            <div><h4>集計・分析まとめプロンプト</h4><p class="prompt-scene">カテゴリ: 集計・分析 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="analysis-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-analysis"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-analysis" class="prompt-body">次の貸出冊数のデータから、傾向をまとめてください。
+データ:
+【学年別・月別の貸出冊数などを貼り付け】
+知りたい観点:
+【増減の理由、人気ジャンル、学年差など】
+条件:
+・分かったことを3つに整理する
+・数字の読み間違いがないか注意する
+・断定的な結論ではなく「傾向として考えられること」として書く
+・次にできる工夫を1つ提案する</div>
+          <p class="prompt-note">⚠ 個人が特定できるデータは入力しないでください。学年・クラス単位など集計済みの数値のみを使用してください。</p>
+        </article>
+
+        <article class="prompt-card" id="parent-01" data-item="parent-01" data-category="parent" data-school="elementary middle high" data-search="保護者 お知らせ">
+          <div class="prompt-head">
+            <div><h4>保護者向けお知らせ作成プロンプト</h4><p class="prompt-scene">カテゴリ: 保護者向け文書 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="parent-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-parent"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-parent" class="prompt-body">学校図書館から保護者宛のお知らせ文書を作成してください。
+伝えたい内容:
+【行事案内、貸出ルール変更、蔵書点検期間など】
+条件:
+・丁寧な文体にする
+・要点を最初にまとめる
+・必要な持ち物や期限がある場合は太字で目立たせる
+・A4用紙1枚に収まる分量にする</div>
+        </article>
+
+        <article class="prompt-card" id="video-01" data-item="video-01" data-category="video" data-school="elementary middle high" data-search="動画 構成 ブックトーク">
+          <div class="prompt-head">
+            <div><h4>本紹介動画・構成台本プロンプト</h4><p class="prompt-scene">カテゴリ: 動画構成 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="video-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-video"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-video" class="prompt-body">次の本を紹介する1〜2分程度の動画の構成案を作成してください。
+書名:
+【書名】
+対象学年:
+【学年】
+条件:
+・オープニング、紹介、締めの3部構成にする
+・ネタバレを避ける
+・話し言葉で書く
+・撮影に必要なカット割りの目安を添える
+・本の表紙や本文映像を使う場合の著作権上の注意点も添える</div>
+        </article>
+
+        <article class="prompt-card" id="website-01" data-item="website-01" data-category="website" data-school="elementary middle high" data-search="ホームページ Webサイト Canva">
+          <div class="prompt-head">
+            <div><h4>ホームページ文章の下書きプロンプト<span class="beginner-label">初心者向け</span></h4><p class="prompt-scene">カテゴリ: ホームページ文章 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="website-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-website"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-website" class="prompt-body">学校図書館ホームページの「【セクション名】」に掲載する文章を作成してください。
+学校種別:
+【小学校・中学校・高等学校】
+伝えたい内容:
+【新刊紹介、イベント案内、利用案内など】
+条件:
+・親しみやすく、要点が伝わる文章にする
+・120〜200文字程度にまとめる
+・児童生徒・保護者どちらが読んでも分かる言葉にする
+・個人情報を含めない</div>
+        </article>
+
+        <article class="prompt-card" id="office-01" data-item="office-01" data-category="office" data-school="elementary middle high" data-search="校務 効率化 蔵書点検 除籍">
+          <div class="prompt-head">
+            <div><h4>蔵書点検・除籍案内文プロンプト</h4><p class="prompt-scene">カテゴリ: 校務効率化 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="office-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-office"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-office" class="prompt-body">蔵書点検・除籍作業のスケジュールと校内周知文を作成してください。
+実施期間:
+【期間】
+休館の有無:
+【休館する／しない】
+教職員へ伝えたいこと:
+【協力依頼事項など】
+条件:
+・作業スケジュールを表形式で示す
+・教職員向け周知文を丁寧な文体で作成する
+・除籍の最終判断は教職員が行うことが分かる表現にする</div>
+        </article>
+
+        <article class="prompt-card" id="office-02" data-item="office-02" data-category="office survey" data-school="elementary middle high" data-search="校務 効率化 会議 議事録">
+          <div class="prompt-head">
+            <div><h4>図書委員会 議事メモ整理プロンプト</h4><p class="prompt-scene">カテゴリ: 校務効率化 ／ 対象校種: 全校種</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="office-02" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-office2"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <div id="pb-office2" class="prompt-body">次の図書委員会のメモを、議事録の形に整理してください。
+メモ内容:
+【箇条書きのメモを貼り付け】
+条件:
+・決定事項、検討事項、次回までのタスクに分けて整理する
+・担当者名は【役割名】など仮名に置き換えて出力する
+・簡潔な表現にする</div>
+          <p class="prompt-note">⚠ 実際の氏名は入力せず、【担当A】などに置き換えてから利用してください。</p>
+        </article>
+
+      </div>
+      <p id="emptyState" class="empty-state hidden">条件に合うプロンプトが見つかりませんでした。キーワードやカテゴリを変えてお試しください。</p>
+    </div>
+  </section>
+
+  <!-- 改善の一言 -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">うまくいかないときに追加する一言</h2>
+      <div class="grid grid-3">
+        <div class="card text-sm">小学3年生にも分かる言葉にしてください</div>
+        <div class="card text-sm">文章を半分の長さにしてください</div>
+        <div class="card text-sm">もう少し温かい表現にしてください</div>
+        <div class="card text-sm">表形式で整理してください</div>
+        <div class="card text-sm">3案提案してください</div>
+        <div class="card text-sm">準備に時間がかからない案にしてください</div>
+        <div class="card text-sm">ネタバレを避けてください</div>
+        <div class="card text-sm">学校教育の場に適した表現にしてください</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
+      <div><p class="footer-title">サイトマップ</p><ul>
+        <li><a href="../index.html">トップページ</a></li>
+        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="prompt-library.html">プロンプト集</a></li>
+        <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+        <li><a href="../community/share.html">実践共有</a></li>
+        <li><a href="../resources/resources.html">資料</a></li>
+      </ul></div>
+      <div><p class="footer-title">お問い合わせ</p><ul>
+        <li><a href="../community/share.html">お問い合わせ・質問フォーム</a></li>
+        <li>【ここに問い合わせ先メールアドレスを入力】</li>
+      </ul></div>
+      <div><p class="footer-title">ご利用にあたって</p><ul>
+        <li><a href="../index.html#privacy">プライバシーに関する注意</a></li>
+        <li><a href="../index.html#copyright">著作権表示</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-note">
+      <p>本サイトは、学校図書館におけるICT活用を支援する研修用ポータルサイトです。掲載内容を利用する際は、所属校・自治体の規程をご確認ください。</p>
+      <p class="footer-copyright">&copy; 2026 Michihiro Wada. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="ページ上部へ戻る">↑</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

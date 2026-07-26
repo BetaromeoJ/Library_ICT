@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>講座1: ChatGPTで学校図書館の仕事を速くする | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="ChatGPTのプロンプトをコピーして、図書館だより・POP・おすすめ本紹介・イベント企画・クイズ・オリエンテーション資料を短時間で作る方法を紹介します。">
+<link rel="canonical" href="【ここにこのページの公開URLを入力】">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="sr-only">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
+    <nav class="nav-desktop" aria-label="メインメニュー">
+      <a href="../index.html">ホーム</a>
+      <a href="../index.html#courses">本日の講座</a>
+      <a href="../prompts/prompt-library.html">プロンプト集</a>
+      <a href="../cases/dx-cases.html">DX事例</a>
+      <a href="../community/share.html">実践共有</a>
+      <a href="../resources/resources.html">資料</a>
+      <a href="../index.html#instructor">講師紹介</a>
+    </nav>
+    <div class="flex items-center gap-sm">
+      <button class="theme-toggle" data-theme-toggle aria-label="ダークモードに切り替え">🌙</button>
+      <button id="menuBtn" class="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="drawer" class="drawer" aria-label="サイト内メニュー">
+  <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
+  <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
+  <h3>本日の講座</h3>
+  <ul>
+    <li><a href="../index.html#courses">講座一覧(全5講座)</a></li>
+    <li><a href="course01-chatgpt.html" data-nav-link>講座1: ChatGPT</a></li>
+    <li><a href="course02-gemini-notebook.html">講座2: Gemini Notebook</a></li>
+    <li><a href="course03-slido.html">講座3: Slido</a></li>
+    <li><a href="course04-canva-website.html">講座4: Canva</a></li>
+    <li><a href="course05-gas-dx.html">講座5: GAS</a></li>
+  </ul>
+  <h3>研修後も使う</h3>
+  <ul>
+    <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+    <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+    <li><a href="../community/share.html">実践共有・質問</a></li>
+    <li><a href="../resources/resources.html">資料・リンク集</a></li>
+  </ul>
+  <h3>講師について</h3>
+  <ul><li><a href="../index.html#instructor">講師紹介</a></li><li><a href="../index.html#books">著作紹介</a></li></ul>
+  <ul style="border-top:1px solid var(--color-border); padding-top:1rem; margin-top:1rem;">
+    <li><a href="../index.html#faq">よくある質問</a></li>
+    <li><a href="../index.html#privacy">個人情報の取扱い</a></li>
+  </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<main id="main">
+  <section class="course-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#courses">本日の講座</a><span>›</span><span>講座1</span></p>
+      <div class="progress-bar-wrap">
+        <p class="progress-label">講座1 / 5</p>
+        <div class="progress-track"><div class="progress-fill" style="width:20%;"></div></div>
+      </div>
+      <div class="course-meta-row">
+        <span class="tool-badge tool-chatgpt">💬 ChatGPT</span>
+        <span class="pill-time">⏱ 所要時間 約25分</span>
+      </div>
+      <h1 class="h-section">ChatGPTで学校図書館の仕事を速くする</h1>
+      <p class="lead">プロンプトを一から考えなくても、目的に応じたテンプレートをコピーし、必要な部分だけ変更して使えるようになります。</p>
+      <div class="goal-box">
+        <h2>今日できるようになること</h2>
+        <ul>
+          <li>プロンプトの基本の型を理解する</li>
+          <li>図書館だより・POP・おすすめ本紹介・イベント企画をChatGPTで下書きできる</li>
+          <li>思った通りの答えが返らないときに、追加の一言で改善できる</li>
+        </ul>
+      </div>
+      <a href="../index.html#courses" class="btn btn-outline btn-sm">← トップページへ戻る</a>
+    </div>
+  </section>
+
+  <!-- ===== 講座の流れ ===== -->
+  <section class="section-tight">
+    <div class="container">
+      <h2 class="h-section">講座の流れ</h2>
+      <div class="step-list">
+        <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>基本を知る</strong><span>ChatGPTを使うときの4つのポイント</span></div></div>
+        <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>型を知る</strong><span>基本プロンプトの型を確認</span></div></div>
+        <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>デモを見る</strong><span>実際にプロンプトを入力する様子を確認</span></div></div>
+        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>演習する</strong><span>手元の端末でプロンプトをコピーして試す</span></div></div>
+        <div class="step-item"><span class="step-num">5</span><div class="step-text"><strong>持ち帰る</strong><span>プロンプトと改善の一言集を持ち帰る</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 11-1. ChatGPTを使うときの基本 ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">ChatGPTを使うときの基本</h2>
+      <p class="lead">難しい理論は不要です。次の4つを意識するだけで、伝わる指示になります。</p>
+      <div class="grid grid-4">
+        <div class="card"><p class="text-sm text-sub mb-0" style="font-weight:800;color:var(--color-ink);">① 何を作りたいか</p><p class="text-sm mb-0">図書館だより、POP、紹介文など、成果物の種類</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0" style="font-weight:800;color:var(--color-ink);">② 誰に向けたものか</p><p class="text-sm mb-0">児童・生徒・保護者・教職員など、読み手</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0" style="font-weight:800;color:var(--color-ink);">③ 入れたい内容</p><p class="text-sm mb-0">本の情報、行事名、伝えたいメッセージなど</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0" style="font-weight:800;color:var(--color-ink);">④ 出力形式と条件</p><p class="text-sm mb-0">長さ、雰囲気、避けたい表現など</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 11-2. 基本プロンプトの型 ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">基本プロンプトの型</h2>
+      <div class="card">
+        <p class="text-sm"><strong>目的:</strong> 【何を作りたいか】<br><span class="text-sub">例: 図書館だよりの下書きを作りたい</span></p>
+        <p class="text-sm"><strong>対象:</strong> 【誰に向けたものか】<br><span class="text-sub">例: 小学校3年生と保護者</span></p>
+        <p class="text-sm"><strong>材料:</strong> 【本の情報、行事名、伝えたい内容など】<br><span class="text-sub">例: 新刊3冊、読書週間の案内</span></p>
+        <p class="text-sm mb-0"><strong>条件:</strong></p>
+        <ul class="text-sm text-sub">
+          <li>文章の長さ</li>
+          <li>言葉の難しさ</li>
+          <li>雰囲気</li>
+          <li>出力形式</li>
+          <li>避けたい表現</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== デモ ===== -->
+  <section class="section-tight">
+    <div class="container">
+      <h2 class="h-section">デモ</h2>
+      <p class="lead">講師が実際にプロンプトを入力し、出力される様子をご覧ください。</p>
+      <div class="video-frame">
+        <!-- 研修動画のURLが決まり次第、iframeへ差し替えてください -->
+        <div class="video-placeholder">【ここにデモ動画(YouTube等)を埋め込みます】</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 演習 ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">演習</h2>
+      <div class="card">
+        <p class="mb-0">お手元の端末でChatGPTを開き、下の「図書館だより作成プロンプト」をコピーして貼り付けてください。【　】の部分を、自校の状況に合わせて書き換えてから送信します。うまくいかない場合は、11-9の「プロンプト改善の方法」を参考に一言を追加してください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== コピーできるプロンプト ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">コピーできるプロンプト</h2>
+
+      <!-- 11-3. 図書館だより作成プロンプト -->
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>図書館だより作成プロンプト<span class="beginner-label">初心者向け</span></h4><p class="prompt-scene">活用場面: 月刊・季刊の図書館だよりの下書き作成</p></div>
+          <button class="copy-btn" data-copy-target="#p-letter"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-letter" class="prompt-body">小学校の学校図書館だよりを作成します。
+対象:
+【児童・保護者・教職員など】
+発行時期:
+【月や季節】
+今回伝えたい内容:
+【新刊、読書週間、イベント、利用案内など】
+条件:
+・親しみやすい文章にする
+・見出しを3〜4個付ける
+・児童にも分かりやすい言葉を使う
+・文章が長くなりすぎないようにする
+・最後に図書館からの一言を入れる
+・そのまま紙面へ貼り付けられる形で出力する</div>
+        <p class="prompt-note">⚠ 児童生徒名・保護者名などの個人情報は入力しないでください。</p>
+      </div>
+
+      <!-- 11-4. POP作成プロンプト -->
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>POP作成プロンプト<span class="beginner-label">初心者向け</span></h4><p class="prompt-scene">活用場面: おすすめ本の手書きPOP案づくり</p></div>
+          <button class="copy-btn" data-copy-target="#p-pop"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-pop" class="prompt-body">次の本を紹介する、学校図書館用のPOP案を作成してください。
+書名:
+【書名】
+著者名:
+【著者名】
+対象学年:
+【学年】
+本の特徴:
+【分かる範囲で入力】
+条件:
+・本の結末や重要なネタバレは書かない
+・児童生徒が続きを読みたくなる内容にする
+・キャッチコピーは20文字以内
+・紹介文は80文字以内
+・おすすめポイントを3つ示す
+・手書きPOPに配置しやすい構成にする
+・本の表紙や本文を無断で再現しない</div>
+        <p class="prompt-note">⚠ 本の表紙画像や本文の無断複製は避け、著作権に配慮してください。</p>
+      </div>
+
+      <!-- 11-5. おすすめ本紹介プロンプト -->
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>おすすめ本紹介プロンプト</h4><p class="prompt-scene">活用場面: 図書館だより・校内放送・Webサイト用の紹介文</p></div>
+          <button class="copy-btn" data-copy-target="#p-recommend"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-recommend" class="prompt-body">次の本を、【対象学年】の児童生徒に紹介する文章を作成してください。
+書名:
+【書名】
+著者:
+【著者名】
+紹介したい理由:
+【理由】
+条件:
+・対象学年に合った言葉を使う
+・ネタバレを避ける
+・150文字程度
+・読みたくなる問いかけを1つ入れる
+・図書館だより、校内放送、Webサイトの3種類に書き分ける</div>
+      </div>
+
+      <!-- 11-6. イベント企画プロンプト -->
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>イベント企画プロンプト</h4><p class="prompt-scene">活用場面: 読書イベントの企画案づくり</p></div>
+          <button class="copy-btn" data-copy-target="#p-event"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-event" class="prompt-body">学校図書館で実施する読書イベントを企画してください。
+対象:
+【学年・全校など】
+時期:
+【実施時期】
+目的:
+【貸出促進、読書習慣、異学年交流など】
+使用できる時間:
+【時間】
+使用できるもの:
+【本、タブレット、掲示物、QRコードなど】
+条件:
+・準備の負担が大きすぎない
+・児童が参加したくなるイベント名を5案示す
+・実施手順を時系列で示す
+・必要な準備物を一覧にする
+・ICTを使う案と使わない案の両方を示す</div>
+      </div>
+
+      <!-- 11-7. クイズ作成プロンプト -->
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>クイズ作成プロンプト</h4><p class="prompt-scene">活用場面: 図書館オリエンテーションや読書イベントでのクイズ</p></div>
+          <button class="copy-btn" data-copy-target="#p-quiz"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-quiz" class="prompt-body">学校図書館に関するクイズを作成してください。
+対象学年:
+【学年】
+出題数:
+【問題数】
+テーマ:
+【日本十進分類法、本の探し方、図書館のルールなど】
+条件:
+・対象学年に合った言葉を使う
+・正解と簡単な解説を付ける
+・楽しく参加できる雰囲気にする
+・答えを考える時間が短くなりすぎないようにする
+・○×クイズと三択クイズを両方含める</div>
+      </div>
+
+      <!-- 11-8. 図書館オリエンテーション作成プロンプト -->
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>図書館オリエンテーション作成プロンプト</h4><p class="prompt-scene">活用場面: 年度はじめの図書館利用ガイダンス資料</p></div>
+          <button class="copy-btn" data-copy-target="#p-orientation"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-orientation" class="prompt-body">新年度の学校図書館オリエンテーション資料の構成案を作成してください。
+対象学年:
+【学年】
+実施時間:
+【時間】
+伝えたい内容:
+【利用ルール、本の探し方、貸出方法、静かに過ごす理由など】
+条件:
+・対象学年に合った言葉を使う
+・見出しごとに箇条書きで整理する
+・実演やクイズを交える案も加える
+・所要時間内に収まる分量にする
+・最後に「困ったときは司書に聞いてください」という一言を入れる</div>
+      </div>
+
+      <!-- 11-9. プロンプト改善の方法 -->
+      <h3 style="margin-top:2.5rem;">プロンプト改善の方法</h3>
+      <p class="lead">思った通りの答えが返らないときは、次の一言を追加してみてください。</p>
+      <div class="grid grid-3">
+        <div class="card text-sm">小学3年生にも分かる言葉にしてください</div>
+        <div class="card text-sm">文章を半分の長さにしてください</div>
+        <div class="card text-sm">もう少し温かい表現にしてください</div>
+        <div class="card text-sm">表形式で整理してください</div>
+        <div class="card text-sm">3案提案してください</div>
+        <div class="card text-sm">準備に時間がかからない案にしてください</div>
+        <div class="card text-sm">ネタバレを避けてください</div>
+        <div class="card text-sm">学校教育の場に適した表現にしてください</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 活用例 ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">活用例</h2>
+      <div class="grid grid-3">
+        <div class="card"><p class="mb-0">月に一度の図書館だよりの下書きを、5分で作成</p></div>
+        <div class="card"><p class="mb-0">新刊コーナーのPOPを、まとめて複数冊分作成</p></div>
+        <div class="card"><p class="mb-0">読書週間のイベント名を、5案から選んで実施</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 注意事項 ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">注意事項</h2>
+      <div class="caution-card">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <ul>
+          <li>本の表紙や本文は著作物です。無断で複製・再現しないでください。</li>
+          <li>児童生徒名・保護者名などの個人情報は入力しないでください。</li>
+          <li>AIが生成した内容は、そのまま使わず必ず教職員が確認してください。</li>
+          <li>ネタバレやおすすめポイントの誤りがないか確認してください。</li>
+          <li>校内利用と一般公開では確認事項が異なります。学校のルールに従ってください。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== よくある質問 ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">よくある質問</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c1faq1">ChatGPTの有料版は必要ですか<span class="chevron">▾</span></button>
+          <div id="c1faq1" class="accordion-panel"><p class="mb-0">無料版でも本講座の内容は実践できます。学校で契約しているアカウントの種類を確認してください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c1faq2">出力結果をそのまま配布してよいですか<span class="chevron">▾</span></button>
+          <div id="c1faq2" class="accordion-panel"><p class="mb-0">必ず内容を確認してから配布してください。誤った情報や不適切な表現が含まれる場合があります。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c1faq3">プロンプトの【　】には何を書けばよいですか<span class="chevron">▾</span></button>
+          <div id="c1faq3" class="accordion-panel"><p class="mb-0">自校の状況(学年、本の情報、行事名など)に置き換えて入力してください。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 次の講座へのリンク ===== -->
+  <section class="section-narrow">
+    <div class="container">
+      <div class="course-pager">
+        <span class="card pager-link" style="opacity:.5;"><span class="pager-label">これが最初の講座です</span><span class="pager-title">—</span></span>
+        <a href="course02-gemini-notebook.html" class="card card-hover pager-link next"><span class="pager-label">次の講座へ</span><span class="pager-title">講座2: Gemini Notebook →</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
+      <div><p class="footer-title">サイトマップ</p><ul>
+        <li><a href="../index.html">トップページ</a></li>
+        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+        <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+        <li><a href="../community/share.html">実践共有</a></li>
+        <li><a href="../resources/resources.html">資料</a></li>
+      </ul></div>
+      <div><p class="footer-title">お問い合わせ</p><ul>
+        <li><a href="../community/share.html">お問い合わせ・質問フォーム</a></li>
+        <li>【ここに問い合わせ先メールアドレスを入力】</li>
+      </ul></div>
+      <div><p class="footer-title">ご利用にあたって</p><ul>
+        <li><a href="../index.html#privacy">プライバシーに関する注意</a></li>
+        <li><a href="../index.html#copyright">著作権表示</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-note">
+      <p>本サイトは、学校図書館におけるICT活用を支援する研修用ポータルサイトです。掲載内容を利用する際は、所属校・自治体の規程をご確認ください。</p>
+      <p class="footer-copyright">&copy; 2026 Michihiro Wada. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="ページ上部へ戻る">↑</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

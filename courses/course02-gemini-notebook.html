@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>講座2: Gemini Notebookで伝わる掲示を作る | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="Gemini Notebookに資料を読み込ませ、Studio機能でインフォグラフィックを作成し、学校図書館の掲示や学習支援に活用する方法を紹介します。">
+<link rel="canonical" href="【ここにこのページの公開URLを入力】">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="sr-only">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
+    <nav class="nav-desktop" aria-label="メインメニュー">
+      <a href="../index.html">ホーム</a>
+      <a href="../index.html#courses">本日の講座</a>
+      <a href="../prompts/prompt-library.html">プロンプト集</a>
+      <a href="../cases/dx-cases.html">DX事例</a>
+      <a href="../community/share.html">実践共有</a>
+      <a href="../resources/resources.html">資料</a>
+      <a href="../index.html#instructor">講師紹介</a>
+    </nav>
+    <div class="flex items-center gap-sm">
+      <button class="theme-toggle" data-theme-toggle aria-label="ダークモードに切り替え">🌙</button>
+      <button id="menuBtn" class="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="drawer" class="drawer" aria-label="サイト内メニュー">
+  <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
+  <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
+  <h3>本日の講座</h3>
+  <ul>
+    <li><a href="../index.html#courses">講座一覧(全5講座)</a></li>
+    <li><a href="course01-chatgpt.html">講座1: ChatGPT</a></li>
+    <li><a href="course02-gemini-notebook.html" data-nav-link>講座2: Gemini Notebook</a></li>
+    <li><a href="course03-slido.html">講座3: Slido</a></li>
+    <li><a href="course04-canva-website.html">講座4: Canva</a></li>
+    <li><a href="course05-gas-dx.html">講座5: GAS</a></li>
+  </ul>
+  <h3>研修後も使う</h3>
+  <ul>
+    <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+    <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+    <li><a href="../community/share.html">実践共有・質問</a></li>
+    <li><a href="../resources/resources.html">資料・リンク集</a></li>
+  </ul>
+  <h3>講師について</h3>
+  <ul><li><a href="../index.html#instructor">講師紹介</a></li><li><a href="../index.html#books">著作紹介</a></li></ul>
+  <ul style="border-top:1px solid var(--color-border); padding-top:1rem; margin-top:1rem;">
+    <li><a href="../index.html#faq">よくある質問</a></li>
+    <li><a href="../index.html#privacy">個人情報の取扱い</a></li>
+  </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<main id="main">
+  <section class="course-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#courses">本日の講座</a><span>›</span><span>講座2</span></p>
+      <div class="progress-bar-wrap">
+        <p class="progress-label">講座2 / 5</p>
+        <div class="progress-track"><div class="progress-fill" style="width:40%;"></div></div>
+      </div>
+      <div class="course-meta-row">
+        <span class="tool-badge tool-gemini">📓 Gemini Notebook</span>
+        <span class="pill-time">⏱ 所要時間 約15分</span>
+      </div>
+      <h1 class="h-section">Gemini Notebookで伝わる掲示を作る</h1>
+      <p class="lead">資料を読み込ませ、Studio機能からインフォグラフィックを生成し、学校図書館内の掲示や学習支援に活用します。製品名は必ず「Gemini Notebook」と表記します。</p>
+      <div class="goal-box">
+        <h2>今日できるようになること</h2>
+        <ul>
+          <li>Gemini Notebookで何ができるかが分かる</li>
+          <li>学校図書館の資料からインフォグラフィックを作る手順が分かる</li>
+          <li>小学生向けに内容をやさしく調整できる</li>
+        </ul>
+      </div>
+      <a href="../index.html#courses" class="btn btn-outline btn-sm">← トップページへ戻る</a>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <h2 class="h-section">講座の流れ</h2>
+      <div class="step-list">
+        <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>Gemini Notebookとは</strong><span>資料を根拠にした要約・生成ツールとしての位置づけ</span></div></div>
+        <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>デモ</strong><span>資料アップロードからインフォグラフィック生成まで</span></div></div>
+        <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>演習</strong><span>お手元の資料でインフォグラフィックを作成</span></div></div>
+        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>持ち帰る</strong><span>調整用の指示例と注意事項を確認</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 12-1. Gemini Notebookとは ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">Gemini Notebookとは</h2>
+      <div class="card">
+        <p class="mb-0">アップロードした資料を根拠として、要約、質問応答、音声解説、インフォグラフィックなどを作成できるツールです。学校図書館にある資料を読み込ませることで、資料の内容から外れない範囲で分かりやすい説明資料を作ることができます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 12-2. 学校図書館で使える資料例 ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">学校図書館で使える資料例</h2>
+      <div class="grid grid-3">
+        <div class="card text-sm">図書館利用案内</div>
+        <div class="card text-sm">読書週間の実施要項</div>
+        <div class="card text-sm">読書感想文の書き方</div>
+        <div class="card text-sm">図書館オリエンテーション資料</div>
+        <div class="card text-sm">著作権に関する資料</div>
+        <div class="card text-sm">情報検索の手順</div>
+        <div class="card text-sm">探究学習の資料</div>
+        <div class="card text-sm">新刊リスト</div>
+        <div class="card text-sm">学校図書館年間計画</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- デモ -->
+  <section class="section-tight">
+    <div class="container">
+      <h2 class="h-section">デモ</h2>
+      <div class="video-frame">
+        <div class="video-placeholder">【ここにデモ動画(YouTube等)を埋め込みます】</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 12-3. インフォグラフィック作成手順 ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">インフォグラフィック作成手順</h2>
+      <div class="step-list">
+        <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>新しいノートブックを作成</strong></div></div>
+        <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>資料を追加</strong></div></div>
+        <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>Studioを開く</strong></div></div>
+        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>インフォグラフィックを選ぶ</strong></div></div>
+        <div class="step-item"><span class="step-num">5</span><div class="step-text"><strong>内容を確認</strong></div></div>
+        <div class="step-item"><span class="step-num">6</span><div class="step-text"><strong>掲示に適した形へ調整</strong></div></div>
+        <div class="step-item"><span class="step-num">7</span><div class="step-text"><strong>出力後に必ず内容を確認</strong></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 演習 -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">演習</h2>
+      <div class="card"><p class="mb-0">お手元の図書館利用案内やオリエンテーション資料をGemini Notebookに読み込ませ、上記の手順でインフォグラフィックを作成してみましょう。</p></div>
+    </div>
+  </section>
+
+  <!-- ===== 12-4. 活用例 ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">活用例</h2>
+      <div class="grid grid-4">
+        <div class="card text-sm">図書館の使い方</div>
+        <div class="card text-sm">本の探し方</div>
+        <div class="card text-sm">日本十進分類法</div>
+        <div class="card text-sm">読書感想文の書き方</div>
+        <div class="card text-sm">情報の確かめ方</div>
+        <div class="card text-sm">引用と著作権</div>
+        <div class="card text-sm">読書週間の案内</div>
+        <div class="card text-sm">おすすめ本のテーマ展示</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== コピーできるプロンプト: 12-5. 小学生向けに調整する指示例 ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">コピーできるプロンプト</h2>
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>小学生向けに調整する指示例<span class="beginner-label">初心者向け</span></h4><p class="prompt-scene">活用場面: 生成された内容を学年に合わせてやさしくする</p></div>
+          <button class="copy-btn" data-copy-target="#p-adjust"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-adjust" class="prompt-body">この内容を、小学校【学年】年生にも分かる言葉にしてください。
+条件:
+・難しい言葉には短い説明を付ける
+・一文を短くする
+・漢字を使いすぎない
+・具体例を入れる
+・大切なポイントを3つに絞る
+・不安を感じさせる表現を避ける</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 12-6. 注意事項 ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">注意事項</h2>
+      <div class="caution-card">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <ul>
+          <li>生成された内容を必ず確認してください。</li>
+          <li>元資料にない内容が含まれていないか確認してください。</li>
+          <li>児童の個人情報をアップロードしないでください。</li>
+          <li>著作権のある資料の取扱いに注意してください。</li>
+          <li>そのまま掲示せず、誤字や表現を確認してください。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">よくある質問</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c2faq1">どんなファイル形式を読み込めますか<span class="chevron">▾</span></button>
+          <div id="c2faq1" class="accordion-panel"><p class="mb-0">PDFやドキュメント、Webページなど複数の形式に対応しています。詳細は最新のヘルプをご確認ください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c2faq2">インフォグラフィックの内容は毎回同じですか<span class="chevron">▾</span></button>
+          <div id="c2faq2" class="accordion-panel"><p class="mb-0">同じ資料でも、生成のたびに表現が変わることがあります。必ず内容を確認してから利用してください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c2faq3">著作権のある資料を読み込んでもよいですか<span class="chevron">▾</span></button>
+          <div id="c2faq3" class="accordion-panel"><p class="mb-0">利用条件を確認し、校内での利用範囲を超えないよう注意してください。判断に迷う場合は学校・自治体の担当者に確認してください。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-narrow">
+    <div class="container">
+      <div class="course-pager">
+        <a href="course01-chatgpt.html" class="card card-hover pager-link"><span class="pager-label">前の講座へ</span><span class="pager-title">← 講座1: ChatGPT</span></a>
+        <a href="course03-slido.html" class="card card-hover pager-link next"><span class="pager-label">次の講座へ</span><span class="pager-title">講座3: Slido →</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
+      <div><p class="footer-title">サイトマップ</p><ul>
+        <li><a href="../index.html">トップページ</a></li>
+        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+        <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+        <li><a href="../community/share.html">実践共有</a></li>
+        <li><a href="../resources/resources.html">資料</a></li>
+      </ul></div>
+      <div><p class="footer-title">お問い合わせ</p><ul>
+        <li><a href="../community/share.html">お問い合わせ・質問フォーム</a></li>
+        <li>【ここに問い合わせ先メールアドレスを入力】</li>
+      </ul></div>
+      <div><p class="footer-title">ご利用にあたって</p><ul>
+        <li><a href="../index.html#privacy">プライバシーに関する注意</a></li>
+        <li><a href="../index.html#copyright">著作権表示</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-note">
+      <p>本サイトは、学校図書館におけるICT活用を支援する研修用ポータルサイトです。掲載内容を利用する際は、所属校・自治体の規程をご確認ください。</p>
+      <p class="footer-copyright">&copy; 2026 Michihiro Wada. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="ページ上部へ戻る">↑</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

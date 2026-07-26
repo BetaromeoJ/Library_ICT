@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>講座4: Canvaで学校図書館ホームページを作る | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="Canva教育版のWebサイト機能を使い、学校図書館の情報を一か所にまとめたホームページを作る手順を紹介します。">
+<link rel="canonical" href="【ここにこのページの公開URLを入力】">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="sr-only">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
+    <nav class="nav-desktop" aria-label="メインメニュー">
+      <a href="../index.html">ホーム</a>
+      <a href="../index.html#courses">本日の講座</a>
+      <a href="../prompts/prompt-library.html">プロンプト集</a>
+      <a href="../cases/dx-cases.html">DX事例</a>
+      <a href="../community/share.html">実践共有</a>
+      <a href="../resources/resources.html">資料</a>
+      <a href="../index.html#instructor">講師紹介</a>
+    </nav>
+    <div class="flex items-center gap-sm">
+      <button class="theme-toggle" data-theme-toggle aria-label="ダークモードに切り替え">🌙</button>
+      <button id="menuBtn" class="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="drawer" class="drawer" aria-label="サイト内メニュー">
+  <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
+  <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
+  <h3>本日の講座</h3>
+  <ul>
+    <li><a href="../index.html#courses">講座一覧(全5講座)</a></li>
+    <li><a href="course01-chatgpt.html">講座1: ChatGPT</a></li>
+    <li><a href="course02-gemini-notebook.html">講座2: Gemini Notebook</a></li>
+    <li><a href="course03-slido.html">講座3: Slido</a></li>
+    <li><a href="course04-canva-website.html" data-nav-link>講座4: Canva</a></li>
+    <li><a href="course05-gas-dx.html">講座5: GAS</a></li>
+  </ul>
+  <h3>研修後も使う</h3>
+  <ul>
+    <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+    <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+    <li><a href="../community/share.html">実践共有・質問</a></li>
+    <li><a href="../resources/resources.html">資料・リンク集</a></li>
+  </ul>
+  <h3>講師について</h3>
+  <ul><li><a href="../index.html#instructor">講師紹介</a></li><li><a href="../index.html#books">著作紹介</a></li></ul>
+  <ul style="border-top:1px solid var(--color-border); padding-top:1rem; margin-top:1rem;">
+    <li><a href="../index.html#faq">よくある質問</a></li>
+    <li><a href="../index.html#privacy">個人情報の取扱い</a></li>
+  </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<main id="main">
+  <section class="course-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#courses">本日の講座</a><span>›</span><span>講座4</span></p>
+      <div class="progress-bar-wrap">
+        <p class="progress-label">講座4 / 5</p>
+        <div class="progress-track"><div class="progress-fill" style="width:80%;"></div></div>
+      </div>
+      <div class="course-meta-row">
+        <span class="tool-badge tool-canva">🎨 Canva</span>
+        <span class="pill-time">⏱ 所要時間 約15分</span>
+      </div>
+      <h1 class="h-section">Canvaで学校図書館ホームページを作る</h1>
+      <p class="lead">学校図書館の情報を一か所にまとめ、児童生徒、保護者、教職員が閲覧できるシンプルなホームページを作る方法を紹介します。</p>
+      <div class="goal-box">
+        <h2>今日できるようになること</h2>
+        <ul>
+          <li>Canva教育版でWebサイトを作る手順が分かる</li>
+          <li>学校図書館ホームページに必要な構成が分かる</li>
+          <li>公開前に確認すべき注意点が分かる</li>
+        </ul>
+      </div>
+      <a href="../index.html#courses" class="btn btn-outline btn-sm">← トップページへ戻る</a>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <h2 class="h-section">サイト掲載内容の例</h2>
+      <div class="grid grid-3">
+        <div class="card text-sm">図書館からのお知らせ</div>
+        <div class="card text-sm">利用案内</div>
+        <div class="card text-sm">開館時間</div>
+        <div class="card text-sm">新刊紹介</div>
+        <div class="card text-sm">おすすめ本</div>
+        <div class="card text-sm">テーマ展示</div>
+        <div class="card text-sm">図書館だより</div>
+        <div class="card text-sm">イベント情報</div>
+        <div class="card text-sm">動画による本の紹介</div>
+        <div class="card text-sm">調べ学習リンク</div>
+        <div class="card text-sm">読書週間</div>
+        <div class="card text-sm">問い合わせ方法</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">デモ</h2>
+      <div class="video-frame"><div class="video-placeholder">【ここにデモ動画(YouTube等)を埋め込みます】</div></div>
+    </div>
+  </section>
+
+  <!-- 作成手順 -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">作成手順</h2>
+      <div class="step-list">
+        <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>Canva教育版へログイン</strong></div></div>
+        <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>「Webサイト」を検索</strong></div></div>
+        <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>テンプレートを選ぶ</strong></div></div>
+        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>学校図書館用に文章と画像を変更</strong></div></div>
+        <div class="step-item"><span class="step-num">5</span><div class="step-text"><strong>ボタンやリンクを設定</strong></div></div>
+        <div class="step-item"><span class="step-num">6</span><div class="step-text"><strong>スマートフォン表示を確認</strong></div></div>
+        <div class="step-item"><span class="step-num">7</span><div class="step-text"><strong>公開範囲を確認</strong></div></div>
+        <div class="step-item"><span class="step-num">8</span><div class="step-text"><strong>URLやQRコードを共有</strong></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 演習 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">演習</h2>
+      <div class="card"><p class="mb-0">Canva教育版で「Webサイト」テンプレートを開き、下記の構成テンプレートに沿って、自校の図書館情報を1セクションだけ入力してみましょう。</p></div>
+    </div>
+  </section>
+
+  <!-- ホームページ構成テンプレート -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">ホームページ構成テンプレート</h2>
+      <div class="grid grid-2">
+        <div class="card"><p class="text-sm text-sub mb-0">ファーストビュー</p><p class="mb-0" style="font-weight:700;">〇〇学校図書館へようこそ</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">セクション1</p><p class="mb-0" style="font-weight:700;">今月のお知らせ</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">セクション2</p><p class="mb-0" style="font-weight:700;">新しく入った本</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">セクション3</p><p class="mb-0" style="font-weight:700;">おすすめ本</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">セクション4</p><p class="mb-0" style="font-weight:700;">図書館イベント</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">セクション5</p><p class="mb-0" style="font-weight:700;">図書館だより</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">セクション6</p><p class="mb-0" style="font-weight:700;">利用案内</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">セクション7</p><p class="mb-0" style="font-weight:700;">調べ学習に役立つリンク</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- コピーできるプロンプト(補助) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">コピーできるプロンプト</h2>
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>ホームページ文章の下書きプロンプト<span class="beginner-label">初心者向け</span></h4><p class="prompt-scene">活用場面: Canvaに貼り付ける文章の下書きをChatGPTで用意する</p></div>
+          <button class="copy-btn" data-copy-target="#p-website"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-website" class="prompt-body">学校図書館ホームページの「【セクション名】」に掲載する文章を作成してください。
+学校種別:
+【小学校・中学校・高等学校】
+伝えたい内容:
+【新刊紹介、イベント案内、利用案内など】
+条件:
+・親しみやすく、要点が伝わる文章にする
+・120〜200文字程度にまとめる
+・児童生徒・保護者どちらが読んでも分かる言葉にする
+・個人情報を含めない</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 活用例 -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">活用例</h2>
+      <div class="grid grid-3">
+        <div class="card"><p class="mb-0">新刊紹介ページを月1回更新</p></div>
+        <div class="card"><p class="mb-0">読書週間の特設ページを期間限定で公開</p></div>
+        <div class="card"><p class="mb-0">調べ学習リンク集をQRコードで教室に掲示</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注意事項 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">注意事項</h2>
+      <div class="caution-card">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <ul>
+          <li>児童生徒の写真や氏名を無断掲載しないでください。</li>
+          <li>本の表紙画像の掲載条件を確認してください。</li>
+          <li>学校や自治体の公開ルールを確認してください。</li>
+          <li>個人情報を掲載しないでください。</li>
+          <li>外部公開前に管理職等の確認を受けてください。</li>
+          <li>更新担当者と更新方法を決めておいてください。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">よくある質問</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c4faq1">Canva教育版を使うにはどうすればよいですか<span class="chevron">▾</span></button>
+          <div id="c4faq1" class="accordion-panel"><p class="mb-0">学校のメールアドレスで教育版を申請できる場合があります。詳しくは自治体・学校のICT担当者にご確認ください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c4faq2">作成したホームページを一般公開してよいですか<span class="chevron">▾</span></button>
+          <div id="c4faq2" class="accordion-panel"><p class="mb-0">公開前に管理職等の確認を受け、学校・自治体の公開ルールに従ってください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c4faq3">更新は誰が担当すればよいですか<span class="chevron">▾</span></button>
+          <div id="c4faq3" class="accordion-panel"><p class="mb-0">担当者を決めておくと更新が続けやすくなります。複数人で編集権限を持つ運用も検討してください。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-narrow">
+    <div class="container">
+      <div class="course-pager">
+        <a href="course03-slido.html" class="card card-hover pager-link"><span class="pager-label">前の講座へ</span><span class="pager-title">← 講座3: Slido</span></a>
+        <a href="course05-gas-dx.html" class="card card-hover pager-link next"><span class="pager-label">次の講座へ</span><span class="pager-title">講座5: GAS →</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
+      <div><p class="footer-title">サイトマップ</p><ul>
+        <li><a href="../index.html">トップページ</a></li>
+        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+        <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+        <li><a href="../community/share.html">実践共有</a></li>
+        <li><a href="../resources/resources.html">資料</a></li>
+      </ul></div>
+      <div><p class="footer-title">お問い合わせ</p><ul>
+        <li><a href="../community/share.html">お問い合わせ・質問フォーム</a></li>
+        <li>【ここに問い合わせ先メールアドレスを入力】</li>
+      </ul></div>
+      <div><p class="footer-title">ご利用にあたって</p><ul>
+        <li><a href="../index.html#privacy">プライバシーに関する注意</a></li>
+        <li><a href="../index.html#copyright">著作権表示</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-note">
+      <p>本サイトは、学校図書館におけるICT活用を支援する研修用ポータルサイトです。掲載内容を利用する際は、所属校・自治体の規程をご確認ください。</p>
+      <p class="footer-copyright">&copy; 2026 Michihiro Wada. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="ページ上部へ戻る">↑</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

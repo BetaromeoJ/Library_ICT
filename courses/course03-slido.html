@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>講座3: Slidoで学校図書館の実践を共有する | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="Slidoを使って参加者の学校図書館での取組や困りごとをリアルタイムで共有し、他校のアイデアから学ぶ講座です。">
+<link rel="canonical" href="【ここにこのページの公開URLを入力】">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="sr-only">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
+    <nav class="nav-desktop" aria-label="メインメニュー">
+      <a href="../index.html">ホーム</a>
+      <a href="../index.html#courses">本日の講座</a>
+      <a href="../prompts/prompt-library.html">プロンプト集</a>
+      <a href="../cases/dx-cases.html">DX事例</a>
+      <a href="../community/share.html">実践共有</a>
+      <a href="../resources/resources.html">資料</a>
+      <a href="../index.html#instructor">講師紹介</a>
+    </nav>
+    <div class="flex items-center gap-sm">
+      <button class="theme-toggle" data-theme-toggle aria-label="ダークモードに切り替え">🌙</button>
+      <button id="menuBtn" class="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="drawer" class="drawer" aria-label="サイト内メニュー">
+  <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
+  <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
+  <h3>本日の講座</h3>
+  <ul>
+    <li><a href="../index.html#courses">講座一覧(全5講座)</a></li>
+    <li><a href="course01-chatgpt.html">講座1: ChatGPT</a></li>
+    <li><a href="course02-gemini-notebook.html">講座2: Gemini Notebook</a></li>
+    <li><a href="course03-slido.html" data-nav-link>講座3: Slido</a></li>
+    <li><a href="course04-canva-website.html">講座4: Canva</a></li>
+    <li><a href="course05-gas-dx.html">講座5: GAS</a></li>
+  </ul>
+  <h3>研修後も使う</h3>
+  <ul>
+    <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+    <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+    <li><a href="../community/share.html">実践共有・質問</a></li>
+    <li><a href="../resources/resources.html">資料・リンク集</a></li>
+  </ul>
+  <h3>講師について</h3>
+  <ul><li><a href="../index.html#instructor">講師紹介</a></li><li><a href="../index.html#books">著作紹介</a></li></ul>
+  <ul style="border-top:1px solid var(--color-border); padding-top:1rem; margin-top:1rem;">
+    <li><a href="../index.html#faq">よくある質問</a></li>
+    <li><a href="../index.html#privacy">個人情報の取扱い</a></li>
+  </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<main id="main">
+  <section class="course-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#courses">本日の講座</a><span>›</span><span>講座3</span></p>
+      <div class="progress-bar-wrap">
+        <p class="progress-label">講座3 / 5</p>
+        <div class="progress-track"><div class="progress-fill" style="width:60%;"></div></div>
+      </div>
+      <div class="course-meta-row">
+        <span class="tool-badge tool-slido">🗳️ Slido</span>
+        <span class="pill-time">⏱ 所要時間 約15分</span>
+      </div>
+      <h1 class="h-section">Slidoで学校図書館の実践を共有する</h1>
+      <p class="lead">講師が一方的に事例を紹介するのではなく、参加者が持っている実践や知恵を集約し、全員で共有します。</p>
+      <div class="goal-box">
+        <h2>今日できるようになること</h2>
+        <ul>
+          <li>自校の取組や困りごとをSlidoで発信できる</li>
+          <li>他校の回答をカテゴリごとに整理して読み取れる</li>
+          <li>研修後も実践記録として振り返ることができる</li>
+        </ul>
+      </div>
+      <a href="../index.html#courses" class="btn btn-outline btn-sm">← トップページへ戻る</a>
+    </div>
+  </section>
+
+  <!-- Slido埋め込みエリア -->
+  <section class="section-tight">
+    <div class="container">
+      <h2 class="h-section">Slidoに参加する</h2>
+      <div class="card">
+        <p class="text-sm text-sub">イベントコード: <strong>【ここにSlidoイベントコードを入力】</strong></p>
+        <p class="text-sm text-sub">参加URL: <strong>【ここにSlido参加URLを入力】</strong></p>
+        <div class="grid grid-2" style="margin-top:1rem;">
+          <div class="video-frame" style="padding-top:100%; max-width:260px;">
+            <!-- QRコード画像に差し替えてください: ../assets/images/placeholders/slido-qr.png -->
+            <div class="video-placeholder">【ここにSlidoのQRコードを配置】</div>
+          </div>
+          <div class="video-frame">
+            <!-- 準備ができたらSlidoの埋め込みiframeに差し替えてください -->
+            <div class="video-placeholder">【ここにSlidoの埋め込み(iframe)を配置します】</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slidoで扱う質問 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">Slidoで扱う質問</h2>
+      <div class="grid grid-2">
+        <div class="card"><p class="text-sm text-sub mb-0">質問1</p><p class="mb-0" style="font-weight:700;">あなたの学校図書館の「ちょっと自慢できる取組」を教えてください。</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">質問2</p><p class="mb-0" style="font-weight:700;">児童生徒に人気のある読書イベントや展示は何ですか。</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">質問3</p><p class="mb-0" style="font-weight:700;">本をもっと借りてもらうために行っている工夫を教えてください。</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0">質問4</p><p class="mb-0" style="font-weight:700;">現在、学校図書館で一番困っていることは何ですか。</p></div>
+        <div class="card" style="grid-column:1/-1;"><p class="text-sm text-sub mb-0">質問5</p><p class="mb-0" style="font-weight:700;">ICTやAIを使って実現したいことを教えてください。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 共有後の整理 -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">共有後の整理</h2>
+      <p class="lead">集まった回答は、次のカテゴリで整理します。</p>
+      <div class="grid grid-4">
+        <div class="card text-sm text-center">展示</div>
+        <div class="card text-sm text-center">イベント</div>
+        <div class="card text-sm text-center">情報発信</div>
+        <div class="card text-sm text-center">読書記録</div>
+        <div class="card text-sm text-center">授業連携</div>
+        <div class="card text-sm text-center">校務効率化</div>
+        <div class="card text-sm text-center">児童生徒の参加</div>
+        <div class="card text-sm text-center">その他</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 実践記録カード -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">実践記録カード</h2>
+      <p class="lead">研修後に集まった回答を、ここに事例として追加していきます。(README「DX事例を追加する方法」を参照)</p>
+      <div class="grid grid-3">
+        <div class="card"><p class="case-tag" style="display:inline-block;">展示</p><h3 style="font-size:1rem; margin:.6rem 0 0;">【学校名を入力】</h3><p class="text-sm text-sub mb-0">【実践内容をここに追加してください】</p></div>
+        <div class="card"><p class="case-tag" style="display:inline-block;">イベント</p><h3 style="font-size:1rem; margin:.6rem 0 0;">【学校名を入力】</h3><p class="text-sm text-sub mb-0">【実践内容をここに追加してください】</p></div>
+        <div class="card"><p class="case-tag" style="display:inline-block;">校務効率化</p><h3 style="font-size:1rem; margin:.6rem 0 0;">【学校名を入力】</h3><p class="text-sm text-sub mb-0">【実践内容をここに追加してください】</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注意事項 -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">注意事項</h2>
+      <div class="caution-card">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <ul>
+          <li>回答には、児童生徒名や個人が特定できる情報を入力しないでください。</li>
+          <li>他校の実践を紹介する際は、学校名の公開可否を確認してください。</li>
+          <li>投稿内容は研修後の共有・記録として活用させていただく場合があります。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">よくある質問</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c3faq1">Slidoへの参加にアカウント登録は必要ですか<span class="chevron">▾</span></button>
+          <div id="c3faq1" class="accordion-panel"><p class="mb-0">多くの場合、参加URLまたはQRコードから登録なしで参加できます。イベント設定によって異なるため、当日の案内に従ってください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c3faq2">匿名で回答できますか<span class="chevron">▾</span></button>
+          <div id="c3faq2" class="accordion-panel"><p class="mb-0">設定により匿名回答が可能です。個人情報を含む内容は入力しないでください。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-narrow">
+    <div class="container">
+      <div class="course-pager">
+        <a href="course02-gemini-notebook.html" class="card card-hover pager-link"><span class="pager-label">前の講座へ</span><span class="pager-title">← 講座2: Gemini Notebook</span></a>
+        <a href="course04-canva-website.html" class="card card-hover pager-link next"><span class="pager-label">次の講座へ</span><span class="pager-title">講座4: Canva →</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
+      <div><p class="footer-title">サイトマップ</p><ul>
+        <li><a href="../index.html">トップページ</a></li>
+        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+        <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+        <li><a href="../community/share.html">実践共有</a></li>
+        <li><a href="../resources/resources.html">資料</a></li>
+      </ul></div>
+      <div><p class="footer-title">お問い合わせ</p><ul>
+        <li><a href="../community/share.html">お問い合わせ・質問フォーム</a></li>
+        <li>【ここに問い合わせ先メールアドレスを入力】</li>
+      </ul></div>
+      <div><p class="footer-title">ご利用にあたって</p><ul>
+        <li><a href="../index.html#privacy">プライバシーに関する注意</a></li>
+        <li><a href="../index.html#copyright">著作権表示</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-note">
+      <p>本サイトは、学校図書館におけるICT活用を支援する研修用ポータルサイトです。掲載内容を利用する際は、所属校・自治体の規程をご確認ください。</p>
+      <p class="footer-copyright">&copy; 2026 Michihiro Wada. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="ページ上部へ戻る">↑</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

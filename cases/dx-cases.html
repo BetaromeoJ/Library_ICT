@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学校図書館DX事例集 | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="読書記録、デジタルスタンプラリー、集計、ホームページなど、学校図書館で実現できるICT活用事例を目的別に探せるギャラリーです。">
+<link rel="canonical" href="【ここにこのページの公開URLを入力】">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="sr-only">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
+    <nav class="nav-desktop" aria-label="メインメニュー">
+      <a href="../index.html">ホーム</a>
+      <a href="../index.html#courses">本日の講座</a>
+      <a href="../prompts/prompt-library.html">プロンプト集</a>
+      <a href="dx-cases.html">DX事例</a>
+      <a href="../community/share.html">実践共有</a>
+      <a href="../resources/resources.html">資料</a>
+      <a href="../index.html#instructor">講師紹介</a>
+    </nav>
+    <div class="flex items-center gap-sm">
+      <button class="theme-toggle" data-theme-toggle aria-label="ダークモードに切り替え">🌙</button>
+      <button id="menuBtn" class="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="drawer" class="drawer" aria-label="サイト内メニュー">
+  <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
+  <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
+  <h3>本日の講座</h3>
+  <ul>
+    <li><a href="../index.html#courses">講座一覧(全5講座)</a></li>
+    <li><a href="../courses/course01-chatgpt.html">講座1: ChatGPT</a></li>
+    <li><a href="../courses/course02-gemini-notebook.html">講座2: Gemini Notebook</a></li>
+    <li><a href="../courses/course03-slido.html">講座3: Slido</a></li>
+    <li><a href="../courses/course04-canva-website.html">講座4: Canva</a></li>
+    <li><a href="../courses/course05-gas-dx.html">講座5: GAS</a></li>
+  </ul>
+  <h3>研修後も使う</h3>
+  <ul>
+    <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+    <li><a href="dx-cases.html" data-nav-link>DX事例集</a></li>
+    <li><a href="../community/share.html">実践共有・質問</a></li>
+    <li><a href="../resources/resources.html">資料・リンク集</a></li>
+  </ul>
+  <h3>講師について</h3>
+  <ul><li><a href="../index.html#instructor">講師紹介</a></li><li><a href="../index.html#books">著作紹介</a></li></ul>
+  <ul style="border-top:1px solid var(--color-border); padding-top:1rem; margin-top:1rem;">
+    <li><a href="../index.html#faq">よくある質問</a></li>
+    <li><a href="../index.html#privacy">個人情報の取扱い</a></li>
+  </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<main id="main">
+  <section class="course-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><span>学校図書館DX事例集</span></p>
+      <p class="eyebrow">DX Cases</p>
+      <h1 class="h-section">学校図書館DX事例集</h1>
+      <p class="lead">学校図書館で実現できるICT活用を、目的別に探せるギャラリーです。気になる事例の「詳しく見る」から、実施手順や注意点を確認できます。</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="filter-bar">
+        <div class="search-input-wrap">
+          <input type="search" id="itemSearch" class="search-input" placeholder="キーワードで検索(例: 集計、スタンプラリー)" aria-label="事例をキーワードで検索">
+        </div>
+        <div class="filter-row">
+          <label>カテゴリ</label>
+          <div class="chip-group" role="group" aria-label="カテゴリで絞り込み">
+            <button class="chip" data-filter-category="all" aria-pressed="true">すべて</button>
+            <button class="chip" data-filter-category="borrow" aria-pressed="false">本を借りてもらう</button>
+            <button class="chip" data-filter-category="visualize" aria-pressed="false">読書活動を見える化</button>
+            <button class="chip" data-filter-category="efficiency" aria-pressed="false">業務を効率化</button>
+            <button class="chip" data-filter-category="display" aria-pressed="false">掲示・情報発信</button>
+            <button class="chip" data-filter-category="lesson" aria-pressed="false">授業・探究学習と連携</button>
+            <button class="chip" data-filter-category="participate" aria-pressed="false">児童生徒が参加</button>
+            <button class="chip" data-filter-category="count" aria-pressed="false">集計を自動化</button>
+            <button class="chip" data-filter-category="webapp" aria-pressed="false">Webアプリを作る</button>
+          </div>
+        </div>
+      </div>
+      <p id="resultCount" class="result-count">読み込み中…</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div id="itemList" class="grid grid-2">
+
+        <article class="card case-card" data-item="case-01" data-category="display borrow" data-search="AIで図書館だより作成 letter">
+          <h3>① AIで図書館だより作成</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 毎月のお便り作成に時間がかかる</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: ChatGPT</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty easy">すぐできる</span>
+            <span class="case-tag">導入目安: 即日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-01" aria-expanded="false" aria-controls="detail-01">詳しく見る</button>
+          <div id="detail-01" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①伝えたい内容を箇条書きにする ②講座1のプロンプトに当てはめる ③出力を確認し、必要な部分を修正する</dd>
+              <dt>期待できる効果</dt><dd>作成時間が大幅に短縮され、発行頻度を保ちやすくなる</dd>
+              <dt>注意点</dt><dd>個人情報を入力しない。出力内容は必ず確認してから配布する</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course01-chatgpt.html">講座1: ChatGPT</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#letter-01">図書館だより作成プロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-02" data-category="display borrow" data-search="AIでおすすめ本紹介 recommend">
+          <h3>② AIでおすすめ本紹介</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 紹介文を書く時間が取れない</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: ChatGPT</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty easy">すぐできる</span>
+            <span class="case-tag">導入目安: 即日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-02" aria-expanded="false" aria-controls="detail-02">詳しく見る</button>
+          <div id="detail-02" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①書名・著者・紹介理由を入力 ②プロンプトを実行 ③媒体(だより・放送・Web)ごとに書き分けて活用</dd>
+              <dt>期待できる効果</dt><dd>複数冊の紹介文を短時間でまとめて作成できる</dd>
+              <dt>注意点</dt><dd>ネタバレを避け、内容の正確性を確認する</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course01-chatgpt.html">講座1: ChatGPT</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#recommend-01">おすすめ本紹介プロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-03" data-category="display" data-search="Gemini Notebookで掲示物作成 infographic">
+          <h3>③ Gemini Notebookで掲示物作成</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 見やすい掲示物を作る時間がない</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: Gemini Notebook</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty setup">少し設定が必要</span>
+            <span class="case-tag">導入目安: 数日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-03" aria-expanded="false" aria-controls="detail-03">詳しく見る</button>
+          <div id="detail-03" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①資料をアップロード ②Studioでインフォグラフィックを生成 ③内容を確認し掲示用に印刷</dd>
+              <dt>期待できる効果</dt><dd>資料が視覚的に整理され、児童生徒の理解が深まる</dd>
+              <dt>注意点</dt><dd>元資料にない情報が混ざっていないか必ず確認する</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course02-gemini-notebook.html">講座2: Gemini Notebook</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html">小学生向けに調整する指示例</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-04" data-category="borrow display" data-search="QRコード付き新刊紹介">
+          <h3>④ QRコード付き新刊紹介</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 新刊情報が児童生徒に届きにくい</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: Googleスプレッドシート／QRコード</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty setup">少し設定が必要</span>
+            <span class="case-tag">導入目安: 数日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-04" aria-expanded="false" aria-controls="detail-04">詳しく見る</button>
+          <div id="detail-04" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①新刊リストをスプレッドシートで管理 ②紹介文とQRコードを掲示物に印刷 ③スマホで詳細情報を確認できるようにする</dd>
+              <dt>期待できる効果</dt><dd>掲示スペースを取らずに詳しい情報を届けられる</dd>
+              <dt>注意点</dt><dd>リンク先の情報が個人情報を含まないか確認する</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course01-chatgpt.html">講座1: ChatGPT</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#newbook-01">新刊紹介プロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-05" data-category="display" data-search="Canva学校図書館ホームページ">
+          <h3>⑤ Canva学校図書館ホームページ</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 図書館の情報がまとまった場所にない</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: Canva教育版</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty setup">少し設定が必要</span>
+            <span class="case-tag">導入目安: 1〜2週間</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-05" aria-expanded="false" aria-controls="detail-05">詳しく見る</button>
+          <div id="detail-05" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>講座4の作成手順(①〜⑧)を参照</dd>
+              <dt>期待できる効果</dt><dd>お知らせ・新刊・イベント情報を一か所で発信できる</dd>
+              <dt>注意点</dt><dd>公開前に管理職の確認を受け、個人情報を掲載しない</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course04-canva-website.html">講座4: Canva</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#website-01">ホームページ文章の下書きプロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-06" data-category="count" data-search="Googleフォーム読書アンケート">
+          <h3>⑥ Googleフォーム読書アンケート</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 読書に関する意見や実態を把握しづらい</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: Googleフォーム</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty easy">すぐできる</span>
+            <span class="case-tag">導入目安: 即日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-06" aria-expanded="false" aria-controls="detail-06">詳しく見る</button>
+          <div id="detail-06" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①質問項目を作成 ②Googleフォームで配信 ③回答をスプレッドシートで自動集計</dd>
+              <dt>期待できる効果</dt><dd>集計の手作業がなくなり、傾向をすぐに把握できる</dd>
+              <dt>注意点</dt><dd>個人が特定される質問を含めない</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course05-gas-dx.html">講座5: GAS</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#survey-01">読書アンケート作成プロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-07" data-category="participate visualize" data-search="デジタル読書ビンゴ">
+          <h3>⑦ デジタル読書ビンゴ</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 読書の幅を広げるきっかけが少ない</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: Googleスプレッドシート／スライド</span>
+            <span class="case-tag">校種: 小・中学校</span>
+            <span class="difficulty setup">少し設定が必要</span>
+            <span class="case-tag">導入目安: 数日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-07" aria-expanded="false" aria-controls="detail-07">詳しく見る</button>
+          <div id="detail-07" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①ジャンル別のビンゴマスを作成 ②読んだ本を記録して塗りつぶす ③達成状況を掲示・共有</dd>
+              <dt>期待できる効果</dt><dd>普段読まないジャンルに挑戦するきっかけになる</dd>
+              <dt>注意点</dt><dd>達成を強制しすぎず、楽しめる雰囲気を大切にする</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course05-gas-dx.html">講座5: GAS</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#event-01">読書イベント企画プロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-08" data-category="participate borrow" data-search="デジタルスタンプラリー">
+          <h3>⑧ デジタルスタンプラリー</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 継続的に本を借りてもらうきっかけが欲しい</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: GAS／Googleフォーム</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty dev">GAS開発が必要</span>
+            <span class="case-tag">導入目安: 2〜4週間</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-08" aria-expanded="false" aria-controls="detail-08">詳しく見る</button>
+          <div id="detail-08" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①貸出記録と連動する仕組みを設計 ②スタンプ付与のルールを決める ③GASで自動付与する仕組みを作成</dd>
+              <dt>期待できる効果</dt><dd>貸出冊数の増加、継続的な利用のきっかけになる</dd>
+              <dt>注意点</dt><dd>開発・保守の担当者を決めておく</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course05-gas-dx.html">講座5: GAS</a></dd>
+              <dt>関連プロンプト</dt><dd>—</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-09" data-category="count efficiency" data-search="月別貸出冊数の自動集計">
+          <h3>⑨ 月別貸出冊数の自動集計</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 毎月の集計作業に時間がかかる</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: スプレッドシート／GAS</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty easy">すぐできる</span>
+            <span class="case-tag">導入目安: 数日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-09" aria-expanded="false" aria-controls="detail-09">詳しく見る</button>
+          <div id="detail-09" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①貸出記録をスプレッドシートに集約 ②関数またはGASで月別・学年別に自動集計 ③グラフ化して共有</dd>
+              <dt>期待できる効果</dt><dd>報告書作成の時間が大幅に削減される</dd>
+              <dt>注意点</dt><dd>集計結果を報告書に使う際は数値の確認を行う</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course05-gas-dx.html">講座5: GAS</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#analysis-01">集計・分析まとめプロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-10" data-category="visualize webapp" data-search="読書通帳Webアプリ">
+          <h3>⑩ 読書通帳Webアプリ</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 読書の記録が児童生徒に見えにくい</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: GAS／スプレッドシート</span>
+            <span class="case-tag">校種: 小・中学校</span>
+            <span class="difficulty dev">GAS開発が必要</span>
+            <span class="case-tag">導入目安: 1か月以上</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-10" aria-expanded="false" aria-controls="detail-10">詳しく見る</button>
+          <div id="detail-10" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①登録データの形式を設計 ②GASでWebアプリ化 ③運用ルールを校内で共有</dd>
+              <dt>期待できる効果</dt><dd>自分の読書履歴が可視化され、読書意欲につながる</dd>
+              <dt>注意点</dt><dd>個人情報の取扱いについて学校内の合意を得てから導入する</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course05-gas-dx.html">講座5: GAS</a></dd>
+              <dt>関連プロンプト</dt><dd>—</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-11" data-category="efficiency" data-search="図書館日誌入力フォーム">
+          <h3>⑪ 図書館日誌入力フォーム</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 日誌記入の時間が取りにくい</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: Googleフォーム</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty easy">すぐできる</span>
+            <span class="case-tag">導入目安: 即日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-11" aria-expanded="false" aria-controls="detail-11">詳しく見る</button>
+          <div id="detail-11" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①日誌項目をフォーム化 ②スマートフォンから記録 ③自動でスプレッドシートに蓄積</dd>
+              <dt>期待できる効果</dt><dd>短時間で記録でき、あとから振り返りやすくなる</dd>
+              <dt>注意点</dt><dd>来館者の個人情報は記録しない</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course05-gas-dx.html">講座5: GAS</a></dd>
+              <dt>関連プロンプト</dt><dd>—</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-12" data-category="lesson" data-search="学校図書館オリエンテーション教材">
+          <h3>⑫ 学校図書館オリエンテーション教材</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 年度はじめのガイダンス準備に時間がかかる</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: ChatGPT／Gemini Notebook</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty easy">すぐできる</span>
+            <span class="case-tag">導入目安: 即日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-12" aria-expanded="false" aria-controls="detail-12">詳しく見る</button>
+          <div id="detail-12" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①講座1のオリエンテーションプロンプトで構成案作成 ②Gemini Notebookでインフォグラフィック化</dd>
+              <dt>期待できる効果</dt><dd>教材準備の時間を短縮し、内容を毎年更新しやすくなる</dd>
+              <dt>注意点</dt><dd>学年に合った言葉づかいになっているか確認する</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course01-chatgpt.html">講座1</a>／<a href="../courses/course02-gemini-notebook.html">講座2</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#orientation-01">図書館オリエンテーション作成プロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-13" data-category="borrow display" data-search="ブックトーク動画">
+          <h3>⑬ ブックトーク動画</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 対面のブックトークの機会が限られる</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: Canva教育版</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty setup">少し設定が必要</span>
+            <span class="case-tag">導入目安: 数日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-13" aria-expanded="false" aria-controls="detail-13">詳しく見る</button>
+          <div id="detail-13" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①構成台本をプロンプトで作成 ②Canvaで動画編集 ③校内で共有・掲示</dd>
+              <dt>期待できる効果</dt><dd>いつでも視聴でき、繰り返し紹介できる</dd>
+              <dt>注意点</dt><dd>本の表紙・本文映像の使用条件を確認する</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course04-canva-website.html">講座4: Canva</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#video-01">本紹介動画・構成台本プロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-14" data-category="borrow display" data-search="新刊紹介動画">
+          <h3>⑭ 新刊紹介動画</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 新刊情報を短時間で発信したい</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: Canva教育版</span>
+            <span class="case-tag">校種: 全校種</span>
+            <span class="difficulty setup">少し設定が必要</span>
+            <span class="case-tag">導入目安: 数日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-14" aria-expanded="false" aria-controls="detail-14">詳しく見る</button>
+          <div id="detail-14" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①新刊紹介プロンプトで文章を作成 ②Canvaでテロップ・BGMを追加 ③校内モニターやWebで公開</dd>
+              <dt>期待できる効果</dt><dd>短時間で最新情報を発信でき、興味を引きやすい</dd>
+              <dt>注意点</dt><dd>音楽・画像素材の利用条件を確認する</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course04-canva-website.html">講座4: Canva</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#newbook-01">新刊紹介プロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card case-card" data-item="case-15" data-category="lesson" data-search="探究学習リンク集">
+          <h3>⑮ 探究学習リンク集</h3>
+          <p class="text-sm text-sub mb-0">解決する困りごと: 調べ学習に使える情報源をまとめる時間がない</p>
+          <div class="case-meta-list">
+            <span class="case-tag">ツール: Canva教育版／スプレッドシート</span>
+            <span class="case-tag">校種: 中・高等学校</span>
+            <span class="difficulty setup">少し設定が必要</span>
+            <span class="case-tag">導入目安: 数日</span>
+          </div>
+          <button class="btn btn-outline btn-sm" data-case-toggle="#detail-15" aria-expanded="false" aria-controls="detail-15">詳しく見る</button>
+          <div id="detail-15" class="case-detail">
+            <dl>
+              <dt>実施手順</dt><dd>①テーマ別に信頼できる情報源を整理 ②Canvaのホームページにリンク集ページを作成 ③QRコードで教室にも掲示</dd>
+              <dt>期待できる効果</dt><dd>生徒が自力で情報にたどり着きやすくなる</dd>
+              <dt>注意点</dt><dd>リンク切れがないか定期的に確認する</dd>
+              <dt>関連講座</dt><dd><a href="../courses/course04-canva-website.html">講座4: Canva</a></dd>
+              <dt>関連プロンプト</dt><dd><a href="../prompts/prompt-library.html#worksheet-01">調べ学習ワークシート作成プロンプト</a></dd>
+            </dl>
+          </div>
+        </article>
+
+      </div>
+      <p id="emptyState" class="empty-state hidden">条件に合う事例が見つかりませんでした。キーワードやカテゴリを変えてお試しください。</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
+      <div><p class="footer-title">サイトマップ</p><ul>
+        <li><a href="../index.html">トップページ</a></li>
+        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+        <li><a href="dx-cases.html">DX事例集</a></li>
+        <li><a href="../community/share.html">実践共有</a></li>
+        <li><a href="../resources/resources.html">資料</a></li>
+      </ul></div>
+      <div><p class="footer-title">お問い合わせ</p><ul>
+        <li><a href="../community/share.html">お問い合わせ・質問フォーム</a></li>
+        <li>【ここに問い合わせ先メールアドレスを入力】</li>
+      </ul></div>
+      <div><p class="footer-title">ご利用にあたって</p><ul>
+        <li><a href="../index.html#privacy">プライバシーに関する注意</a></li>
+        <li><a href="../index.html#copyright">著作権表示</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-note">
+      <p>本サイトは、学校図書館におけるICT活用を支援する研修用ポータルサイトです。掲載内容を利用する際は、所属校・自治体の規程をご確認ください。</p>
+      <p class="footer-copyright">&copy; 2026 Michihiro Wada. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="ページ上部へ戻る">↑</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

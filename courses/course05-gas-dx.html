@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>講座5: GASで実現する学校図書館DX | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="Googleフォーム・スプレッドシート・GASを組み合わせて、読書通帳や集計、図書館日誌などを仕組み化する学校図書館DXの事例を紹介します。">
+<link rel="canonical" href="【ここにこのページの公開URLを入力】">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="sr-only">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
+    <nav class="nav-desktop" aria-label="メインメニュー">
+      <a href="../index.html">ホーム</a>
+      <a href="../index.html#courses">本日の講座</a>
+      <a href="../prompts/prompt-library.html">プロンプト集</a>
+      <a href="../cases/dx-cases.html">DX事例</a>
+      <a href="../community/share.html">実践共有</a>
+      <a href="../resources/resources.html">資料</a>
+      <a href="../index.html#instructor">講師紹介</a>
+    </nav>
+    <div class="flex items-center gap-sm">
+      <button class="theme-toggle" data-theme-toggle aria-label="ダークモードに切り替え">🌙</button>
+      <button id="menuBtn" class="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="drawer" class="drawer" aria-label="サイト内メニュー">
+  <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
+  <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
+  <h3>本日の講座</h3>
+  <ul>
+    <li><a href="../index.html#courses">講座一覧(全5講座)</a></li>
+    <li><a href="course01-chatgpt.html">講座1: ChatGPT</a></li>
+    <li><a href="course02-gemini-notebook.html">講座2: Gemini Notebook</a></li>
+    <li><a href="course03-slido.html">講座3: Slido</a></li>
+    <li><a href="course04-canva-website.html">講座4: Canva</a></li>
+    <li><a href="course05-gas-dx.html" data-nav-link>講座5: GAS</a></li>
+  </ul>
+  <h3>研修後も使う</h3>
+  <ul>
+    <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+    <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+    <li><a href="../community/share.html">実践共有・質問</a></li>
+    <li><a href="../resources/resources.html">資料・リンク集</a></li>
+  </ul>
+  <h3>講師について</h3>
+  <ul><li><a href="../index.html#instructor">講師紹介</a></li><li><a href="../index.html#books">著作紹介</a></li></ul>
+  <ul style="border-top:1px solid var(--color-border); padding-top:1rem; margin-top:1rem;">
+    <li><a href="../index.html#faq">よくある質問</a></li>
+    <li><a href="../index.html#privacy">個人情報の取扱い</a></li>
+  </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<main id="main">
+  <section class="course-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#courses">本日の講座</a><span>›</span><span>講座5</span></p>
+      <div class="progress-bar-wrap">
+        <p class="progress-label">講座5 / 5</p>
+        <div class="progress-track"><div class="progress-fill" style="width:100%;"></div></div>
+      </div>
+      <div class="course-meta-row">
+        <span class="tool-badge tool-gas">⚙️ GAS</span>
+        <span class="pill-time">⏱ 所要時間 約10分</span>
+      </div>
+      <h1 class="h-section">GASで実現する学校図書館DX</h1>
+      <p class="lead">90分研修ではWebアプリを一から制作する演習は行いません。「現在の困りごとを、Google WorkspaceとGASでどのように仕組み化できるか」を事例として紹介します。</p>
+      <div class="goal-box">
+        <h2>今日できるようになること</h2>
+        <ul>
+          <li>GASでできることの全体像が分かる</li>
+          <li>学校図書館DXの具体的な事例と難易度が分かる</li>
+          <li>「小さく改善する」という考え方が分かる</li>
+        </ul>
+      </div>
+      <a href="../index.html#courses" class="btn btn-outline btn-sm">← トップページへ戻る</a>
+    </div>
+  </section>
+
+  <!-- 入力→自動処理→見える化 -->
+  <section class="section-tight">
+    <div class="container">
+      <h2 class="h-section">GASとは</h2>
+      <div class="card">
+        <p class="mb-0">GAS(Google Apps Script)は、Googleフォーム、スプレッドシート、ドライブ、カレンダーなどを連携し、繰り返し作業を自動化できる仕組みです。プログラミングが苦手な方にも分かるよう、次の3段階で考えてみましょう。</p>
+      </div>
+      <div class="grid grid-3" style="margin-top:1.2rem;">
+        <div class="card text-center"><p style="font-size:1.8rem; margin:0;">📝</p><h3 style="font-size:1rem;">入力</h3><p class="text-sm text-sub mb-0">Googleフォームやスプレッドシートにデータを入れる</p></div>
+        <div class="card text-center"><p style="font-size:1.8rem; margin:0;">⚙️</p><h3 style="font-size:1rem;">自動処理</h3><p class="text-sm text-sub mb-0">GASが集計・振り分け・通知などを自動で行う</p></div>
+        <div class="card text-center"><p style="font-size:1.8rem; margin:0;">📊</p><h3 style="font-size:1rem;">見える化</h3><p class="text-sm text-sub mb-0">グラフや一覧、Webアプリとして結果を確認できる</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">デモ</h2>
+      <div class="video-frame"><div class="video-placeholder">【ここにデモ動画(YouTube等)を埋め込みます】</div></div>
+    </div>
+  </section>
+
+  <!-- 学校図書館DXの事例 -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">学校図書館DXの事例</h2>
+      <p class="lead">各事例に、実現までの難易度ラベルを付けています。</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <span class="difficulty setup">少し設定が必要</span>
+          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">読書通帳Webアプリ</h3>
+          <p class="text-sm text-sub mb-0">児童生徒が読んだ本を登録し、自分の読書履歴を確認できます。</p>
+        </div>
+        <div class="card">
+          <span class="difficulty agree">学校内の合意が必要</span>
+          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">読書カルテ</h3>
+          <p class="text-sm text-sub mb-0">児童ごとの読書傾向、興味、読書記録を整理します。個人情報の取扱いには十分注意してください。</p>
+        </div>
+        <div class="card">
+          <span class="difficulty setup">少し設定が必要</span>
+          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">読書スタンプラリー</h3>
+          <p class="text-sm text-sub mb-0">本を読んだ記録に応じて、デジタルスタンプを付与します。</p>
+        </div>
+        <div class="card">
+          <span class="difficulty easy">すぐできる</span>
+          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">月別読書集計</h3>
+          <p class="text-sm text-sub mb-0">フォームやスプレッドシートの記録から、月別・学年別の冊数を自動集計します。</p>
+        </div>
+        <div class="card">
+          <span class="difficulty easy">すぐできる</span>
+          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">図書館日誌</h3>
+          <p class="text-sm text-sub mb-0">日々の業務、来館状況、出来事をスマートフォンから短時間で記録します。</p>
+        </div>
+        <div class="card">
+          <span class="difficulty easy">すぐできる</span>
+          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">読書アンケート</h3>
+          <p class="text-sm text-sub mb-0">Googleフォームで回答を集め、傾向をグラフ化し、AIで分析します。</p>
+        </div>
+        <div class="card">
+          <span class="difficulty setup">少し設定が必要</span>
+          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">図書館イベント申込</h3>
+          <p class="text-sm text-sub mb-0">参加申込、人数集計、確認メール等を仕組み化します。</p>
+        </div>
+        <div class="card">
+          <span class="difficulty dev">GAS開発が必要</span>
+          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">新刊紹介データベース</h3>
+          <p class="text-sm text-sub mb-0">書名、著者、分類、紹介文、対象学年などを検索できる形で管理します。</p>
+        </div>
+        <div class="card">
+          <span class="difficulty agree">学校内の合意が必要</span>
+          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">除籍候補管理</h3>
+          <p class="text-sm text-sub mb-0">除籍候補の一次記録、確認状況、確定データを管理します。除籍の判断そのものをAIに任せるのではなく、判断を支援する記録・整理の仕組みです。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 大切なメッセージ -->
+  <section class="section">
+    <div class="container">
+      <div class="speech-bubble" style="max-width:44rem; margin:0 auto; text-align:center;">
+        <span class="speech-label">大切なメッセージ</span>
+        最初から大きなシステムを作るのではなく、一番時間がかかっている作業を一つ選び、小さく改善する。
+      </div>
+    </div>
+  </section>
+
+  <!-- 演習(体験する場合の案内) -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">演習</h2>
+      <div class="card"><p class="mb-0">上記の事例から、自校で一番時間がかかっている作業に近いものを1つ選んでみましょう。今日はコードを書きませんが、「どの作業を、どう仕組み化したいか」を書き出すことがゴールです。</p></div>
+    </div>
+  </section>
+
+  <!-- 注意事項 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">注意事項</h2>
+      <div class="caution-card">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <ul>
+          <li>児童生徒の個人情報を扱う仕組みは、学校・自治体の許可と情報セキュリティ基準を確認してください。</li>
+          <li>除籍判断はAIやシステムに任せず、教職員が最終判断を行ってください。</li>
+          <li>公開・共有範囲は、必要最小限に設定してください。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">よくある質問</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c5faq1">GASはプログラミングができなくても使えますか<span class="chevron">▾</span></button>
+          <div id="c5faq1" class="accordion-panel"><p class="mb-0">既存のテンプレートや、ICT支援員・詳しい教職員のサポートを得ることで、未経験でも扱える場合があります。まずは「すぐできる」事例から試すのがおすすめです。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c5faq2">誰が管理・保守すればよいですか<span class="chevron">▾</span></button>
+          <div id="c5faq2" class="accordion-panel"><p class="mb-0">担当者の異動時に引き継げるよう、手順や設定をドキュメント化しておくことをおすすめします。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-narrow">
+    <div class="container">
+      <div class="course-pager">
+        <a href="course04-canva-website.html" class="card card-hover pager-link"><span class="pager-label">前の講座へ</span><span class="pager-title">← 講座4: Canva</span></a>
+        <a href="../prompts/prompt-library.html" class="card card-hover pager-link next"><span class="pager-label">研修後も使う</span><span class="pager-title">プロンプト集を開く →</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
+      <div><p class="footer-title">サイトマップ</p><ul>
+        <li><a href="../index.html">トップページ</a></li>
+        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
+        <li><a href="../cases/dx-cases.html">DX事例集</a></li>
+        <li><a href="../community/share.html">実践共有</a></li>
+        <li><a href="../resources/resources.html">資料</a></li>
+      </ul></div>
+      <div><p class="footer-title">お問い合わせ</p><ul>
+        <li><a href="../community/share.html">お問い合わせ・質問フォーム</a></li>
+        <li>【ここに問い合わせ先メールアドレスを入力】</li>
+      </ul></div>
+      <div><p class="footer-title">ご利用にあたって</p><ul>
+        <li><a href="../index.html#privacy">プライバシーに関する注意</a></li>
+        <li><a href="../index.html#copyright">著作権表示</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-note">
+      <p>本サイトは、学校図書館におけるICT活用を支援する研修用ポータルサイトです。掲載内容を利用する際は、所属校・自治体の規程をご確認ください。</p>
+      <p class="footer-copyright">&copy; 2026 Michihiro Wada. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="ページ上部へ戻る">↑</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

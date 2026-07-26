@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学校図書館×ICT研修ポータル | 本と人をつなぐ時間を、ICTでもっと豊かに</title>
+<meta name="description" content="生成AI・Gemini Notebook・Canva・Google Workspaceで学校図書館の仕事を軽くする研修ポータル。図書館だより・POP・掲示物・読書イベント・集計業務まで、目的別にすぐ使えるプロンプトと実践事例を紹介します。">
+<!-- OGP設定(公開URL・画像確定後に有効化してください)
+<meta property="og:title" content="学校図書館×ICT研修ポータル">
+<meta property="og:description" content="生成AI・Gemini Notebook・Canva・Google Workspaceで学校図書館をもっと楽しく、もっと便利に。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="【ここにGitHub Pages公開URLを入力】">
+<meta property="og:image" content="【ここにOGP画像URLを入力】">
+-->
+<!-- 公開後、実際のURLに差し替えてください -->
+<link rel="canonical" href="【ここにこのページの公開URLを入力】">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a href="#main" class="sr-only">本文へスキップ</a>
+
+<!-- ===== スプラッシュ演出(初回訪問時のみ・sessionStorageで制御) ===== -->
+<div id="splash" class="splash-overlay">
+  <p class="splash-text">学校図書館×ICT<span class="splash-sub">本と人をつなぐ時間を、ICTでもっと豊かに。</span></p>
+</div>
+
+<!-- ===== ヘッダー ===== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
+    <nav class="nav-desktop" aria-label="メインメニュー">
+      <a href="index.html" data-nav-link>ホーム</a>
+      <a href="#courses">本日の講座</a>
+      <a href="prompts/prompt-library.html">プロンプト集</a>
+      <a href="cases/dx-cases.html">DX事例</a>
+      <a href="community/share.html">実践共有</a>
+      <a href="resources/resources.html">資料</a>
+      <a href="#instructor">講師紹介</a>
+    </nav>
+    <div class="flex items-center gap-sm">
+      <button class="theme-toggle" data-theme-toggle aria-label="ダークモードに切り替え">🌙</button>
+      <button id="menuBtn" class="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ドロワーメニュー ===== -->
+<nav id="drawer" class="drawer" aria-label="サイト内メニュー">
+  <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
+  <ul>
+    <li><a href="index.html" data-nav-link>ホーム</a></li>
+    <li><a href="#purpose">目的から探す</a></li>
+  </ul>
+  <h3>本日の講座</h3>
+  <ul>
+    <li><a href="#courses">講座一覧(全5講座)</a></li>
+    <li><a href="courses/course01-chatgpt.html">講座1: ChatGPT</a></li>
+    <li><a href="courses/course02-gemini-notebook.html">講座2: Gemini Notebook</a></li>
+    <li><a href="courses/course03-slido.html">講座3: Slido</a></li>
+    <li><a href="courses/course04-canva-website.html">講座4: Canva</a></li>
+    <li><a href="courses/course05-gas-dx.html">講座5: GAS</a></li>
+  </ul>
+  <h3>研修後も使う</h3>
+  <ul>
+    <li><a href="prompts/prompt-library.html">プロンプト集</a></li>
+    <li><a href="cases/dx-cases.html">DX事例集</a></li>
+    <li><a href="community/share.html">実践共有・質問</a></li>
+    <li><a href="resources/resources.html">資料・リンク集</a></li>
+  </ul>
+  <h3>講師について</h3>
+  <ul>
+    <li><a href="#instructor">講師紹介</a></li>
+    <li><a href="#books">著作紹介</a></li>
+  </ul>
+  <ul style="border-top:1px solid var(--color-border); padding-top:1rem; margin-top:1rem;">
+    <li><a href="#faq">よくある質問</a></li>
+    <li><a href="#privacy">個人情報の取扱い</a></li>
+  </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<main id="main">
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">School Library × ICT Training Portal</p>
+      <h1 class="hero-title"><span>Work Less.</span><br><span class="text-sub">Read More.</span></h1>
+      <p class="hero-sub">生成AIとICTで、「作る時間」を短くし、「本と子どもをつなぐ時間」を増やす。</p>
+      <p class="hero-desc">図書館だより、POP、掲示物、読書イベント、情報発信、集計業務。学校図書館のさまざまな仕事を、生成AIやGoogle Workspaceで支援します。AIやICTは、学校司書の仕事を置き換えるものではありません。資料作成や集計などにかかる時間を減らし、子ども一人一人に合った本を手渡す時間を増やすための道具です。</p>
+      <div class="hero-actions">
+        <a href="#courses" class="btn btn-primary">本日の講座を見る</a>
+        <a href="prompts/prompt-library.html" class="btn btn-outline">プロンプトを使う</a>
+        <a href="cases/dx-cases.html" class="btn btn-outline">DX事例を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 講師紹介(中種子町ポータルサイトの仕様を流用) ===== -->
+  <section id="instructor" class="section">
+    <div class="container">
+      <p class="eyebrow">Instructor</p>
+      <h2 class="h-section">講師紹介</h2>
+      <div class="card instructor-card">
+        <div class="instructor-flex">
+          <!-- プロフィール写真: 差し替えは「画像差し替え手順.md」参照 -->
+          <img src="assets/images/profile.jpg" alt="和田倫周 プロフィールイラスト" class="instructor-photo"
+               onerror="this.outerHTML='&lt;div class=&quot;instructor-photo placeholder&quot;&gt;&lt;span class=&quot;material-icon&quot;&gt;🧑‍🏫&lt;/span&gt;プロフィール写真&lt;/div&gt;'">
+          <div>
+            <h3 class="instructor-name">和田 倫周 <span class="yomi">(わだ みちひろ)</span></h3>
+            <p class="instructor-role">鹿児島県立高等学校 国語科教諭・司書教諭</p>
+
+            <div class="tag-row">
+              <span class="tag-pill">Google for Education 認定トレーナー</span>
+              <img src="assets/images/badges/google-trainer-badge.png" alt="Google for Education Certified Trainer バッジ" class="badge-logo">
+            </div>
+            <div class="tag-row">
+              <span class="tag-pill">Canva Teacher Canvassador</span>
+              <img src="assets/images/badges/canvassador-badge-web.png" alt="Canva Teacher Canvassador 2026 バッジ" class="badge-round">
+            </div>
+            <div class="tag-list">
+              <span class="tag-pill">Google認定教育者 Level 1／Level 2</span>
+              <span class="tag-pill">Gemini認定教育者</span>
+              <span class="tag-pill">GEG Kagoshima 共同リーダー</span>
+              <span class="tag-pill">GEG Japan Mentors 九州・沖縄</span>
+            </div>
+
+            <p class="instructor-bio">
+              学校現場で31年間勤務し、国語教育、進路支援、学校図書館、校務改善に携わっています。Google Workspace、生成AI、Canva、GASを活用し、学校現場の困りごとを具体的な仕組みに変える実践に取り組んでいます。研修では、ツールの基本操作を一から説明するのではなく、「学校の仕事をどう軽くするか」「子どもたちの学びをどう豊かにするか」を中心に、研修後すぐに使えるプロンプトや実践方法を紹介しています。
+            </p>
+            <div class="speech-bubble">
+              <span class="speech-label">講師からのメッセージ</span>
+              学校図書館には、子どもと本をつなぐ大切な役割があります。AIやICTを使う目的は、仕事を増やすことではありません。資料作成や集計にかかる時間を短くし、子どもたちと本について話す時間を増やすことです。今日の研修が、皆さんの学校図書館で新しい一歩を踏み出すきっかけになれば幸いです。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 著作(中種子町ポータルサイトの仕様を流用) ===== -->
+  <section id="books" class="section bg-ivory rounded-section">
+    <div class="container">
+      <p class="eyebrow">Book</p>
+      <h2 class="h-section">著作</h2>
+      <!-- 書籍情報とAmazon URLをここで差し替えてください -->
+      <div class="grid grid-2">
+        <div class="card book-card">
+          <div class="book-flex">
+            <img src="assets/images/book01.jpg" alt="先生のためのCanva教育版 やさしい入門 書影" class="book-cover"
+                 onerror="this.outerHTML='&lt;div class=&quot;book-cover placeholder&quot;&gt;書影を準備中です&lt;/div&gt;'">
+            <div>
+              <h3 class="book-title">先生のためのCanva教育版 やさしい入門</h3>
+              <p class="book-subtitle">[監修] 坂本良晶 [著者] 飯山彩也香、五十嵐太一、江藤由布、遠藤隆平、大野翔、恩地麻里、片岸力丸、柴田大翔、長田夢、藤井海、古川俊、<strong style="color:var(--color-ink);">和田倫周</strong></p>
+              <p class="book-desc">教材・資料作りがもっと早く楽しくなる、Canva教育版のやさしい入門書です。学校図書館の掲示物やお便り作りにもそのまま活用できます。</p>
+              <ul class="book-meta">
+                <li><strong>定価:</strong> 1,980円(本体1,800円+税10%)</li>
+                <li><strong>発売日:</strong> 2026.5.28</li>
+                <li><strong>判型:</strong> B5変形 / 208ページ</li>
+                <li><strong>ISBN:</strong> 978-4-297-15660-2</li>
+              </ul>
+              <div class="book-actions">
+                <a href="https://gihyo.jp/book/2026/978-4-297-15660-2" class="btn btn-primary btn-sm" target="_blank" rel="noopener">技術評論社サイトで見る ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 2冊目以降を追加する場合は、このカードを複製して差し替えてください -->
+        <div class="card book-card">
+          <div class="book-flex">
+            <img src="assets/images/book02.jpg" alt="書籍2 表紙" class="book-cover"
+                 onerror="this.outerHTML='&lt;div class=&quot;book-cover placeholder&quot;&gt;書影を準備中です&lt;/div&gt;'">
+            <div>
+              <h3 class="book-title">【書籍タイトルを入力】</h3>
+              <p class="book-subtitle">【サブタイトルを入力】</p>
+              <p class="book-desc">学校教育や子どもとの関わりについて、実践をもとにまとめた著作です。</p>
+              <ul class="book-meta">
+                <li><strong>出版社:</strong> 【出版社名を入力】</li>
+                <li><strong>刊行年:</strong> 【刊行年を入力】</li>
+              </ul>
+              <div class="book-actions">
+                <a href="【ここにAmazon等の購入ページURLを入力】" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Amazonで見る ↗</a>
+                <a href="resources/resources.html" class="btn btn-outline btn-sm">詳しく見る</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 本日の研修ゴール ===== -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Goal</p>
+      <h2 class="h-section">本日の研修ゴール</h2>
+      <p class="lead">90分の研修が終わるころには、次のことができるようになっています。</p>
+      <div class="grid grid-2">
+        <div class="card goal-card"><span class="check-icon">✓</span><p class="mb-0">ChatGPTに適切なプロンプトを入力できる</p></div>
+        <div class="card goal-card"><span class="check-icon">✓</span><p class="mb-0">図書館だよりやPOPの案を短時間で作れる</p></div>
+        <div class="card goal-card"><span class="check-icon">✓</span><p class="mb-0">Gemini Notebookでインフォグラフィックを作れる</p></div>
+        <div class="card goal-card"><span class="check-icon">✓</span><p class="mb-0">他校の学校図書館実践を共有できる</p></div>
+        <div class="card goal-card"><span class="check-icon">✓</span><p class="mb-0">Canvaで学校図書館ホームページを作る方法が分かる</p></div>
+        <div class="card goal-card"><span class="check-icon">✓</span><p class="mb-0">GASによる学校図書館DXの可能性が分かる</p></div>
+        <div class="card goal-card"><span class="check-icon">✓</span><p class="mb-0">研修後も使えるプロンプトや資料を持ち帰れる</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 90分のタイムテーブル ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <p class="eyebrow">Timetable</p>
+      <h2 class="h-section">90分のタイムテーブル</h2>
+      <p class="lead">研修当日はこの流れで進みます。気になる時間帯から読み返すこともできます。</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-time">0〜10分</p>
+          <h3 class="timeline-title">オープニング</h3>
+          <p class="timeline-desc">アンケート結果と学校図書館×ICTの可能性</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">10〜35分</p>
+          <h3 class="timeline-title">ChatGPT実践</h3>
+          <p class="timeline-desc">図書館だより、POP、おすすめ本紹介、イベント企画</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">35〜50分</p>
+          <h3 class="timeline-title">Gemini Notebook</h3>
+          <p class="timeline-desc">Studio機能でインフォグラフィック作成</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">50〜65分</p>
+          <h3 class="timeline-title">Slido実践共有</h3>
+          <p class="timeline-desc">各校の取組や困りごとをリアルタイムで共有</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">65〜80分</p>
+          <h3 class="timeline-title">Canva教育版</h3>
+          <p class="timeline-desc">学校図書館ホームページ作成の紹介</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">80〜90分</p>
+          <h3 class="timeline-title">GAS・Webアプリ</h3>
+          <p class="timeline-desc">学校図書館DXの実践例と今後の可能性</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 本日の講座一覧 ===== -->
+  <section id="courses" class="section">
+    <div class="container">
+      <p class="eyebrow">Courses</p>
+      <h2 class="h-section">本日の講座</h2>
+      <p class="lead">5つの講座は、それぞれ単独でも読み進められます。気になる講座から開いてください。</p>
+      <div class="grid grid-2">
+        <a href="courses/course01-chatgpt.html" class="card card-hover course-card">
+          <span class="course-num">01</span>
+          <span class="tool-badge tool-chatgpt">💬 ChatGPT</span>
+          <p class="course-time">所要時間 約25分</p>
+          <h3 class="course-title">ChatGPTで学校図書館の仕事を速くする</h3>
+          <p class="course-desc">プロンプトを使って、図書館だより、POP、おすすめ本紹介、イベント案を短時間で作ります。</p>
+          <span class="btn btn-primary btn-sm">講座を開く</span>
+        </a>
+        <a href="courses/course02-gemini-notebook.html" class="card card-hover course-card">
+          <span class="course-num">02</span>
+          <span class="tool-badge tool-gemini">📓 Gemini Notebook</span>
+          <p class="course-time">所要時間 約15分</p>
+          <h3 class="course-title">Gemini Notebookで伝わる掲示を作る</h3>
+          <p class="course-desc">資料をもとに、Studio機能で学校図書館に掲示できるインフォグラフィックを作ります。</p>
+          <span class="btn btn-primary btn-sm">講座を開く</span>
+        </a>
+        <a href="courses/course03-slido.html" class="card card-hover course-card">
+          <span class="course-num">03</span>
+          <span class="tool-badge tool-slido">🗳️ Slido</span>
+          <p class="course-time">所要時間 約15分</p>
+          <h3 class="course-title">Slidoで学校図書館の実践を共有する</h3>
+          <p class="course-desc">参加者の取組や困りごとをリアルタイムで集約し、他校のアイデアから学びます。</p>
+          <span class="btn btn-primary btn-sm">講座を開く</span>
+        </a>
+        <a href="courses/course04-canva-website.html" class="card card-hover course-card">
+          <span class="course-num">04</span>
+          <span class="tool-badge tool-canva">🎨 Canva</span>
+          <p class="course-time">所要時間 約15分</p>
+          <h3 class="course-title">Canvaで学校図書館ホームページを作る</h3>
+          <p class="course-desc">新刊案内、イベント、利用案内などを掲載できる学校図書館サイトの作り方を紹介します。</p>
+          <span class="btn btn-primary btn-sm">講座を開く</span>
+        </a>
+        <a href="courses/course05-gas-dx.html" class="card card-hover course-card" style="grid-column:1/-1;">
+          <span class="course-num">05</span>
+          <span class="tool-badge tool-gas">⚙️ GAS</span>
+          <p class="course-time">所要時間 約10分</p>
+          <h3 class="course-title">GASで実現する学校図書館DX</h3>
+          <p class="course-desc">読書通帳、読書カルテ、集計、図書館日誌などをWebアプリで仕組み化する方法を紹介します。</p>
+          <span class="btn btn-primary btn-sm">講座を開く</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== すぐに使える3つの入口 ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <p class="eyebrow">Start Now</p>
+      <h2 class="h-section">すぐに使える3つの入口</h2>
+      <p class="lead">研修が終わったあとも、このサイトに戻ってきてください。</p>
+      <div class="grid grid-3">
+        <a href="prompts/prompt-library.html" class="card card-hover entry-card">
+          <div class="avatar-icon">📝</div>
+          <h3>今日から使えるプロンプト集</h3>
+          <p>図書館だより、POP、イベント企画、おすすめ本紹介などのプロンプトを、ワンクリックでコピーできます。</p>
+          <span class="btn btn-outline btn-sm">開く</span>
+        </a>
+        <a href="cases/dx-cases.html" class="card card-hover entry-card">
+          <div class="avatar-icon">🌟</div>
+          <h3>学校図書館DX事例集</h3>
+          <p>読書記録、デジタルスタンプラリー、集計、ホームページなどの事例を目的別に探せます。</p>
+          <span class="btn btn-outline btn-sm">開く</span>
+        </a>
+        <a href="community/share.html" class="card card-hover entry-card">
+          <div class="avatar-icon">💬</div>
+          <h3>実践共有・質問</h3>
+          <p>研修後の実践報告、質問、アイデアを共有できます。</p>
+          <span class="btn btn-outline btn-sm">開く</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 目的から探す ===== -->
+  <section id="purpose" class="section">
+    <div class="container">
+      <p class="eyebrow">Purpose</p>
+      <h2 class="h-section">目的から探す</h2>
+      <p class="lead">ツール名ではなく、困りごとから探せます。気になる項目を選んでください。</p>
+      <div class="grid grid-3">
+        <a href="courses/course01-chatgpt.html" class="card card-hover purpose-card"><span><strong>図書館だよりを作りたい</strong><br><span class="text-sub text-sm">関連: ChatGPT／Canva</span></span><span class="arrow">→</span></a>
+        <a href="courses/course01-chatgpt.html" class="card card-hover purpose-card"><span><strong>POPを作りたい</strong><br><span class="text-sub text-sm">関連: ChatGPT／Canva</span></span><span class="arrow">→</span></a>
+        <a href="courses/course02-gemini-notebook.html" class="card card-hover purpose-card"><span><strong>掲示物を作りたい</strong><br><span class="text-sub text-sm">関連: Gemini Notebook／Canva</span></span><span class="arrow">→</span></a>
+        <a href="courses/course03-slido.html" class="card card-hover purpose-card"><span><strong>他校の実践を知りたい</strong><br><span class="text-sub text-sm">関連: Slido／実践共有</span></span><span class="arrow">→</span></a>
+        <a href="courses/course04-canva-website.html" class="card card-hover purpose-card"><span><strong>ホームページを作りたい</strong><br><span class="text-sub text-sm">関連: Canva</span></span><span class="arrow">→</span></a>
+        <a href="courses/course05-gas-dx.html" class="card card-hover purpose-card"><span><strong>集計を楽にしたい</strong><br><span class="text-sub text-sm">関連: Googleフォーム／スプレッドシート／GAS</span></span><span class="arrow">→</span></a>
+        <a href="courses/course05-gas-dx.html" class="card card-hover purpose-card"><span><strong>読書記録をデジタル化したい</strong><br><span class="text-sub text-sm">関連: Googleフォーム／GAS</span></span><span class="arrow">→</span></a>
+        <a href="courses/course05-gas-dx.html" class="card card-hover purpose-card"><span><strong>Webアプリを作りたい</strong><br><span class="text-sub text-sm">関連: GAS</span></span><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== どのAIを使えばよい? ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <p class="eyebrow">Which AI?</p>
+      <h2 class="h-section">どのAIを使えばよい?</h2>
+      <p class="lead">AIが増えすぎて、どれを使えばよいか分からないという声にお応えして。優劣ではなく「目的に応じて道具を使い分ける」ための早見表です。</p>
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead><tr><th>やりたいこと</th><th>おすすめ</th></tr></thead>
+          <tbody>
+            <tr><td>文章や企画案を作る</td><td>ChatGPT</td></tr>
+            <tr><td>資料をもとに整理する</td><td>Gemini Notebook</td></tr>
+            <tr><td>インフォグラフィックを作る</td><td>Gemini Notebook</td></tr>
+            <tr><td>デザインやWebページを作る</td><td>Canva</td></tr>
+            <tr><td>回答や意見を集める</td><td>Slido／Googleフォーム</td></tr>
+            <tr><td>集計や処理を自動化する</td><td>Googleスプレッドシート／GAS</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== まずは一つだけ試してみる ===== -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Next Step</p>
+      <h2 class="h-section">まずは一つだけ試してみる</h2>
+      <p class="lead">全部を一度に始めなくて大丈夫です。今のご自身に合うレベルから、ひとつだけ試してみてください。</p>
+      <div class="level-list">
+        <div class="card level-item"><span class="level-num">1</span><div class="level-text"><strong>プロンプトをコピーして、おすすめ本紹介を一つ作る。</strong><span>まずはコピー&amp;ペーストから</span></div></div>
+        <div class="card level-item"><span class="level-num">2</span><div class="level-text"><strong>Gemini Notebookで、図書館利用案内のインフォグラフィックを作る。</strong><span>資料を読み込ませるだけ</span></div></div>
+        <div class="card level-item"><span class="level-num">3</span><div class="level-text"><strong>Canvaで、新刊紹介ページを一つ作る。</strong><span>テンプレートを選ぶだけ</span></div></div>
+        <div class="card level-item"><span class="level-num">4</span><div class="level-text"><strong>Googleフォームで、読書アンケートを実施する。</strong><span>集計の手間が減ります</span></div></div>
+        <div class="card level-item"><span class="level-num">5</span><div class="level-text"><strong>GASを使って、集計や読書記録を仕組み化する。</strong><span>少しずつ仕組み化へ</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== よくある質問 ===== -->
+  <section id="faq" class="section bg-ivory rounded-section">
+    <div class="container">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="h-section">よくある質問</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq1">ChatGPTの有料版は必要ですか<span class="chevron">▾</span></button>
+          <div id="faq1" class="accordion-panel"><p class="mb-0">無料版でも多くの用途で利用できます。利用条件やアカウントの種類は所属校・自治体のルールに従い、事前にご確認ください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq2">県域教育アカウントで何が使えますか<span class="chevron">▾</span></button>
+          <div id="faq2" class="accordion-panel"><p class="mb-0">自治体・学校が導入しているアカウントの種類によって利用できる機能が異なります。ICT担当者や自治体の窓口にご確認ください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq3">Gemini Notebookに何を入れればよいですか<span class="chevron">▾</span></button>
+          <div id="faq3" class="accordion-panel"><p class="mb-0">図書館利用案内や読書週間の実施要項など、学校で作成した資料が向いています。個人情報を含む資料は入力しないでください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq4">児童の個人情報を入力してもよいですか<span class="chevron">▾</span></button>
+          <div id="faq4" class="accordion-panel"><p class="mb-0">児童生徒名・保護者名・住所・成績などの個人情報は、生成AIへ入力しないでください。番号や仮名に置き換えるなどの工夫をしてください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq5">本の表紙をPOPや動画に使えますか<span class="chevron">▾</span></button>
+          <div id="faq5" class="accordion-panel"><p class="mb-0">本の表紙は著作物です。利用条件を出版社等で確認し、学校や自治体のルールに従ってください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq6">Canva教育版を使うにはどうすればよいですか<span class="chevron">▾</span></button>
+          <div id="faq6" class="accordion-panel"><p class="mb-0">学校のGoogle Workspace／Microsoftアカウントで申請できる場合があります。詳しくは<a href="courses/course04-canva-website.html">講座4</a>をご覧ください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq7">作成したホームページを一般公開してよいですか<span class="chevron">▾</span></button>
+          <div id="faq7" class="accordion-panel"><p class="mb-0">公開前に管理職等の確認を受け、学校・自治体の公開ルールに従ってください。個人情報や児童生徒の写真は原則掲載しません。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq8">GASはプログラミングができなくても使えますか<span class="chevron">▾</span></button>
+          <div id="faq8" class="accordion-panel"><p class="mb-0">既存のテンプレートを活用することで、プログラミング未経験でも扱える場合があります。詳しくは<a href="courses/course05-gas-dx.html">講座5</a>をご覧ください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq9">研修後もこのサイトを使えますか<span class="chevron">▾</span></button>
+          <div id="faq9" class="accordion-panel"><p class="mb-0">はい。プロンプト集・DX事例集・資料集はいつでも参照できます。ブックマークしてご活用ください。</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq10">プロンプトは自由に変更してよいですか<span class="chevron">▾</span></button>
+          <div id="faq10" class="accordion-panel"><p class="mb-0">はい。学校や学年、目的に合わせて自由に書き換えてご利用ください。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 著作権・AI利用に関するページ内ガイド ===== -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Copyright &amp; Safety</p>
+      <h2 class="h-section">著作権・AI利用に関するガイド</h2>
+      <div class="card">
+        <ul class="text-sm text-sub" style="line-height:2;">
+          <li>本の表紙や本文は著作物です。</li>
+          <li>インターネット上の画像は自由に使えるとは限りません。</li>
+          <li>画像や文章の利用条件を確認してください。</li>
+          <li>児童生徒の作品にも著作権があります。</li>
+          <li>個人情報を生成AIへ入力しないでください。</li>
+          <li>AI生成物も内容や権利関係を確認して使用してください。</li>
+          <li>引用する場合は出典を明示してください。</li>
+          <li>校内利用と一般公開では確認事項が異なります。</li>
+          <li>判断に迷う場合は、学校や自治体の担当者へ確認してください。</li>
+        </ul>
+        <p class="text-sm text-sub mt-0" style="margin-top:1rem;">※ このサイトの内容は一般的な研修情報であり、個別の法的判断を示すものではありません。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 個人情報の取扱い ===== -->
+  <section id="privacy" class="section bg-ivory rounded-section">
+    <div class="container">
+      <p class="eyebrow">Privacy</p>
+      <h2 class="h-section">個人情報の取扱い</h2>
+      <div class="caution-card">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <p>個人情報を含む資料を生成AIへ入力しないでください。児童生徒名、保護者名、住所、電話番号、成績、健康情報などは、番号・記号・仮名に置き換えてください。AIが生成した内容は、そのまま使用せず、必ず教職員が内容を確認してください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 著作権表示 ===== -->
+  <section id="copyright" class="section-narrow">
+    <div class="container text-center text-sm text-sub">
+      <p>&copy; 2026 Michihiro Wada. All Rights Reserved.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== フッター ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-title">学校図書館×ICT研修ポータル</p>
+        <p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p>
+      </div>
+      <div>
+        <p class="footer-title">サイトマップ</p>
+        <ul>
+          <li><a href="index.html">トップページ</a></li>
+          <li><a href="#courses">講座一覧</a></li>
+          <li><a href="prompts/prompt-library.html">プロンプト集</a></li>
+          <li><a href="cases/dx-cases.html">DX事例集</a></li>
+          <li><a href="community/share.html">実践共有</a></li>
+          <li><a href="resources/resources.html">資料</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">お問い合わせ</p>
+        <ul>
+          <li><a href="community/share.html">お問い合わせ・質問フォーム</a></li>
+          <!-- 問い合わせ先メールアドレスを差し替えてください -->
+          <li>【ここに問い合わせ先メールアドレスを入力】</li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">ご利用にあたって</p>
+        <ul>
+          <li><a href="#privacy">プライバシーに関する注意</a></li>
+          <li><a href="#copyright">著作権表示</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <p>本サイトは、学校図書館におけるICT活用を支援する研修用ポータルサイトです。掲載内容を利用する際は、所属校・自治体の規程をご確認ください。</p>
+      <p class="footer-copyright">&copy; 2026 Michihiro Wada. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="ページ上部へ戻る">↑</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
