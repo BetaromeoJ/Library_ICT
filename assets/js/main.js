@@ -371,6 +371,19 @@
   }
 
   /* ------------------------------------------------------------
+     講師プロフィール動画: 「視差効果を減らす」設定の場合は再生を止める
+     (CSSでも非表示にしているが、デコード負荷を抑えるためJSでも一時停止する)
+     ------------------------------------------------------------ */
+  function initInstructorVideo() {
+    var video = qs(".instructor-video");
+    if (!video) return;
+    if (prefersReducedMotion) {
+      try { video.pause(); } catch (e) { /* 無視 */ }
+      video.removeAttribute("autoplay");
+    }
+  }
+
+  /* ------------------------------------------------------------
      10. ボタンのタップ演出
      ------------------------------------------------------------ */
   function initButtonLift() {
@@ -398,5 +411,6 @@
     initFilters();
     initCaseDetailToggles();
     initButtonLift();
+    initInstructorVideo();
   });
 })();

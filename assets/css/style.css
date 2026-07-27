@@ -262,14 +262,14 @@ html[data-theme="dark"] .site-header { background: rgba(20,21,28,.9); }
    ------------------------------------------------------------ */
 .splash-overlay {
   position: fixed; inset: 0; z-index: 999;
-  background: #0057ff;
+  background: #6b7280;
   display: flex; align-items: center; justify-content: center; flex-direction: column;
   transform: translateY(0);
   transition: transform .45s cubic-bezier(.65,0,.35,1);
 }
 .splash-overlay.hide { transform: translateY(-100%); pointer-events: none; }
 .splash-text {
-  color: #fff; font-weight: 800; font-size: clamp(1.4rem, 4vw, 2.1rem);
+  color: #111114; font-weight: 800; font-size: clamp(1.4rem, 4vw, 2.1rem);
   letter-spacing: .04em; text-align: center;
   opacity: 0; transform: translateY(24px);
   transition: opacity .6s ease, transform .6s ease;
@@ -277,7 +277,7 @@ html[data-theme="dark"] .site-header { background: rgba(20,21,28,.9); }
 .splash-overlay.show .splash-text { opacity: 1; transform: translateY(0); }
 .splash-sub {
   display: block; margin-top: .7rem; font-size: .82rem; font-weight: 500;
-  color: #dbe6ff; letter-spacing: .04em;
+  color: #111114; letter-spacing: .04em;
 }
 
 /* ------------------------------------------------------------
@@ -404,6 +404,28 @@ html[data-theme="dark"] .site-header { background: rgba(20,21,28,.9); }
   color: var(--color-text-faint); font-size: .7rem; gap: .3rem; border: 1px dashed var(--color-border);
 }
 .instructor-photo.placeholder .material-icon { font-size: 2.2rem; }
+
+/* 講師写真の「動く」演出(ゆったり浮き上がるアニメーション・現在は静止画フォールバック用) */
+@keyframes instructor-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-1.5deg); }
+}
+.instructor-photo-animated {
+  animation: instructor-float 3.4s ease-in-out infinite;
+  box-shadow: 0 18px 26px -14px rgba(79, 109, 245, .35);
+}
+
+/* 講師プロフィール動画 */
+.instructor-video {
+  box-shadow: 0 18px 26px -14px rgba(79, 109, 245, .35);
+  background: var(--color-bg-soft);
+}
+/* 「視差効果を減らす」設定では動画を止めて静止画を表示する */
+.instructor-photo-static-fallback { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .instructor-video { display: none; }
+  .instructor-photo-static-fallback { display: block; margin: 0 auto; }
+}
 .instructor-name { font-size: 1.5rem; font-weight: 800; margin-bottom: .2rem; }
 .instructor-name .yomi { font-size: .95rem; font-weight: 400; color: var(--color-text-faint); }
 .instructor-role { color: var(--color-text-sub); font-size: .88rem; margin-bottom: 1rem; }

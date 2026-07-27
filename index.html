@@ -109,8 +109,15 @@
       <h2 class="h-section">講師紹介</h2>
       <div class="card instructor-card">
         <div class="instructor-flex">
-          <!-- プロフィール写真: 差し替えは「画像差し替え手順.md」参照 -->
-          <img src="assets/images/profile.jpg" alt="和田倫周 プロフィールイラスト" class="instructor-photo"
+          <!-- プロフィール動画: 差し替えは「画像差し替え手順.md」参照。再生できない環境では自動的に静止画(profile.jpg)にフォールバックします -->
+          <video class="instructor-photo instructor-video" autoplay muted loop playsinline poster="assets/images/profile.jpg"
+                 aria-label="和田倫周 プロフィールムービー"
+                 onerror="this.outerHTML='&lt;img src=&quot;assets/images/profile.jpg&quot; alt=&quot;和田倫周 プロフィールイラスト&quot; class=&quot;instructor-photo&quot;&gt;'">
+            <source src="assets/videos/instructor.mp4" type="video/mp4">
+            <img src="assets/images/profile.jpg" alt="和田倫周 プロフィールイラスト" class="instructor-photo">
+          </video>
+          <!-- 「視差効果を減らす」設定の場合に表示する静止画(main.jsが動画側を停止・非表示にします) -->
+          <img src="assets/images/profile.jpg" alt="和田倫周 プロフィールイラスト" class="instructor-photo instructor-photo-static-fallback"
                onerror="this.outerHTML='&lt;div class=&quot;instructor-photo placeholder&quot;&gt;&lt;span class=&quot;material-icon&quot;&gt;🧑‍🏫&lt;/span&gt;プロフィール写真&lt;/div&gt;'">
           <div>
             <h3 class="instructor-name">和田 倫周 <span class="yomi">(わだ みちひろ)</span></h3>
