@@ -262,7 +262,7 @@ html[data-theme="dark"] .site-header { background: rgba(20,21,28,.9); }
    ------------------------------------------------------------ */
 .splash-overlay {
   position: fixed; inset: 0; z-index: 999;
-  background: #6b7280;
+  background: #bfe6f5;
   display: flex; align-items: center; justify-content: center; flex-direction: column;
   transform: translateY(0);
   transition: transform .45s cubic-bezier(.65,0,.35,1);
