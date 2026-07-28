@@ -86,6 +86,7 @@
         <h2>今日できるようになること</h2>
         <ul>
           <li>プロンプトの基本の型を理解する</li>
+          <li>AI自身に「プロンプトを作るためのプロンプト」を作らせる方法が分かる</li>
           <li>図書館だより・POP・おすすめ本紹介・イベント企画をChatGPTで下書きできる</li>
           <li>思った通りの答えが返らないときに、追加の一言で改善できる</li>
         </ul>
@@ -100,9 +101,10 @@
       <h2 class="h-section">講座の流れ</h2>
       <div class="step-list">
         <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>基本を知る</strong><span>ChatGPTを使うときの4つのポイント</span></div></div>
-        <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>型を知る</strong><span>基本プロンプトの型を確認</span></div></div>
-        <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>演習する</strong><span>手元の端末でプロンプトをコピーして試す</span></div></div>
-        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>持ち帰る</strong><span>プロンプトと改善の一言集を持ち帰る</span></div></div>
+        <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>AIにプロンプトを作らせる</strong><span>プロンプトを作るためのプロンプトを知る</span></div></div>
+        <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>型を知る</strong><span>基本プロンプトの型を確認</span></div></div>
+        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>演習する</strong><span>手元の端末でプロンプトをコピーして試す</span></div></div>
+        <div class="step-item"><span class="step-num">5</span><div class="step-text"><strong>持ち帰る</strong><span>プロンプトと改善の一言集を持ち帰る</span></div></div>
       </div>
     </div>
   </section>
@@ -121,8 +123,55 @@
     </div>
   </section>
 
-  <!-- ===== 11-2. 基本プロンプトの型 ===== -->
+  <!-- ===== 11-1b. プロンプトを作るのもAIにまかせる ===== -->
   <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">プロンプトを作るのもAIにまかせる</h2>
+      <p class="lead">「どんなプロンプトを書けばいいか分からない」というときは、プロンプトを一から自分で考える必要はありません。GeminiやChatGPTに目的を伝えれば、AI自身がその場に合ったプロンプトを提案してくれます。これを「プロンプトを作るためのプロンプト(メタプロンプト)」と呼びます。</p>
+      <div class="grid grid-3" style="margin-bottom:1.2rem;">
+        <div class="card"><p class="text-sm text-sub mb-0" style="font-weight:800;color:var(--color-ink);">① 目的を伝える</p><p class="text-sm mb-0">作りたいもの・対象・条件を、下のプロンプトの【　】に入力する</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0" style="font-weight:800;color:var(--color-ink);">② AIが下書きを提案</p><p class="text-sm mb-0">GeminiやChatGPTが、そのまま使えるプロンプト案を作成する</p></div>
+        <div class="card"><p class="text-sm text-sub mb-0" style="font-weight:800;color:var(--color-ink);">③ 使いながら調整</p><p class="text-sm mb-0">提案されたプロンプトを実際に使い、必要に応じて修正する</p></div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>プロンプト作成依頼プロンプト<span class="beginner-label">初心者向け</span></h4><p class="prompt-scene">活用場面: GeminiやChatGPTに、目的に合ったプロンプトそのものを作ってもらう</p></div>
+          <button class="copy-btn" data-copy-target="#p-meta"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-meta" class="prompt-body">あなたはプロンプトエンジニアリングの専門家です。
+
+学校図書館で働く司書教諭が、生成AI(ChatGPTやGemini)に使うための「プロンプト」を作成する手伝いをしてください。
+
+【作りたい成果物】
+【例: 図書館だより、POP、イベント企画書、読書アンケートの分析など】
+
+【目的】
+【例: 短時間で下書きを作りたい、複数案を比較したいなど】
+
+【対象読者・利用者】
+【例: 小学校3年生、保護者、教職員など】
+
+【使いたいAIツール】
+【ChatGPT／Gemini など】
+
+【条件・こだわりたい点】
+【例: 個人情報を含めない、ネタバレをしない、〇文字以内など】
+
+上記の情報をもとに、そのままコピーして使えるプロンプトを1つ作成してください。
+プロンプトには次を含めてください。
+・AIへの役割設定
+・入力してほしい項目(【　】で示す)
+・満たすべき条件(箇条書き)
+・出力形式
+
+学校現場で安心して使えるよう、個人情報の取り扱いや著作権に配慮した注意点も、プロンプトの最後に一言添えてください。</div>
+        <p class="prompt-note">⚠ AIが作成したプロンプトも、内容を確認してから使用してください。個人情報や著作物の扱いは、最終的に人が判断します。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 11-2. 基本プロンプトの型 ===== -->
+  <section class="section">
     <div class="container">
       <h2 class="h-section">基本プロンプトの型</h2>
       <div class="card">
@@ -142,7 +191,7 @@
   </section>
 
   <!-- ===== 演習 ===== -->
-  <section class="section">
+  <section class="section bg-ivory rounded-section">
     <div class="container">
       <h2 class="h-section">演習</h2>
       <div class="card">
@@ -152,7 +201,7 @@
   </section>
 
   <!-- ===== コピーできるプロンプト ===== -->
-  <section class="section bg-ivory rounded-section">
+  <section class="section">
     <div class="container">
       <h2 class="h-section">コピーできるプロンプト</h2>
 
@@ -698,7 +747,7 @@ POPのサイズ：</div>
   </section>
 
   <!-- ===== 活用例 ===== -->
-  <section class="section">
+  <section class="section bg-ivory rounded-section">
     <div class="container">
       <h2 class="h-section">活用例</h2>
       <div class="grid grid-3">
@@ -710,7 +759,7 @@ POPのサイズ：</div>
   </section>
 
   <!-- ===== 注意事項 ===== -->
-  <section class="section bg-ivory rounded-section">
+  <section class="section">
     <div class="container">
       <h2 class="h-section">注意事項</h2>
       <div class="caution-card">
@@ -727,7 +776,7 @@ POPのサイズ：</div>
   </section>
 
   <!-- ===== よくある質問 ===== -->
-  <section class="section">
+  <section class="section bg-ivory rounded-section">
     <div class="container">
       <h2 class="h-section">よくある質問</h2>
       <div class="accordion">
@@ -772,7 +821,7 @@ POPのサイズ：</div>
       </ul></div>
       <div><p class="footer-title">お問い合わせ</p><ul>
         <li><a href="../community/share.html">お問い合わせ・質問フォーム</a></li>
-        <li>【ここに問い合わせ先メールアドレスを入力】</li>
+        <li><a href="mailto:michihirowadarin@gmail.com">michihirowadarin@gmail.com</a></li>
       </ul></div>
       <div><p class="footer-title">ご利用にあたって</p><ul>
         <li><a href="../index.html#privacy">プライバシーに関する注意</a></li>
