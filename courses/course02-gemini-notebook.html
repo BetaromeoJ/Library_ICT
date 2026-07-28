@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>講座2: Gemini Notebookで伝わる掲示を作る | 学校図書館×ICT研修ポータル</title>
-<meta name="description" content="Gemini Notebookに資料を読み込ませ、Studio機能でインフォグラフィックを作成し、学校図書館の掲示や学習支援に活用する方法を紹介します。">
+<title>講座2: Gemini NotebookのStudio機能で生成したデータをCanvaで加工して伝わる掲示を作る | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="Gemini NotebookのStudio機能でインフォグラフィックを生成し、Canvaのマジックレイヤー機能で加工して、学校図書館の掲示物に仕上げる方法を紹介します。スライド出力をJPEGに変換する方法も解説します。">
 <link rel="canonical" href="【ここにこのページの公開URLを入力】">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,15 +78,18 @@
       </div>
       <div class="course-meta-row">
         <span class="tool-badge tool-gemini">📓 Gemini Notebook</span>
-        <span class="pill-time">⏱ 所要時間 約15分</span>
+        <span class="tool-badge tool-canva">🎨 Canva</span>
+        <span class="pill-time">⏱ 所要時間 約20分</span>
       </div>
-      <h1 class="h-section">Gemini Notebookで伝わる掲示を作る</h1>
-      <p class="lead">資料を読み込ませ、Studio機能からインフォグラフィックを生成し、学校図書館内の掲示や学習支援に活用します。製品名は必ず「Gemini Notebook」と表記します。</p>
+      <h1 class="h-section">Gemini NotebookのStudio機能で生成したデータをCanvaで加工して伝わる掲示を作る</h1>
+      <p class="lead">資料を読み込ませ、Studio機能からインフォグラフィックを生成し、さらにCanvaのマジックレイヤー機能で加工して、学校図書館内の掲示や学習支援に活用できる形に仕上げます。製品名は必ず「Gemini Notebook」と表記します。</p>
       <div class="goal-box">
         <h2>今日できるようになること</h2>
         <ul>
           <li>Gemini Notebookで何ができるかが分かる</li>
           <li>学校図書館の資料からインフォグラフィックを作る手順が分かる</li>
+          <li>Studio機能の出力を、Canvaのマジックレイヤーで掲示物らしく加工できる</li>
+          <li>スライド形式で出力された場合に、JPEGへ変換してCanvaで扱う方法が分かる</li>
           <li>小学生向けに内容をやさしく調整できる</li>
         </ul>
       </div>
@@ -101,7 +104,8 @@
         <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>Gemini Notebookとは</strong><span>資料を根拠にした要約・生成ツールとしての位置づけ</span></div></div>
         <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>デモ</strong><span>資料アップロードからインフォグラフィック生成まで</span></div></div>
         <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>演習</strong><span>お手元の資料でインフォグラフィックを作成</span></div></div>
-        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>持ち帰る</strong><span>調整用の指示例と注意事項を確認</span></div></div>
+        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>Canvaで仕上げる</strong><span>マジックレイヤーで掲示物らしく加工</span></div></div>
+        <div class="step-item"><span class="step-num">5</span><div class="step-text"><strong>持ち帰る</strong><span>調整用の指示例と注意事項を確認</span></div></div>
       </div>
     </div>
   </section>
@@ -160,16 +164,49 @@
     </div>
   </section>
 
-  <!-- 演習 -->
+  <!-- ===== Canvaで仕上げる(マジックレイヤーで加工) ===== -->
   <section class="section bg-ivory rounded-section">
     <div class="container">
+      <h2 class="h-section">Canvaで仕上げる(マジックレイヤーで加工)</h2>
+      <p class="lead">Studio機能の出力は、そのまま掲示するよりも、Canvaで色味や文字を整えると格段に伝わりやすくなります。出力形式によって、下準備が少し変わります。</p>
+
+      <div class="grid grid-2" style="align-items:start;">
+        <div class="card">
+          <span class="tool-badge tool-gemini" style="margin-bottom:.8rem;">🖼️ 画像として出力された場合</span>
+          <div class="step-list">
+            <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>インフォグラフィックを画像として保存</strong></div></div>
+            <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>Canvaに画像をアップロード</strong></div></div>
+            <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>マジックレイヤーで加工</strong><span>背景・配色・文字などを掲示物らしく調整</span></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <span class="tool-badge tool-canva" style="margin-bottom:.8rem;">📑 スライド形式で出力された場合</span>
+          <div class="step-list">
+            <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>PDFでダウンロード</strong></div></div>
+            <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>「I Love PDF」でJPEGに変換</strong><span>PDFをアップロードし、画像(JPEG)として書き出す</span></div></div>
+            <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>変換したJPEGをCanvaにアップロード</strong></div></div>
+            <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>マジックレイヤーで加工</strong><span>背景・配色・文字などを掲示物らしく調整</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1.2rem;">
+        <p class="mb-0"><strong>I Love PDFとは:</strong> PDFの変換・結合・分割などをブラウザ上で行える無料のWebサービスです。Studio機能でスライド形式のデータが生成された場合、PDFとしてダウンロードしたうえで、このサイトを使ってページごとのJPEG画像に変換すると、Canvaへそのまま読み込めるようになります。</p>
+      </div>
+      <p class="prompt-note" style="margin-top:1rem;">⚠ I Love PDFなどの外部サービスに、個人情報を含む資料やファイルをアップロードしないでください。学校・自治体で外部サービスの利用が制限されている場合は、担当者にご確認ください。</p>
+    </div>
+  </section>
+
+  <!-- 演習 -->
+  <section class="section">
+    <div class="container">
       <h2 class="h-section">演習</h2>
-      <div class="card"><p class="mb-0">お手元の図書館利用案内やオリエンテーション資料をGemini Notebookに読み込ませ、上記の手順でインフォグラフィックを作成してみましょう。</p></div>
+      <div class="card"><p class="mb-0">お手元の図書館利用案内やオリエンテーション資料をGemini Notebookに読み込ませ、インフォグラフィックを作成してみましょう。画像として出力された場合はそのままCanvaへ、スライド形式で出力された場合はPDF→JPEG変換を経てCanvaへ読み込み、マジックレイヤーで掲示物らしく仕上げてみましょう。</p></div>
     </div>
   </section>
 
   <!-- ===== 12-4. 活用例 ===== -->
-  <section class="section">
+  <section class="section bg-ivory rounded-section">
     <div class="container">
       <h2 class="h-section">活用例</h2>
       <div class="grid grid-4">
@@ -186,7 +223,7 @@
   </section>
 
   <!-- ===== コピーできるプロンプト: 12-5. 小学生向けに調整する指示例 ===== -->
-  <section class="section bg-ivory rounded-section">
+  <section class="section">
     <div class="container">
       <h2 class="h-section">コピーできるプロンプト</h2>
       <div class="prompt-card">
@@ -207,7 +244,7 @@
   </section>
 
   <!-- ===== 12-6. 注意事項 ===== -->
-  <section class="section">
+  <section class="section bg-ivory rounded-section">
     <div class="container">
       <h2 class="h-section">注意事項</h2>
       <div class="caution-card">
