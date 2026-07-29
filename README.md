@@ -32,7 +32,7 @@ school-library-ict-portal/
 │   ├── step1-chatgpt.html              … STEP1: AIでアイデアを生み出そう(ChatGPT)
 │   ├── step2-gemini-notebook.html      … STEP2: 分かりやすく伝えよう(Gemini Notebook)
 │   ├── step3-canva-website.html        … STEP3: 発信しよう(Canva)
-│   └── step4-gas-dx.html               … STEP4: 学校図書館DXへ(Google Workspace+GAS)
+│   └── step4-gas-dx.html               … STEP4: AIとつくる図書館日誌Webアプリ(ChatGPT×GAS)
 │
 ├── prompts/
 │   └── prompt-library.html             … 今日から使えるプロンプト集

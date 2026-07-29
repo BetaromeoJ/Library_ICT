@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STEP4 学校図書館DXへ(Google Workspace＋GAS) | 学校図書館×ICT研修ポータル</title>
-<meta name="description" content="学校図書館の困りごとを解決するストーリーの最後、STEP4。Googleフォーム・スプレッドシート・GASを組み合わせて、読書通帳や集計、図書館日誌などを仕組み化する学校図書館DXの事例を紹介します。">
+<title>STEP4 AIとつくる図書館日誌Webアプリ(ChatGPT×GAS) | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="学校図書館の困りごとを解決するストーリーの最後、STEP4。ChatGPTと対話しながら、自分の学校図書館に必要な「図書館日誌Webアプリ」を考え、Google Apps Scriptで実装・公開するところまでを体験します。">
 <link rel="canonical" href="【ここにこのページの公開URLを入力】">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +50,7 @@
     <li><a href="step1-chatgpt.html">STEP1: AIでアイデアを生み出そう</a></li>
     <li><a href="step2-gemini-notebook.html">STEP2: 分かりやすく伝えよう</a></li>
     <li><a href="step3-canva-website.html">STEP3: 発信しよう</a></li>
-    <li><a href="step4-gas-dx.html" data-nav-link>STEP4: 学校図書館DXへ</a></li>
+    <li><a href="step4-gas-dx.html" data-nav-link>STEP4: 図書館日誌Webアプリを作ろう</a></li>
   </ul>
   <h3>研修後も使う</h3>
   <ul>
@@ -77,140 +77,763 @@
         <div class="progress-track"><div class="progress-fill" style="width:100%;"></div></div>
       </div>
       <div class="course-meta-row">
-        <span class="tool-badge tool-gas">⚙️ Google Workspace＋GAS</span>
-        <span class="pill-time">⏱ 所要時間 約10分</span>
+        <span class="tool-badge tool-chatgpt">💬 ChatGPT</span>
+        <span class="tool-badge tool-gas">⚙️ Google Apps Script</span>
       </div>
-      <h1 class="h-section">学校図書館DXへ</h1>
-      <p class="lead" style="font-weight:700; margin-bottom:.4rem;">繰り返し作業を仕組み化する</p>
-      <p class="lead">最後は「頑張る」ではなく「仕組みで解決する」という考え方を紹介します。90分研修ではWebアプリを一から制作する演習は行いません。「現在の困りごとを、Google WorkspaceとGASでどのように仕組み化できるか」を事例として紹介します。</p>
+      <h1 class="h-section">AIとつくる図書館日誌Webアプリ</h1>
+      <p class="lead" style="font-weight:700; margin-bottom:.4rem;">ChatGPTとGoogle Apps Scriptで、アイデアを仕組みに変える</p>
+      <p class="lead">ChatGPTとGoogle Apps Scriptを使って、学校図書館の「記録したい」をWebアプリに変えます。コードを一から書く必要はありません。作りたいものをChatGPTに伝え、アイデア整理、画面設計、仕様書作成、コード生成、実装、公開までを体験します。</p>
+
+      <div class="tag-list" style="justify-content:center; margin:1.4rem 0;" aria-label="講座の流れ">
+        <span class="tag-pill">アイデア</span><span aria-hidden="true">→</span>
+        <span class="tag-pill">画面イメージ</span><span aria-hidden="true">→</span>
+        <span class="tag-pill">仕様書</span><span aria-hidden="true">→</span>
+        <span class="tag-pill">コード</span><span aria-hidden="true">→</span>
+        <span class="tag-pill">実装</span><span aria-hidden="true">→</span>
+        <span class="tag-pill">公開</span><span aria-hidden="true">→</span>
+        <span class="tag-pill">完成</span>
+      </div>
+
+      <div class="speech-bubble" style="margin-bottom:1.2rem;">
+        <span class="speech-label">今日の目的</span>
+        今日の目的は、プログラミング言語を覚えることではありません。AIと一緒に「考える・設計する・作る・公開する」という開発の流れを体験することです。
+      </div>
+
       <div class="goal-box">
         <h2>今日できるようになること</h2>
         <ul>
-          <li>GASでできることの全体像が分かる</li>
-          <li>学校図書館DXの具体的な事例と難易度が分かる</li>
-          <li>「小さく改善する」という考え方が分かる</li>
+          <li>学校図書館の困りごとからWebアプリのアイデアを考えられる</li>
+          <li>ChatGPTを使って必要な機能を整理できる</li>
+          <li>ChatGPTを使って画面イメージを作成できる</li>
+          <li>ChatGPTを使って簡単な仕様書を作成できる</li>
+          <li>ChatGPTにGASの完全版コードを生成してもらえる</li>
+          <li>GoogleスプレッドシートのApps Scriptへコードを実装できる</li>
+          <li>GASをWebアプリとしてデプロイできる</li>
+          <li>完成した仕組みを別の学校図書館業務へ応用できる</li>
         </ul>
       </div>
+
+      <div class="tag-list" aria-label="このページの目次">
+        <a href="#gas-flow" class="tag-pill">流れ</a>
+        <a href="#gas-prepare" class="tag-pill">事前準備</a>
+        <a href="#gas-step1" class="tag-pill">STEP1 考える</a>
+        <a href="#gas-step2" class="tag-pill">STEP2 整理する</a>
+        <a href="#gas-step3" class="tag-pill">STEP3 画面</a>
+        <a href="#gas-step4" class="tag-pill">STEP4 仕様書</a>
+        <a href="#gas-step5" class="tag-pill">STEP5 コード</a>
+        <a href="#gas-step6" class="tag-pill">STEP6 実装</a>
+        <a href="#gas-step7" class="tag-pill">STEP7 公開</a>
+        <a href="#gas-check" class="tag-pill">動作確認</a>
+        <a href="#gas-faq" class="tag-pill">困ったとき</a>
+        <a href="#gas-apply" class="tag-pill">応用例</a>
+        <a href="#gas-reflect" class="tag-pill">振り返り</a>
+      </div>
+
       <a href="../index.html#steps" class="btn btn-outline btn-sm">← トップページへ戻る</a>
     </div>
   </section>
 
-  <!-- 入力→自動処理→見える化 -->
-  <section class="section-tight">
+  <!-- ===== 講座全体のロードマップ ===== -->
+  <section id="gas-flow" class="section-tight">
     <div class="container">
-      <h2 class="h-section">GASとは</h2>
+      <h2 class="h-section">STEPの流れ</h2>
+      <p class="lead">この講座では、完成済みのコードをコピーするのではなく、ChatGPTと対話しながら、自分の学校図書館に必要な図書館日誌Webアプリを考えます。</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-time">STEP1</p>
+          <p class="timeline-title">作りたい図書館日誌を考える</p>
+          <p class="timeline-desc">自校の学校図書館で、日々どのような情報を記録したいか考えます。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">STEP2</p>
+          <p class="timeline-title">ChatGPTでアイデアを整理する</p>
+          <p class="timeline-desc">記録したい内容や、必要な機能をChatGPTと相談します。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">STEP3</p>
+          <p class="timeline-title">画面イメージを作る</p>
+          <p class="timeline-desc">Webアプリの画面構成を、テキスト形式で可視化します。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">STEP4</p>
+          <p class="timeline-title">仕様書を作る</p>
+          <p class="timeline-desc">入力項目、保存内容、表示方法などを設計図として整理します。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">STEP5</p>
+          <p class="timeline-title">コードを生成する</p>
+          <p class="timeline-desc">仕様書をもとに、ChatGPTへCode.gsとIndex.htmlの完全版を生成してもらいます。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">STEP6</p>
+          <p class="timeline-title">Apps Scriptへ実装する</p>
+          <p class="timeline-desc">Googleスプレッドシートに紐づくApps Scriptへコードを貼り付けます。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">STEP7</p>
+          <p class="timeline-title">デプロイして動かす</p>
+          <p class="timeline-desc">Webアプリとして公開し、入力内容がスプレッドシートへ保存されることを確認します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 基本方針 ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">今回作るもの</h2>
+      <p class="lead">今回作成するのは「図書館日誌Webアプリ」です。ただし、入力項目や機能をあらかじめ固定していません。参加者自身が、自分の学校図書館で記録したい内容を考え、ChatGPTと相談しながら仕様を決めます。参加者によって、次のような異なる図書館日誌が完成して構いません。</p>
+      <div class="tag-list" style="margin-bottom:1.2rem;">
+        <span class="tag-pill">来館者数を記録する日誌</span>
+        <span class="tag-pill">貸出・返却冊数を記録する日誌</span>
+        <span class="tag-pill">授業利用を記録する日誌</span>
+        <span class="tag-pill">児童生徒の利用状況を記録する日誌</span>
+        <span class="tag-pill">レファレンス対応を記録する日誌</span>
+        <span class="tag-pill">図書委員会の活動を記録する日誌</span>
+        <span class="tag-pill">展示やイベントを記録する日誌</span>
+        <span class="tag-pill">今日の業務と次回の予定を記録する日誌</span>
+        <span class="tag-pill">引継ぎ事項を記録する日誌</span>
+        <span class="tag-pill">複数の内容を組み合わせた日誌</span>
+      </div>
       <div class="card">
-        <p class="mb-0">GAS(Google Apps Script)は、Googleフォーム、スプレッドシート、ドライブ、カレンダーなどを連携し、繰り返し作業を自動化できる仕組みです。プログラミングが苦手な方にも分かるよう、次の3段階で考えてみましょう。</p>
-      </div>
-      <div class="grid grid-3" style="margin-top:1.2rem;">
-        <div class="card text-center"><p style="font-size:1.8rem; margin:0;">📝</p><h3 style="font-size:1rem;">入力</h3><p class="text-sm text-sub mb-0">Googleフォームやスプレッドシートにデータを入れる</p></div>
-        <div class="card text-center"><p style="font-size:1.8rem; margin:0;">⚙️</p><h3 style="font-size:1rem;">自動処理</h3><p class="text-sm text-sub mb-0">GASが集計・振り分け・通知などを自動で行う</p></div>
-        <div class="card text-center"><p style="font-size:1.8rem; margin:0;">📊</p><h3 style="font-size:1rem;">見える化</h3><p class="text-sm text-sub mb-0">グラフや一覧、Webアプリとして結果を確認できる</p></div>
+        <p class="mb-0">全員が同じアプリを作ることが目的ではありません。大切なのは、「自分の学校図書館では何を記録したいのか」「どのような入力画面なら毎日使えるのか」「何を一覧で確認したいのか」を考え、AIへ具体的に伝えることです。最初のバージョンでは、機能を複雑にしすぎないようにしましょう。基本機能は「入力する」「スプレッドシートへ保存する」「保存した内容を一覧表示する」の3つです。検索・編集・削除・集計・グラフ・PDF出力などは、発展機能として後ほど紹介します。</p>
       </div>
     </div>
   </section>
 
-  <!-- 学校図書館DXの事例 -->
-  <section class="section bg-ivory rounded-section">
+  <!-- ===== 事前準備 ===== -->
+  <section id="gas-prepare" class="section">
     <div class="container">
-      <h2 class="h-section">学校図書館DXの事例</h2>
-      <p class="lead">各事例に、実現までの難易度ラベルを付けています。</p>
+      <h2 class="h-section">事前準備</h2>
+      <div class="card">
+        <p style="font-weight:800; margin-bottom:.6rem;">準備するもの</p>
+        <ul style="padding-left:1.2rem; margin:0;">
+          <li>Googleアカウント</li>
+          <li>Googleスプレッドシート</li>
+          <li>ChatGPTを利用できる端末</li>
+          <li>Webブラウザ</li>
+          <li>自校の図書館日誌で記録したい内容</li>
+          <li>Apps Scriptを利用できる環境</li>
+        </ul>
+      </div>
+      <div class="caution-card" style="margin-top:1.2rem;">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <p>学校や自治体のGoogleアカウントでは、Apps Scriptの利用やWebアプリのデプロイが制限されている場合があります。実施前に、Apps Scriptの利用とWebアプリの公開が可能か確認してください。</p>
+      </div>
+      <div class="card" style="margin-top:1rem;">
+        <p class="mb-0">学校アカウントで実行できない場合は、講師の画面で流れを確認し、利用可能な環境で後から試すこともできます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STEP1 ===== -->
+  <section id="gas-step1" class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">STEP1　自分の学校図書館で記録したいことを考える</h2>
+      <p class="lead">最初から入力項目を決める必要はありません。普段の仕事を振り返り、「記録できたら便利なこと」「後から確認したいこと」を考えます。</p>
+      <div class="grid grid-3" style="margin-bottom:1.2rem;">
+        <div class="card text-sm">毎日、紙やExcelへ記録していることはありますか</div>
+        <div class="card text-sm">後から振り返りたい情報はありますか</div>
+        <div class="card text-sm">管理職や先生方へ報告したい情報はありますか</div>
+        <div class="card text-sm">集計に時間がかかっていることはありますか</div>
+        <div class="card text-sm">複数の担当者で共有したい情報はありますか</div>
+        <div class="card text-sm">年度末にまとめたい情報はありますか</div>
+        <div class="card text-sm">引継ぎのために残しておきたい情報はありますか</div>
+        <div class="card text-sm">記録漏れや伝達漏れが起きやすい内容はありますか</div>
+        <div class="card text-sm">毎回同じ形式で記録したい内容はありますか</div>
+      </div>
+      <p style="font-weight:800; margin-bottom:.6rem;">入力項目の例</p>
+      <div class="tag-list" style="margin-bottom:1.2rem;">
+        <span class="tag-pill">日付</span><span class="tag-pill">記録者</span><span class="tag-pill">来館者数</span>
+        <span class="tag-pill">貸出冊数</span><span class="tag-pill">返却冊数</span><span class="tag-pill">授業利用</span>
+        <span class="tag-pill">利用学年</span><span class="tag-pill">利用学級</span><span class="tag-pill">利用時間</span>
+        <span class="tag-pill">レファレンス内容</span><span class="tag-pill">今日の出来事</span><span class="tag-pill">児童生徒の様子</span>
+        <span class="tag-pill">図書委員会の活動</span><span class="tag-pill">展示やイベント</span><span class="tag-pill">気付いたこと</span>
+        <span class="tag-pill">引継ぎ事項</span><span class="tag-pill">次回行うこと</span>
+      </div>
+      <div class="speech-bubble">
+        <span class="speech-label">ポイント</span>
+        すべてを入れる必要はありません。最初は3〜5項目程度に絞ることをおすすめします。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STEP2 ===== -->
+  <section id="gas-step2" class="section">
+    <div class="container">
+      <h2 class="h-section">STEP2　ChatGPTでアイデアを整理する</h2>
+      <p class="lead">下のプロンプトをコピーして使ってください。コピーに成功すると「コピーしました」と表示されます。</p>
+
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>プロンプト1: 図書館日誌のアイデアを整理する<span class="beginner-label">初心者向け</span></h4><p class="prompt-scene">活用場面: 記録したい内容から、アプリのアイデアを整理する</p></div>
+          <button class="copy-btn" data-copy-target="#p-gas-idea"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-gas-idea" class="prompt-body">学校図書館で使用する「図書館日誌Webアプリ」を作りたいと考えています。
+
+私の学校図書館では、次のような情報を記録したいです。
+
+【ここに記録したい内容を入力】
+
+この内容をもとに、図書館日誌Webアプリのアイデアを整理してください。
+
+条件：
+・毎日短時間で入力できる
+・スマートフォンやタブレットでも入力しやすい
+・入力項目を増やしすぎない
+・後から一覧で振り返ることができる
+・必要に応じて集計へ発展できる
+・学校図書館の業務に合った内容にする
+・個人情報を必要以上に収集しない
+・初めてGASを使う人でも作りやすい内容にする
+
+次の形式で提案してください。
+
+1．アプリの目的
+2．想定する利用者
+3．入力項目
+4．必須にする項目
+5．任意にする項目
+6．あると便利な機能
+7．最初のバージョンでは省いてよい機能
+8．運用時の注意点</div>
+        <p class="prompt-note">⚠ ChatGPTの提案をすべて採用する必要はありません。自分の学校で本当に必要な項目だけを残してください。</p>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>プロンプト2: 機能を簡単な形に絞る</h4><p class="prompt-scene">活用場面: 提案された内容を、GAS初心者が最初に作る規模に絞り込む</p></div>
+          <button class="copy-btn" data-copy-target="#p-gas-simplify"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-gas-simplify" class="prompt-body">先ほど提案された図書館日誌Webアプリの内容を、
+GAS初心者が最初に作るWebアプリとして簡単な形に整理してください。
+
+条件：
+・入力項目は3〜5項目程度にする
+・機能は「入力」「保存」「一覧表示」を基本とする
+・検索、編集、削除、グラフなどは最初の段階では省いてよい
+・毎日使いやすい構成にする
+・あとから機能を追加しやすい設計にする
+・個人情報を必要以上に記録しない
+
+残す機能と、今回は省く機能を分けて示してください。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STEP3 ===== -->
+  <section id="gas-step3" class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">STEP3　コードを書く前に画面をイメージする</h2>
+      <p class="lead">いきなりコードを生成するのではなく、どのような画面になるのかを先に確認します。画面イメージを作ることで、入力項目の多さや、操作の分かりにくさに気付くことができます。</p>
+
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>プロンプト: テキスト形式の画面案を作る</h4><p class="prompt-scene">活用場面: 画面レイアウトをテキストのワイヤーフレームで確認する</p></div>
+          <button class="copy-btn" data-copy-target="#p-gas-screen"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-gas-screen" class="prompt-body">先ほど考えた図書館日誌Webアプリについて、
+画面のレイアウトをテキスト形式のワイヤーフレームで作成してください。
+
+条件：
+・スマートフォンで見やすい縦長の画面
+・入力欄は上部に配置する
+・登録ボタンを分かりやすくする
+・登録済みの日誌は下部に一覧表示する
+・入力項目の必須・任意が分かるようにする
+・学校図書館らしい、親しみやすい画面にする
+・文字やボタンを小さくしすぎない
+・操作の流れが直感的に分かるようにする
+・画面に必要な項目を省略しない
+
+コードはまだ作成せず、
+画面構成だけを分かりやすく示してください。</div>
+      </div>
+
+      <div class="card">
+        <p style="font-weight:800; margin-bottom:.6rem;">画面イメージの例(あくまで一例です)</p>
+        <pre style="white-space:pre-wrap; font-family:inherit; font-size:.85rem; line-height:1.7; background:var(--color-bg-soft); border-radius:var(--radius-sm); padding:1rem; margin:0;">┌────────────────────────┐
+│ 📚 図書館日誌                         │
+├────────────────────────┤
+│ 日付                                  │
+│ [ 2026年7月31日 ]                     │
+│                                       │
+│ 記録者                                │
+│ [                     ]               │
+│                                       │
+│ 今日の出来事                          │
+│ [                     ]               │
+│ [                     ]               │
+│                                       │
+│ 気付いたこと                          │
+│ [                     ]               │
+│                                       │
+│          [ 日誌を保存する ]           │
+├────────────────────────┤
+│ これまでの日誌                        │
+│ 7月31日　〇〇〇                        │
+│ 7月30日　〇〇〇                        │
+└────────────────────────┘</pre>
+        <p class="text-sm text-sub" style="margin:.8rem 0 0;">この画面はあくまで一例です。参加者ごとに異なる画面になって構いません。</p>
+      </div>
+
+      <p style="font-weight:800; margin:1.2rem 0 .6rem;">確認項目</p>
       <div class="grid grid-3">
-        <div class="card">
-          <span class="difficulty setup">少し設定が必要</span>
-          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">読書通帳Webアプリ</h3>
-          <p class="text-sm text-sub mb-0">児童生徒が読んだ本を登録し、自分の読書履歴を確認できます。</p>
-        </div>
-        <div class="card">
-          <span class="difficulty agree">学校内の合意が必要</span>
-          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">読書カルテ</h3>
-          <p class="text-sm text-sub mb-0">児童ごとの読書傾向、興味、読書記録を整理します。個人情報の取扱いには十分注意してください。</p>
-        </div>
-        <div class="card">
-          <span class="difficulty setup">少し設定が必要</span>
-          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">読書スタンプラリー</h3>
-          <p class="text-sm text-sub mb-0">本を読んだ記録に応じて、デジタルスタンプを付与します。</p>
-        </div>
-        <div class="card">
-          <span class="difficulty easy">すぐできる</span>
-          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">月別読書集計</h3>
-          <p class="text-sm text-sub mb-0">フォームやスプレッドシートの記録から、月別・学年別の冊数を自動集計します。</p>
-        </div>
-        <div class="card">
-          <span class="difficulty easy">すぐできる</span>
-          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">図書館日誌</h3>
-          <p class="text-sm text-sub mb-0">日々の業務、来館状況、出来事をスマートフォンから短時間で記録します。</p>
-        </div>
-        <div class="card">
-          <span class="difficulty easy">すぐできる</span>
-          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">読書アンケート</h3>
-          <p class="text-sm text-sub mb-0">Googleフォームで回答を集め、傾向をグラフ化し、AIで分析します。</p>
-        </div>
-        <div class="card">
-          <span class="difficulty setup">少し設定が必要</span>
-          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">図書館イベント申込</h3>
-          <p class="text-sm text-sub mb-0">参加申込、人数集計、確認メール等を仕組み化します。</p>
-        </div>
-        <div class="card">
-          <span class="difficulty dev">GAS開発が必要</span>
-          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">新刊紹介データベース</h3>
-          <p class="text-sm text-sub mb-0">書名、著者、分類、紹介文、対象学年などを検索できる形で管理します。</p>
-        </div>
-        <div class="card">
-          <span class="difficulty agree">学校内の合意が必要</span>
-          <h3 style="font-size:1.05rem; margin:.6rem 0 .3rem;">除籍候補管理</h3>
-          <p class="text-sm text-sub mb-0">除籍候補の一次記録、確認状況、確定データを管理します。除籍の判断そのものをAIに任せるのではなく、判断を支援する記録・整理の仕組みです。</p>
-        </div>
+        <div class="card text-sm">入力欄が多すぎないか</div>
+        <div class="card text-sm">保存ボタンが見つけやすいか</div>
+        <div class="card text-sm">スマートフォンで操作しやすいか</div>
+        <div class="card text-sm">必須項目が分かりやすいか</div>
+        <div class="card text-sm">一覧に必要な情報が表示されているか</div>
+        <div class="card text-sm">長い文章を入力する欄が必要か</div>
+        <div class="card text-sm">毎日無理なく入力できそうか</div>
       </div>
     </div>
   </section>
 
-  <!-- 大切なメッセージ -->
-  <section class="section">
+  <!-- ===== STEP4 ===== -->
+  <section id="gas-step4" class="section">
     <div class="container">
-      <div class="speech-bubble" style="max-width:44rem; margin:0 auto; text-align:center;">
-        <span class="speech-label">大切なメッセージ</span>
-        最初から大きなシステムを作るのではなく、一番時間がかかっている作業を一つ選び、小さく改善する。
+      <h2 class="h-section">STEP4　作りたい内容を簡単な仕様書にする</h2>
+      <p class="lead">仕様書とは、「どのようなアプリを作るのか」を整理した設計図です。専門的な文書である必要はありません。ChatGPTが目的に合ったコードを生成できるように、必要な情報を整理することが目的です。</p>
+
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>プロンプト: 図書館日誌Webアプリの仕様書を作る</h4><p class="prompt-scene">活用場面: コード生成の前に、アプリの設計図を言語化する</p></div>
+          <button class="copy-btn" data-copy-target="#p-gas-spec"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-gas-spec" class="prompt-body">先ほど作成した図書館日誌Webアプリのアイデアと画面構成をもとに、
+Google Apps ScriptでWebアプリを作るための簡単な仕様書を作成してください。
+
+条件：
+・プログラミング初心者にも分かる言葉で書く
+・Googleスプレッドシートと連携する
+・入力した内容をスプレッドシートへ保存する
+・保存した内容をWebアプリ上に一覧表示する
+・スマートフォン、タブレット、パソコンで利用できる
+・学校図書館らしい親しみやすいデザインにする
+・入力項目の必須・任意を示す
+・保存する列の順番を示す
+・保存成功時の動きを示す
+・入力エラー時の動きを示す
+・個人情報を必要以上に記録しない
+・最初のバージョンは機能を複雑にしすぎない
+
+次の構成で作成してください。
+
+1．アプリ名
+2．アプリの目的
+3．想定する利用者
+4．利用する端末
+5．入力項目
+6．必須項目と任意項目
+7．スプレッドシートに保存するデータ
+8．スプレッドシートの列構成
+9．画面構成
+10．主な機能
+11．操作の流れ
+12．保存成功時の表示
+13．エラー時の表示
+14．デザインの方向性
+15．個人情報に関する注意
+16．将来追加できる機能</div>
+      </div>
+
+      <p style="font-weight:800; margin:1.2rem 0 .6rem;">仕様書を確認するためのチェックリスト</p>
+      <div class="grid grid-4">
+        <div class="card text-sm">入力項目が多すぎないか</div>
+        <div class="card text-sm">毎日無理なく入力できるか</div>
+        <div class="card text-sm">個人情報を記録しすぎていないか</div>
+        <div class="card text-sm">誰が入力するのか明確か</div>
+        <div class="card text-sm">一覧に何を表示するか明確か</div>
+        <div class="card text-sm">保存する列の順番が明確か</div>
+        <div class="card text-sm">最初から機能を増やしすぎていないか</div>
+        <div class="card text-sm">エラー時の動きが決まっているか</div>
       </div>
     </div>
   </section>
 
-  <!-- 演習(体験する場合の案内) -->
-  <section class="section bg-ivory rounded-section">
+  <!-- ===== STEP5 ===== -->
+  <section id="gas-step5" class="section bg-ivory rounded-section">
     <div class="container">
-      <h2 class="h-section">演習</h2>
-      <div class="card"><p class="mb-0">上記の事例から、自校で一番時間がかかっている作業に近いものを1つ選んでみましょう。今日はコードを書きませんが、「どの作業を、どう仕組み化したいか」を書き出すことがゴールです。</p></div>
+      <h2 class="h-section">STEP5　ChatGPTに完全版コードを作ってもらう</h2>
+      <p class="lead">仕様書が完成したら、ChatGPTにGASのコードを生成してもらいます。コードを一から自分で書くのではなく、仕様書を正確にAIへ渡すことが重要です。</p>
+
+      <div class="prompt-card">
+        <div class="prompt-head">
+          <div><h4>プロンプト: Code.gsとIndex.htmlを生成する</h4><p class="prompt-scene">活用場面: 仕様書をもとに、動作する完全版コードを一括生成する</p></div>
+          <button class="copy-btn" data-copy-target="#p-gas-code"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-gas-code" class="prompt-body">以下の仕様書をもとに、
+Google Apps Scriptで動作する図書館日誌Webアプリを作成してください。
+
+【ここに完成した仕様書を貼り付ける】
+
+Googleスプレッドシートに紐づけて使用します。
+
+次のファイルの完全版コードを、それぞれ省略せずに生成してください。
+
+1．Code.gs
+2．Index.html
+
+要件：
+・Googleスプレッドシートに入力内容を保存する
+・初回実行時に必要なシートと見出し行を自動作成する
+・保存した日誌を新しい順に一覧表示する
+・入力中や保存中であることが分かる表示を入れる
+・保存成功時に完了メッセージを表示する
+・入力エラー時に分かりやすいメッセージを表示する
+・二重送信を防止する
+・スマートフォン、タブレット、パソコンに対応する
+・学校図書館らしい、明るく親しみやすいデザインにする
+・文字を小さくしすぎない
+・ボタンを押しやすい大きさにする
+・HTML、CSS、JavaScriptはIndex.htmlにまとめる
+・外部ライブラリは使用しない
+・コードを一部省略しない
+・「以下同様」などの省略表現を使わない
+・初心者が貼り付けるだけで動作する状態にする
+・入力値をサーバー側でも確認する
+・空欄や不正な値が保存されないようにする
+・個人情報を必要以上に扱わない構成にする
+・コード内に初心者向けの簡単なコメントを付ける
+・コードの後に、実装手順とデプロイ手順を説明する
+
+重要：
+コードを出力する前に仕様書に不足がある場合は、
+不足している内容を合理的に補い、
+補った内容を最初に示してください。</div>
+        <p class="prompt-note">⚠ コードが長い場合は、Code.gsとIndex.htmlを別々に生成させても構いません。下の補助プロンプトをご活用ください。</p>
+      </div>
+
+      <p style="font-weight:800; margin:1.6rem 0 .6rem;">補助プロンプト</p>
+      <div class="grid grid-2">
+        <div class="prompt-card" style="margin-bottom:0;">
+          <div class="prompt-head">
+            <div><h4>Code.gsだけを再生成する</h4></div>
+            <button class="copy-btn" data-copy-target="#p-gas-code-gs"><span class="copy-label">コピー</span></button>
+          </div>
+          <div id="p-gas-code-gs" class="prompt-body">先ほどの仕様を変更せず、
+Code.gsの完全版だけを再生成してください。
+
+一部省略や差分だけの提示はせず、
+そのまま置き換えられる完全版を出力してください。</div>
+        </div>
+        <div class="prompt-card" style="margin-bottom:0;">
+          <div class="prompt-head">
+            <div><h4>Index.htmlだけを再生成する</h4></div>
+            <button class="copy-btn" data-copy-target="#p-gas-code-html"><span class="copy-label">コピー</span></button>
+          </div>
+          <div id="p-gas-code-html" class="prompt-body">先ほどの仕様を変更せず、
+Index.htmlの完全版だけを再生成してください。
+
+HTML、CSS、JavaScriptをすべて含め、
+そのまま置き換えられる完全版で提示してください。</div>
+        </div>
+      </div>
+      <div class="prompt-card" style="margin-top:1.4rem;">
+        <div class="prompt-head">
+          <div><h4>コードを簡単にする</h4><p class="prompt-scene">活用場面: 生成されたコードが複雑に感じるとき、初心者向けに整理し直す</p></div>
+          <button class="copy-btn" data-copy-target="#p-gas-code-simple"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-gas-code-simple" class="prompt-body">先ほど生成した図書館日誌Webアプリの基本機能を維持したまま、
+GAS初心者にも扱いやすい、できるだけシンプルなコードに整理してください。
+
+条件：
+・Code.gsとIndex.htmlの完全版を生成する
+・不要な機能は追加しない
+・外部ライブラリは使わない
+・主要な処理には初心者向けのコメントを付ける
+・そのまま置き換えて動作する状態にする</div>
+      </div>
     </div>
   </section>
 
-  <!-- 注意事項 -->
-  <section class="section">
+  <!-- ===== STEP6 ===== -->
+  <section id="gas-step6" class="section">
     <div class="container">
-      <h2 class="h-section">注意事項</h2>
-      <div class="caution-card">
+      <h2 class="h-section">STEP6　Apps Scriptへ実装する</h2>
+      <p class="lead">初心者が迷わないよう、番号付きの手順で進めます。</p>
+      <div class="step-list">
+        <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>Googleスプレッドシートを作る</strong><span>新しいGoogleスプレッドシートを作成します。ファイル名の例: 「図書館日誌Webアプリ」</span></div></div>
+        <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>Apps Scriptを開く</strong><span>Googleスプレッドシートのメニューから「拡張機能」→「Apps Script」を選択します。</span></div></div>
+        <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>Code.gsを貼り付ける</strong><span>最初から入力されているコードをすべて削除し、ChatGPTが生成したCode.gsのコードを貼り付けます。</span></div></div>
+        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>Index.htmlを作る</strong><span>Apps Script画面左側の「＋」ボタンを押し、HTMLを選び、ファイル名を「Index」として作成します。</span></div></div>
+        <div class="step-item"><span class="step-num">5</span><div class="step-text"><strong>Index.htmlを貼り付ける</strong><span>ChatGPTが生成したIndex.htmlのコードを貼り付けます。</span></div></div>
+        <div class="step-item"><span class="step-num">6</span><div class="step-text"><strong>保存する</strong><span>保存アイコンを押すか、キーボードの保存操作を行います。</span></div></div>
+      </div>
+      <div class="caution-card" style="margin-top:1.4rem;">
         <span class="material-icon" aria-hidden="true">⚠️</span>
         <ul>
-          <li>児童生徒の個人情報を扱う仕組みは、学校・自治体の許可と情報セキュリティ基準を確認してください。</li>
-          <li>除籍判断はAIやシステムに任せず、教職員が最終判断を行ってください。</li>
-          <li>公開・共有範囲は、必要最小限に設定してください。</li>
+          <li>ファイル名の大文字・小文字を間違えない</li>
+          <li>HTMLファイル名は「Index」にする</li>
+          <li>コードブロックの前後にある「```」は貼り付けない</li>
+          <li>ChatGPTの説明文をコード欄へ貼り付けない</li>
+          <li>Code.gsとIndex.htmlを逆に貼らない</li>
+          <li>既存コードを残したまま追加しない</li>
+          <li>コードの一部分だけを貼り付けない</li>
+          <li>貼り付け後に必ず保存する</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section bg-ivory rounded-section">
+  <!-- ===== STEP7 ===== -->
+  <section id="gas-step7" class="section bg-ivory rounded-section">
     <div class="container">
-      <h2 class="h-section">よくある質問</h2>
+      <h2 class="h-section">STEP7　Webアプリとして公開する</h2>
+      <div class="step-list">
+        <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>デプロイを開く</strong><span>Apps Script画面右上の「デプロイ」を押します。</span></div></div>
+        <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>新しいデプロイ</strong><span>「新しいデプロイ」を選択します。</span></div></div>
+        <div class="step-item"><span class="step-num">3</span><div class="step-text"><strong>種類を選ぶ</strong><span>種類の選択から「ウェブアプリ」を選びます。</span></div></div>
+        <div class="step-item"><span class="step-num">4</span><div class="step-text"><strong>説明を入力する</strong><span>入力例: 「図書館日誌Webアプリ 初回公開」</span></div></div>
+        <div class="step-item"><span class="step-num">5</span><div class="step-text"><strong>実行するユーザーを設定する</strong><span>通常は「自分」を選択します。</span></div></div>
+        <div class="step-item"><span class="step-num">6</span><div class="step-text"><strong>アクセスできるユーザーを設定する</strong><span>学校や自治体のルールに従って設定します。</span></div></div>
+        <div class="step-item"><span class="step-num">7</span><div class="step-text"><strong>デプロイする</strong><span>「デプロイ」を押します。</span></div></div>
+        <div class="step-item"><span class="step-num">8</span><div class="step-text"><strong>アカウントを承認する</strong><span>初回のみGoogleアカウントの承認を行います。</span></div></div>
+        <div class="step-item"><span class="step-num">9</span><div class="step-text"><strong>URLを開く</strong><span>発行されたWebアプリのURLを開きます。</span></div></div>
+        <div class="step-item"><span class="step-num">10</span><div class="step-text"><strong>使いやすくする</strong><span>必要に応じてブックマークやホーム画面へ追加します。</span></div></div>
+      </div>
+      <div class="caution-card" style="margin-top:1.4rem;">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <ul>
+          <li>アクセス権限の設定は、所属する学校・自治体の情報セキュリティーポリシーに従ってください。</li>
+          <li>個人情報や児童生徒の詳細な記録を扱う場合は、公開範囲を慎重に設定してください。</li>
+          <li>「全員」や「匿名ユーザーを含む全員」を選べる場合でも、安易に広い公開範囲へ設定しないでください。</li>
+          <li>自治体や学校の管理設定によっては、Webアプリとして公開できない場合があります。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 動作確認 ===== -->
+  <section id="gas-check" class="section">
+    <div class="container">
+      <h2 class="h-section">動作確認</h2>
+      <div class="card">
+        <ul style="padding-left:1.2rem; margin:0; columns: 2; column-gap:2rem;">
+          <li>Webアプリが表示される</li>
+          <li>入力欄に文字を入力できる</li>
+          <li>必須項目が分かる</li>
+          <li>保存ボタンを押せる</li>
+          <li>保存中の表示が出る</li>
+          <li>保存完了のメッセージが表示される</li>
+          <li>スプレッドシートにデータが追加される</li>
+          <li>Webアプリの一覧に保存内容が表示される</li>
+          <li>新しい記録が上に表示される</li>
+          <li>スマートフォンでも見やすい</li>
+          <li>入力漏れがある場合にエラーが表示される</li>
+          <li>保存ボタンを連続して押しても二重登録されない</li>
+        </ul>
+      </div>
+      <div class="speech-bubble" style="margin-top:1.2rem; text-align:center;">
+        <span class="speech-label">達成</span>
+        図書館日誌Webアプリの完成です！
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 困ったときの対処 ===== -->
+  <section id="gas-faq" class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">困ったときの対処</h2>
       <div class="accordion">
         <div class="accordion-item">
-          <button class="accordion-trigger" aria-expanded="false" aria-controls="c5faq1">GASはプログラミングができなくても使えますか<span class="chevron">▾</span></button>
-          <div id="c5faq1" class="accordion-panel"><p class="mb-0">既存のテンプレートや、ICT支援員・詳しい教職員のサポートを得ることで、未経験でも扱える場合があります。まずは「すぐできる」事例から試すのがおすすめです。</p></div>
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c4faq1">Webアプリが真っ白になる<span class="chevron">▾</span></button>
+          <div id="c4faq1" class="accordion-panel">
+            <ul style="padding-left:1.1rem; margin:0;">
+              <li>Code.gsとIndex.htmlのファイル名を確認する</li>
+              <li>doGet関数があるか確認する</li>
+              <li>コードが途中で切れていないか確認する</li>
+              <li>Apps Scriptを保存する</li>
+              <li>ブラウザを再読み込みする</li>
+              <li>Apps Scriptの実行ログやエラー表示を確認する</li>
+            </ul>
+          </div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-trigger" aria-expanded="false" aria-controls="c5faq2">誰が管理・保守すればよいですか<span class="chevron">▾</span></button>
-          <div id="c5faq2" class="accordion-panel"><p class="mb-0">担当者の異動時に引き継げるよう、手順や設定をドキュメント化しておくことをおすすめします。</p></div>
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c4faq2">保存ボタンを押しても反応しない<span class="chevron">▾</span></button>
+          <div id="c4faq2" class="accordion-panel">
+            <ul style="padding-left:1.1rem; margin:0;">
+              <li>必須項目が入力されているか確認する</li>
+              <li>Index.htmlのコードが途中で切れていないか確認する</li>
+              <li>google.script.runが正しく記述されているか確認する</li>
+              <li>JavaScriptのエラーを確認する</li>
+              <li>ブラウザを再読み込みする</li>
+            </ul>
+          </div>
         </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c4faq3">スプレッドシートに保存されない<span class="chevron">▾</span></button>
+          <div id="c4faq3" class="accordion-panel">
+            <ul style="padding-left:1.1rem; margin:0;">
+              <li>スクリプトがスプレッドシートに紐づいているか確認する</li>
+              <li>シート名がコードと一致しているか確認する</li>
+              <li>権限の承認が完了しているか確認する</li>
+              <li>保存先のスプレッドシートを間違えていないか確認する</li>
+              <li>Apps Scriptの実行ログを確認する</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c4faq4">修正したのに画面が変わらない<span class="chevron">▾</span></button>
+          <div id="c4faq4" class="accordion-panel">
+            <ul style="padding-left:1.1rem; margin:0;">
+              <li>Apps Scriptを保存する</li>
+              <li>「デプロイを管理」を開く</li>
+              <li>新しいバージョンとして再デプロイする</li>
+              <li>最新のWebアプリURLを開く</li>
+              <li>Webアプリを再読み込みする</li>
+              <li>ブラウザのキャッシュを確認する</li>
+              <li>シークレットウィンドウでも確認する</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c4faq5">権限エラーが表示される<span class="chevron">▾</span></button>
+          <div id="c4faq5" class="accordion-panel">
+            <ul style="padding-left:1.1rem; margin:0;">
+              <li>使用しているGoogleアカウントを確認する</li>
+              <li>複数アカウントへ同時ログインしていないか確認する</li>
+              <li>学校や自治体の管理者による制限を確認する</li>
+              <li>Apps Scriptの利用が許可されているか確認する</li>
+              <li>Webアプリのデプロイが許可されているか確認する</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="c4faq6">Index.htmlが見つからないと表示される<span class="chevron">▾</span></button>
+          <div id="c4faq6" class="accordion-panel">
+            <ul style="padding-left:1.1rem; margin:0;">
+              <li>HTMLファイル名が「Index」になっているか確認する</li>
+              <li>Code.gs内のファイル名と一致しているか確認する</li>
+              <li>大文字・小文字が一致しているか確認する</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-card" style="margin-top:1.4rem;">
+        <div class="prompt-head">
+          <div><h4>ChatGPTへ修正を依頼するプロンプト</h4><p class="prompt-scene">活用場面: エラーや不具合が出たときに、原因の説明と修正済みコードをまとめて依頼する</p></div>
+          <button class="copy-btn" data-copy-target="#p-gas-fix"><span class="copy-label">コピー</span></button>
+        </div>
+        <div id="p-gas-fix" class="prompt-body">Google Apps Scriptで作成したWebアプリに、次の問題が発生しています。
+
+【発生している問題を入力】
+
+表示されたエラーメッセージ：
+【エラーメッセージを入力】
+
+問題が起きる操作：
+【どの操作をしたときに問題が起きるか入力】
+
+期待している動作：
+【本来どのように動いてほしいか入力】
+
+現在使用しているCode.gsとIndex.htmlを、この後に貼り付けます。
+
+原因を初心者にも分かるように説明したうえで、
+修正後の完全版コードを生成してください。
+
+条件：
+・差分だけではなく完全版を提示する
+・Code.gsとIndex.htmlを省略せずに出力する
+・「以下同様」などの省略表現を使わない
+・現在動いている機能を削除しない
+・修正した箇所をコードの後に説明する
+・そのまま置き換えて動作する状態にする</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 機能追加の考え方 ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h-section">機能追加の考え方</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <p style="font-weight:800; margin-bottom:.6rem;">最初はここまでで十分</p>
+          <ul style="padding-left:1.1rem; margin:0;">
+            <li>入力する</li>
+            <li>スプレッドシートへ保存する</li>
+            <li>保存した内容を一覧表示する</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p style="font-weight:800; margin-bottom:.6rem;">慣れてから追加できる機能</p>
+          <div class="tag-list">
+            <span class="tag-pill">キーワード検索</span><span class="tag-pill">絞り込み</span>
+            <span class="tag-pill">編集</span><span class="tag-pill">削除</span>
+            <span class="tag-pill">月別集計</span><span class="tag-pill">年度別集計</span>
+            <span class="tag-pill">グラフ表示</span><span class="tag-pill">CSV出力</span>
+            <span class="tag-pill">PDF出力</span><span class="tag-pill">ログイン制限</span>
+            <span class="tag-pill">管理者画面</span><span class="tag-pill">メール通知</span>
+            <span class="tag-pill">Google Chat通知</span><span class="tag-pill">カレンダー連携</span>
+            <span class="tag-pill">画像の登録</span><span class="tag-pill">印刷用表示</span>
+          </div>
+        </div>
+      </div>
+      <div class="speech-bubble" style="margin-top:1.2rem;">
+        最初から完成形を目指す必要はありません。まずは小さく作り、実際に使いながら改善することが大切です。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 応用できる学校図書館Webアプリ ===== -->
+  <section id="gas-apply" class="section bg-ivory rounded-section">
+    <div class="container">
+      <h2 class="h-section">応用できる学校図書館Webアプリ</h2>
+      <p class="lead">今日作ったアプリの入力項目や表示内容を変えることで、さまざまな学校図書館業務へ応用できます。</p>
+      <div class="grid grid-3">
+        <div class="card text-sm">読書記録アプリ</div>
+        <div class="card text-sm">レファレンス記録アプリ</div>
+        <div class="card text-sm">授業利用記録アプリ</div>
+        <div class="card text-sm">図書委員会活動記録アプリ</div>
+        <div class="card text-sm">図書館イベント申込アプリ</div>
+        <div class="card text-sm">読書週間取組記録アプリ</div>
+        <div class="card text-sm">図書購入希望受付アプリ</div>
+        <div class="card text-sm">蔵書点検進捗記録アプリ</div>
+        <div class="card text-sm">展示・掲示物管理アプリ</div>
+        <div class="card text-sm">おすすめ本紹介管理アプリ</div>
+        <div class="card text-sm">学校図書館業務引継ぎアプリ</div>
+        <div class="card text-sm">来館者数・貸出冊数集計アプリ</div>
+        <div class="card text-sm">学級文庫管理アプリ</div>
+        <div class="card text-sm">図書館利用予約アプリ</div>
+        <div class="card text-sm">図書館だより作成履歴アプリ</div>
+      </div>
+      <div class="caution-card" style="margin-top:1.2rem;">
+        <span class="material-icon" aria-hidden="true">⚠️</span>
+        <p>実際の運用では、個人情報、アクセス権限、保存期間、管理責任者、利用端末、アカウントの管理方法を必ず確認してください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 振り返り ===== -->
+  <section id="gas-reflect" class="section">
+    <div class="container">
+      <h2 class="h-section">今日の振り返り</h2>
+      <div class="goal-box">
+        <ul>
+          <li>今日作った図書館日誌には、何を記録できるようにしましたか</li>
+          <li>自分の学校図書館で、ほかにWebアプリ化できそうな仕事はありますか</li>
+          <li>今回の流れの中で、最も重要だと感じた工程はどこですか</li>
+          <li>ChatGPTへ指示するときに、どのような情報が必要だと分かりましたか</li>
+          <li>今後、最初に試してみたいことは何ですか</li>
+        </ul>
+      </div>
+      <p class="text-sm text-sub">回答をサイト内へ保存する機能はありません。口頭、メモ、Slidoなどで振り返ってください。</p>
+    </div>
+  </section>
+
+  <!-- ===== 締めくくり ===== -->
+  <section class="section bg-ivory rounded-section">
+    <div class="container text-center">
+      <p class="h-section" style="max-width:44rem; margin:0 auto 1rem;">今日作ったのは、図書館日誌だけではありません。<br>「困りごとを見つけ、AIと一緒に設計し、仕組みに変える方法」を学びました。</p>
+      <p class="lead" style="max-width:44rem; margin:0 auto 1rem;">図書館日誌を作ることそのものが最終目的ではありません。今日体験した「考える→画面を考える→仕様書を作る→コードを作る→実装する→公開する」という流れは、学校図書館のさまざまな業務改善に応用できます。</p>
+      <p class="lead" style="max-width:44rem; margin:0 auto 1.6rem;">コードをすべて理解してから始める必要はありません。まずは、自分が解決したい課題を言葉にし、AIへ正確に伝えることから始めましょう。</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="../index.html#steps" class="btn btn-primary">トップページへ戻る</a>
+        <a href="#gas-step1" class="btn btn-outline">もう一度STEP1から確認する</a>
       </div>
     </div>
   </section>
