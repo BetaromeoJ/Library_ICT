@@ -116,13 +116,13 @@
       <div class="tag-list" aria-label="このページの目次">
         <a href="#gas-flow" class="tag-pill">流れ</a>
         <a href="#gas-prepare" class="tag-pill">事前準備</a>
-        <a href="#gas-step1" class="tag-pill">STEP1 考える</a>
-        <a href="#gas-step2" class="tag-pill">STEP2 整理する</a>
-        <a href="#gas-step3" class="tag-pill">STEP3 画面</a>
-        <a href="#gas-step4" class="tag-pill">STEP4 仕様書</a>
-        <a href="#gas-step5" class="tag-pill">STEP5 コード</a>
-        <a href="#gas-step6" class="tag-pill">STEP6 実装</a>
-        <a href="#gas-step7" class="tag-pill">STEP7 公開</a>
+        <a href="#gas-step1" class="tag-pill">工程1 考える</a>
+        <a href="#gas-step2" class="tag-pill">工程2 整理する</a>
+        <a href="#gas-step3" class="tag-pill">工程3 画面</a>
+        <a href="#gas-step4" class="tag-pill">工程4 仕様書</a>
+        <a href="#gas-step5" class="tag-pill">工程5 コード</a>
+        <a href="#gas-step6" class="tag-pill">工程6 実装</a>
+        <a href="#gas-step7" class="tag-pill">工程7 公開</a>
         <a href="#gas-check" class="tag-pill">動作確認</a>
         <a href="#gas-faq" class="tag-pill">困ったとき</a>
         <a href="#gas-apply" class="tag-pill">応用例</a>
@@ -136,41 +136,41 @@
   <!-- ===== 講座全体のロードマップ ===== -->
   <section id="gas-flow" class="section-tight">
     <div class="container">
-      <h2 class="h-section">STEPの流れ</h2>
+      <h2 class="h-section">講座の流れ(工程1〜7)</h2>
       <p class="lead">この講座では、完成済みのコードをコピーするのではなく、ChatGPTと対話しながら、自分の学校図書館に必要な図書館日誌Webアプリを考えます。</p>
       <div class="timeline">
         <div class="timeline-item">
-          <p class="timeline-time">STEP1</p>
+          <p class="timeline-time">工程1</p>
           <p class="timeline-title">作りたい図書館日誌を考える</p>
           <p class="timeline-desc">自校の学校図書館で、日々どのような情報を記録したいか考えます。</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">STEP2</p>
+          <p class="timeline-time">工程2</p>
           <p class="timeline-title">ChatGPTでアイデアを整理する</p>
           <p class="timeline-desc">記録したい内容や、必要な機能をChatGPTと相談します。</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">STEP3</p>
+          <p class="timeline-time">工程3</p>
           <p class="timeline-title">画面イメージを作る</p>
           <p class="timeline-desc">Webアプリの画面構成を、テキスト形式で可視化します。</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">STEP4</p>
+          <p class="timeline-time">工程4</p>
           <p class="timeline-title">仕様書を作る</p>
           <p class="timeline-desc">入力項目、保存内容、表示方法などを設計図として整理します。</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">STEP5</p>
+          <p class="timeline-time">工程5</p>
           <p class="timeline-title">コードを生成する</p>
           <p class="timeline-desc">仕様書をもとに、ChatGPTへCode.gsとIndex.htmlの完全版を生成してもらいます。</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">STEP6</p>
+          <p class="timeline-time">工程6</p>
           <p class="timeline-title">Apps Scriptへ実装する</p>
           <p class="timeline-desc">Googleスプレッドシートに紐づくApps Scriptへコードを貼り付けます。</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">STEP7</p>
+          <p class="timeline-time">工程7</p>
           <p class="timeline-title">デプロイして動かす</p>
           <p class="timeline-desc">Webアプリとして公開し、入力内容がスプレッドシートへ保存されることを確認します。</p>
         </div>
@@ -226,10 +226,10 @@
     </div>
   </section>
 
-  <!-- ===== STEP1 ===== -->
+  <!-- ===== 工程1 ===== -->
   <section id="gas-step1" class="section bg-ivory rounded-section">
     <div class="container">
-      <h2 class="h-section">STEP1　自分の学校図書館で記録したいことを考える</h2>
+      <h2 class="h-section">工程1　自分の学校図書館で記録したいことを考える</h2>
       <p class="lead">最初から入力項目を決める必要はありません。普段の仕事を振り返り、「記録できたら便利なこと」「後から確認したいこと」を考えます。</p>
       <div class="grid grid-3" style="margin-bottom:1.2rem;">
         <div class="card text-sm">毎日、紙やExcelへ記録していることはありますか</div>
@@ -258,10 +258,10 @@
     </div>
   </section>
 
-  <!-- ===== STEP2 ===== -->
+  <!-- ===== 工程2 ===== -->
   <section id="gas-step2" class="section">
     <div class="container">
-      <h2 class="h-section">STEP2　ChatGPTでアイデアを整理する</h2>
+      <h2 class="h-section">工程2　ChatGPTでアイデアを整理する</h2>
       <p class="lead">下のプロンプトをコピーして使ってください。コピーに成功すると「コピーしました」と表示されます。</p>
 
       <div class="prompt-card">
@@ -321,10 +321,10 @@ GAS初心者が最初に作るWebアプリとして簡単な形に整理して�
     </div>
   </section>
 
-  <!-- ===== STEP3 ===== -->
+  <!-- ===== 工程3 ===== -->
   <section id="gas-step3" class="section bg-ivory rounded-section">
     <div class="container">
-      <h2 class="h-section">STEP3　コードを書く前に画面をイメージする</h2>
+      <h2 class="h-section">工程3　コードを書く前に画面をイメージする</h2>
       <p class="lead">いきなりコードを生成するのではなく、どのような画面になるのかを先に確認します。画面イメージを作ることで、入力項目の多さや、操作の分かりにくさに気付くことができます。</p>
 
       <div class="prompt-card">
@@ -390,10 +390,10 @@ GAS初心者が最初に作るWebアプリとして簡単な形に整理して�
     </div>
   </section>
 
-  <!-- ===== STEP4 ===== -->
+  <!-- ===== 工程4 ===== -->
   <section id="gas-step4" class="section">
     <div class="container">
-      <h2 class="h-section">STEP4　作りたい内容を簡単な仕様書にする</h2>
+      <h2 class="h-section">工程4　作りたい内容を簡単な仕様書にする</h2>
       <p class="lead">仕様書とは、「どのようなアプリを作るのか」を整理した設計図です。専門的な文書である必要はありません。ChatGPTが目的に合ったコードを生成できるように、必要な情報を整理することが目的です。</p>
 
       <div class="prompt-card">
@@ -452,10 +452,10 @@ Google Apps ScriptでWebアプリを作るための簡単な仕様書を作成�
     </div>
   </section>
 
-  <!-- ===== STEP5 ===== -->
+  <!-- ===== 工程5 ===== -->
   <section id="gas-step5" class="section bg-ivory rounded-section">
     <div class="container">
-      <h2 class="h-section">STEP5　ChatGPTに完全版コードを作ってもらう</h2>
+      <h2 class="h-section">工程5　ChatGPTに完全版コードを作ってもらう</h2>
       <p class="lead">仕様書が完成したら、ChatGPTにGASのコードを生成してもらいます。コードを一から自分で書くのではなく、仕様書を正確にAIへ渡すことが重要です。</p>
 
       <div class="prompt-card">
@@ -548,10 +548,10 @@ GAS初心者にも扱いやすい、できるだけシンプルなコードに�
     </div>
   </section>
 
-  <!-- ===== STEP6 ===== -->
+  <!-- ===== 工程6 ===== -->
   <section id="gas-step6" class="section">
     <div class="container">
-      <h2 class="h-section">STEP6　Apps Scriptへ実装する</h2>
+      <h2 class="h-section">工程6　Apps Scriptへ実装する</h2>
       <p class="lead">初心者が迷わないよう、番号付きの手順で進めます。</p>
       <div class="step-list">
         <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>Googleスプレッドシートを作る</strong><span>新しいGoogleスプレッドシートを作成します。ファイル名の例: 「図書館日誌Webアプリ」</span></div></div>
@@ -577,10 +577,10 @@ GAS初心者にも扱いやすい、できるだけシンプルなコードに�
     </div>
   </section>
 
-  <!-- ===== STEP7 ===== -->
+  <!-- ===== 工程7 ===== -->
   <section id="gas-step7" class="section bg-ivory rounded-section">
     <div class="container">
-      <h2 class="h-section">STEP7　Webアプリとして公開する</h2>
+      <h2 class="h-section">工程7　Webアプリとして公開する</h2>
       <div class="step-list">
         <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>デプロイを開く</strong><span>Apps Script画面右上の「デプロイ」を押します。</span></div></div>
         <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>新しいデプロイ</strong><span>「新しいデプロイ」を選択します。</span></div></div>
@@ -833,7 +833,7 @@ GAS初心者にも扱いやすい、できるだけシンプルなコードに�
       <p class="lead" style="max-width:44rem; margin:0 auto 1.6rem;">コードをすべて理解してから始める必要はありません。まずは、自分が解決したい課題を言葉にし、AIへ正確に伝えることから始めましょう。</p>
       <div class="hero-actions" style="justify-content:center;">
         <a href="../index.html#steps" class="btn btn-primary">トップページへ戻る</a>
-        <a href="#gas-step1" class="btn btn-outline">もう一度STEP1から確認する</a>
+        <a href="#gas-step1" class="btn btn-outline">もう一度工程1から確認する</a>
       </div>
     </div>
   </section>
