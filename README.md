@@ -113,11 +113,11 @@ python3 -m http.server 8000
 
 ## 7. SlidoのURLとQRコードの差し替え方法
 
-`courses/step0-slido.html`(STEP0)には、現在のSlidoイベント(`https://app.sli.do/event/dhfZVaXE3bcz9fYbUkzd8F`)が参加URL・参加ボタン・埋め込みiframeの3か所に設定済みです。QRコード画像も `assets/images/placeholders/slido-qr.png` に設定済みです。
+`courses/step0-slido.html`(STEP0)には、現在のSlidoイベント(`https://app.sli.do/event/dhfZVaXE3bcz9fYbUkzd8F`)が参加URL・参加ボタンの2か所に設定済みです(ボタンは新しいタブで開きます)。QRコード画像も `assets/images/placeholders/slido-qr.png` に設定済みです。
 
 イベントを差し替える場合は、次の手順で更新してください。
 
-- `courses/step0-slido.html` 内の `https://app.sli.do/event/dhfZVaXE3bcz9fYbUkzd8F` という文字列を、新しい参加URLに置き換える(3か所)
+- `courses/step0-slido.html` 内の `https://app.sli.do/event/dhfZVaXE3bcz9fYbUkzd8F` という文字列を、新しい参加URLに置き換える(2か所)
 - 新しいQRコード画像を用意し、同じファイル名(`assets/images/placeholders/slido-qr.png`)で上書き保存する(HTMLの変更は不要)
 
 `community/share.html` の「みんなの実践を見る」ボタンのリンク先にもSlidoのURLを使う場合は、同様に `href` を差し替えてください。
@@ -145,7 +145,7 @@ STEPページにデモ動画を追加したい場合は、任意の場所に次�
 </div>
 ```
 
-`.video-frame` は16:9の比率を自動で保つので、`iframe` の幅・高さは指定不要です。なお `courses/step0-slido.html` では、この `.video-frame` を使ってSlidoの参加画面(`https://app.sli.do/event/dhfZVaXE3bcz9fYbUkzd8F`)を埋め込み済みです。
+`.video-frame` は16:9の比率を自動で保つので、`iframe` の幅・高さは指定不要です。なお `courses/step0-slido.html` のSlido参加エリアは、埋め込み表示ではなく「参加ボタン(新しいタブで開く)＋QRコード」の構成にしています。
 
 ---
 
