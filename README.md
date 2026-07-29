@@ -27,12 +27,12 @@ school-library-ict-portal/
 │
 ├── index.html                          … トップページ(第1階層)
 │
-├── courses/                            … 各講座ページ(第2階層)
-│   ├── course01-chatgpt.html
-│   ├── course02-gemini-notebook.html
-│   ├── course03-slido.html
-│   ├── course04-canva-website.html
-│   └── course05-gas-dx.html
+├── courses/                            … 各STEPページ(第2階層)
+│   ├── step0-slido.html                … STEP0: みんなの実践を集めよう(Slido)
+│   ├── step1-chatgpt.html              … STEP1: AIでアイデアを生み出そう(ChatGPT)
+│   ├── step2-gemini-notebook.html      … STEP2: 分かりやすく伝えよう(Gemini Notebook)
+│   ├── step3-canva-website.html        … STEP3: 発信しよう(Canva)
+│   └── step4-gas-dx.html               … STEP4: 学校図書館DXへ(Google Workspace+GAS)
 │
 ├── prompts/
 │   └── prompt-library.html             … 今日から使えるプロンプト集
@@ -113,12 +113,12 @@ python3 -m http.server 8000
 
 ## 7. SlidoのURLとQRコードの差し替え方法
 
-`courses/course03-slido.html` 内の以下の箇所を編集します。
+`courses/step0-slido.html`(STEP0)には、現在のSlidoイベント(`https://app.sli.do/event/dhfZVaXE3bcz9fYbUkzd8F`)が参加URL・参加ボタン・埋め込みiframeの3か所に設定済みです。QRコード画像も `assets/images/placeholders/slido-qr.png` に設定済みです。
 
-- `【ここにSlidoイベントコードを入力】` → 実際のイベントコード
-- `【ここにSlido参加URLを入力】` → 実際の参加URL
-- `【ここにSlidoのQRコードを配置】` のプレースホルダー枠(`.video-placeholder`)を、QRコード画像(`<img>`タグ)に差し替える
-- `【ここにSlidoの埋め込み(iframe)を配置します】` のプレースホルダーを、Slidoが提供する埋め込み用 `<iframe>` タグに差し替える
+イベントを差し替える場合は、次の手順で更新してください。
+
+- `courses/step0-slido.html` 内の `https://app.sli.do/event/dhfZVaXE3bcz9fYbUkzd8F` という文字列を、新しい参加URLに置き換える(3か所)
+- 新しいQRコード画像を用意し、同じファイル名(`assets/images/placeholders/slido-qr.png`)で上書き保存する(HTMLの変更は不要)
 
 `community/share.html` の「みんなの実践を見る」ボタンのリンク先にもSlidoのURLを使う場合は、同様に `href` を差し替えてください。
 
@@ -136,7 +136,7 @@ python3 -m http.server 8000
 
 ## 9. YouTube動画の埋め込み方法
 
-各講座ページ内の `<div class="video-frame">` ブロックにある `<div class="video-placeholder">【ここにデモ動画(YouTube等)を埋め込みます】</div>` を、次のような `iframe` に差し替えてください。
+STEPページにデモ動画を追加したい場合は、任意の場所に次のような `.video-frame` ブロックを挿入してください。
 
 ```html
 <div class="video-frame">
@@ -145,7 +145,7 @@ python3 -m http.server 8000
 </div>
 ```
 
-`.video-frame` は16:9の比率を自動で保つので、`iframe` の幅・高さは指定不要です。
+`.video-frame` は16:9の比率を自動で保つので、`iframe` の幅・高さは指定不要です。なお `courses/step0-slido.html` では、この `.video-frame` を使ってSlidoの参加画面(`https://app.sli.do/event/dhfZVaXE3bcz9fYbUkzd8F`)を埋め込み済みです。
 
 ---
 
@@ -175,13 +175,13 @@ python3 -m http.server 8000
 2. `data-category` … 該当カテゴリのスラッグ(`borrow` `visualize` `efficiency` `display` `lesson` `participate` `count` `webapp`)
 3. `data-search` … 検索用キーワード
 4. 見出し・困りごと・ツール・校種・難易度ラベル(`difficulty easy/setup/dev/agree`)・導入目安を書き換える
-5. `data-case-toggle` の対象IDと、`.case-detail` 内の `<dl>`(実施手順・期待できる効果・注意点・関連講座・関連プロンプト)を書き換える
+5. `data-case-toggle` の対象IDと、`.case-detail` 内の `<dl>`(実施手順・期待できる効果・注意点・関連STEP・関連プロンプト)を書き換える
 
 ---
 
 ## 12. Canvaサイトへのリンク追加方法
 
-`resources/resources.html` の「Canva教育版」セクションにある表に行を追加し、`【ここにURLを入力】` の部分に実際のURLを入力してください。トップページの著作カードや講座4ページからリンクする場合も、同様に `href` を書き換えます。
+`resources/resources.html` の「Canva教育版」セクションにある表に行を追加し、`【ここにURLを入力】` の部分に実際のURLを入力してください。トップページの著作カードやSTEP3ページからリンクする場合も、同様に `href` を書き換えます。
 
 ---
 
@@ -190,7 +190,7 @@ python3 -m http.server 8000
 このサイトでは、外部リンクをできるだけ `resources/resources.html` に集約しています。新しいリンクを追加する場合は、
 
 1. `resources/resources.html` の該当カテゴリの表に行を追加する
-2. 必要に応じて、関連する講座ページや事例ページからも `resources/resources.html` へリンクする
+2. 必要に応じて、関連するSTEPページや事例ページからも `resources/resources.html` へリンクする
 
 という流れにすると、リンク切れが起きたときの管理がしやすくなります。
 
@@ -221,10 +221,10 @@ python3 -m http.server 8000
 - [ ] プロフィール写真を差し替えた(`assets/images/profile.jpg`)
 - [ ] 著作情報・書影を差し替えた(`index.html` 内の書籍カード、`assets/images/book01.jpg` / `book02.jpg`)
 - [ ] AmazonリンクのURLを差し替えた
-- [ ] SlidoイベントコードとURL、QRコードを差し替えた(`courses/course03-slido.html`)
+- [ ] SlidoイベントコードとURL、QRコードを差し替えた(`courses/step0-slido.html`)
 - [ ] GoogleフォームのURL(実践共有・質問)を差し替えた(`community/share.html`)
 - [ ] CanvaテンプレートURL・Canva学校図書館サイトURLを差し替えた(`resources/resources.html` 等)
-- [ ] YouTube動画URLを埋め込んだ(各講座ページ)
+- [ ] YouTube動画URLを埋め込んだ(必要なSTEPページ)
 - [ ] 配布資料URLを差し替えた(`resources/resources.html`)
 - [ ] 問い合わせ先を差し替えた(全ページのフッター)
 - [ ] GitHub Pages公開URLを確定し、各ページの `canonical` とOGPコメントを差し替えた
@@ -243,9 +243,9 @@ python3 -m http.server 8000
 | プロフィール写真 | `assets/images/profile.jpg` |
 | 著作情報 | `index.html`(書籍カード) |
 | Amazonリンク | `index.html`(書籍カード内 `href`) |
-| Slidoイベントコード | `courses/course03-slido.html` |
-| Slido URL | `courses/course03-slido.html`, `community/share.html` |
-| Slido QRコード | `courses/course03-slido.html` |
+| Slidoイベントコード | `courses/step0-slido.html` |
+| Slido URL | `courses/step0-slido.html`, `community/share.html` |
+| Slido QRコード | `courses/step0-slido.html` |
 | GoogleフォームURL(実践共有) | `community/share.html` |
 | 質問フォームURL | `community/share.html` |
 | 実践共有URL(回答公開) | `community/share.html` |

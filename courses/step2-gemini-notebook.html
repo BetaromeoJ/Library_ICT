@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>講座02: Gemini NotebookのStudio機能で生成したデータをCanvaで加工して伝わる掲示を作る | 学校図書館×ICT研修ポータル</title>
-<meta name="description" content="Gemini NotebookのStudio機能でインフォグラフィックを生成し、Canvaのマジックレイヤー機能で加工して、学校図書館の掲示物に仕上げる方法を紹介します。スライド出力をJPEGに変換する方法も解説します。">
+<title>STEP2 分かりやすく伝えよう(Gemini Notebook) | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="学校図書館の困りごとを解決するストーリーのSTEP2。Gemini NotebookのStudio機能でインフォグラフィックを生成し、Canvaのマジックレイヤー機能で加工して、学校図書館の掲示物に仕上げる方法を紹介します。スライド出力をJPEGに変換する方法も解説します。">
 <link rel="canonical" href="【ここにこのページの公開URLを入力】">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
     <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
     <nav class="nav-desktop" aria-label="メインメニュー">
       <a href="../index.html">ホーム</a>
-      <a href="../index.html#courses">本日の講座</a>
+      <a href="../index.html#steps">STEPで学ぶ</a>
       <a href="../prompts/prompt-library.html">プロンプト集</a>
       <a href="../cases/dx-cases.html">DX事例</a>
       <a href="../community/share.html">実践共有</a>
@@ -43,14 +43,14 @@
 <nav id="drawer" class="drawer" aria-label="サイト内メニュー">
   <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
   <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
-  <h3>本日の講座</h3>
+  <h3>STEPで学ぶ</h3>
   <ul>
-    <li><a href="../index.html#courses">講座一覧(全4講座)</a></li>
-    <li><a href="course03-slido.html">事前アンケート: Slido</a></li>
-    <li><a href="course01-chatgpt.html">講座01: ChatGPT</a></li>
-    <li><a href="course02-gemini-notebook.html" data-nav-link>講座02: Gemini Notebook</a></li>
-    <li><a href="course04-canva-website.html">講座03: Canva</a></li>
-    <li><a href="course05-gas-dx.html">講座04: GAS</a></li>
+    <li><a href="../index.html#steps">STEP一覧を見る</a></li>
+    <li><a href="step0-slido.html">STEP0: みんなの実践を集めよう</a></li>
+    <li><a href="step1-chatgpt.html">STEP1: AIでアイデアを生み出そう</a></li>
+    <li><a href="step2-gemini-notebook.html" data-nav-link>STEP2: 分かりやすく伝えよう</a></li>
+    <li><a href="step3-canva-website.html">STEP3: 発信しよう</a></li>
+    <li><a href="step4-gas-dx.html">STEP4: 学校図書館DXへ</a></li>
   </ul>
   <h3>研修後も使う</h3>
   <ul>
@@ -71,9 +71,9 @@
 <main id="main">
   <section class="course-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#courses">本日の講座</a><span>›</span><span>講座02</span></p>
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#steps">STEPで学ぶ</a><span>›</span><span>STEP2</span></p>
       <div class="progress-bar-wrap">
-        <p class="progress-label">講座02 / 4</p>
+        <p class="progress-label">STEP2 / STEP4</p>
         <div class="progress-track"><div class="progress-fill" style="width:50%;"></div></div>
       </div>
       <div class="course-meta-row">
@@ -81,8 +81,9 @@
         <span class="tool-badge tool-canva">🎨 Canva</span>
         <span class="pill-time">⏱ 所要時間 約20分</span>
       </div>
-      <h1 class="h-section">Gemini NotebookのStudio機能で生成したデータをCanvaで加工して伝わる掲示を作る</h1>
-      <p class="lead">資料を読み込ませ、Studio機能からインフォグラフィックを生成し、さらにCanvaのマジックレイヤー機能で加工して、学校図書館内の掲示や学習支援に活用できる形に仕上げます。製品名は必ず「Gemini Notebook」と表記します。</p>
+      <h1 class="h-section">分かりやすく伝えよう</h1>
+      <p class="lead" style="font-weight:700; margin-bottom:.4rem;">資料をインフォグラフィックへ変える</p>
+      <p class="lead">作った文章を「見て分かる」形へ変えていきます。資料を読み込ませ、Studio機能からインフォグラフィックを生成し、さらにCanvaのマジックレイヤー機能で加工して、学校図書館内の掲示や学習支援に活用できる形に仕上げます。製品名は必ず「Gemini Notebook」と表記します。</p>
       <div class="goal-box">
         <h2>今日できるようになること</h2>
         <ul>
@@ -93,13 +94,13 @@
           <li>小学生向けに内容をやさしく調整できる</li>
         </ul>
       </div>
-      <a href="../index.html#courses" class="btn btn-outline btn-sm">← トップページへ戻る</a>
+      <a href="../index.html#steps" class="btn btn-outline btn-sm">← トップページへ戻る</a>
     </div>
   </section>
 
   <section class="section-tight">
     <div class="container">
-      <h2 class="h-section">講座の流れ</h2>
+      <h2 class="h-section">STEPの流れ</h2>
       <div class="step-list">
         <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>Gemini Notebookとは</strong><span>資料を根拠にした要約・生成ツールとしての位置づけ</span></div></div>
         <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>演習</strong><span>お手元の資料でインフォグラフィックを作成</span></div></div>
@@ -273,8 +274,8 @@
   <section class="section-narrow">
     <div class="container">
       <div class="course-pager">
-        <a href="course01-chatgpt.html" class="card card-hover pager-link"><span class="pager-label">前の講座へ</span><span class="pager-title">← 講座01: ChatGPT</span></a>
-        <a href="course04-canva-website.html" class="card card-hover pager-link next"><span class="pager-label">次の講座へ</span><span class="pager-title">講座03: Canva →</span></a>
+        <a href="step1-chatgpt.html" class="card card-hover pager-link"><span class="pager-label">前のSTEPへ</span><span class="pager-title">← STEP1: AIでアイデアを生み出そう</span></a>
+        <a href="step3-canva-website.html" class="card card-hover pager-link next"><span class="pager-label">次のSTEPへ</span><span class="pager-title">STEP3: 発信しよう →</span></a>
       </div>
     </div>
   </section>
@@ -286,7 +287,7 @@
       <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
       <div><p class="footer-title">サイトマップ</p><ul>
         <li><a href="../index.html">トップページ</a></li>
-        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="../index.html#steps">STEPで学ぶ</a></li>
         <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
         <li><a href="../cases/dx-cases.html">DX事例集</a></li>
         <li><a href="../community/share.html">実践共有</a></li>

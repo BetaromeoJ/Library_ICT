@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>講座01: ChatGPTで学校図書館の仕事を速くする | 学校図書館×ICT研修ポータル</title>
-<meta name="description" content="ChatGPTのプロンプトをコピーして、図書館だより・POP・おすすめ本紹介・イベント企画・クイズ・オリエンテーション資料を短時間で作る方法を紹介します。">
+<title>STEP1 AIでアイデアを生み出そう(ChatGPT) | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="学校図書館の困りごとを解決するストーリーのSTEP1。ChatGPTのプロンプトをコピーして、図書館だより・POP・おすすめ本紹介・イベント企画・クイズ・オリエンテーション資料を短時間で作る方法を紹介します。">
 <link rel="canonical" href="【ここにこのページの公開URLを入力】">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
     <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
     <nav class="nav-desktop" aria-label="メインメニュー">
       <a href="../index.html">ホーム</a>
-      <a href="../index.html#courses">本日の講座</a>
+      <a href="../index.html#steps">STEPで学ぶ</a>
       <a href="../prompts/prompt-library.html">プロンプト集</a>
       <a href="../cases/dx-cases.html">DX事例</a>
       <a href="../community/share.html">実践共有</a>
@@ -43,14 +43,14 @@
 <nav id="drawer" class="drawer" aria-label="サイト内メニュー">
   <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
   <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
-  <h3>本日の講座</h3>
+  <h3>STEPで学ぶ</h3>
   <ul>
-    <li><a href="../index.html#courses">講座一覧(全4講座)</a></li>
-    <li><a href="course03-slido.html">事前アンケート: Slido</a></li>
-    <li><a href="course01-chatgpt.html" data-nav-link>講座01: ChatGPT</a></li>
-    <li><a href="course02-gemini-notebook.html">講座02: Gemini Notebook</a></li>
-    <li><a href="course04-canva-website.html">講座03: Canva</a></li>
-    <li><a href="course05-gas-dx.html">講座04: GAS</a></li>
+    <li><a href="../index.html#steps">STEP一覧を見る</a></li>
+    <li><a href="step0-slido.html">STEP0: みんなの実践を集めよう</a></li>
+    <li><a href="step1-chatgpt.html" data-nav-link>STEP1: AIでアイデアを生み出そう</a></li>
+    <li><a href="step2-gemini-notebook.html">STEP2: 分かりやすく伝えよう</a></li>
+    <li><a href="step3-canva-website.html">STEP3: 発信しよう</a></li>
+    <li><a href="step4-gas-dx.html">STEP4: 学校図書館DXへ</a></li>
   </ul>
   <h3>研修後も使う</h3>
   <ul>
@@ -71,17 +71,18 @@
 <main id="main">
   <section class="course-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#courses">本日の講座</a><span>›</span><span>講座01</span></p>
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#steps">STEPで学ぶ</a><span>›</span><span>STEP1</span></p>
       <div class="progress-bar-wrap">
-        <p class="progress-label">講座01 / 4</p>
+        <p class="progress-label">STEP1 / STEP4</p>
         <div class="progress-track"><div class="progress-fill" style="width:25%;"></div></div>
       </div>
       <div class="course-meta-row">
         <span class="tool-badge tool-chatgpt">💬 ChatGPT</span>
         <span class="pill-time">⏱ 所要時間 約25分</span>
       </div>
-      <h1 class="h-section">ChatGPTで学校図書館の仕事を速くする</h1>
-      <p class="lead">プロンプトを一から考えなくても、目的に応じたテンプレートをコピーし、必要な部分だけ変更して使えるようになります。</p>
+      <h1 class="h-section">AIでアイデアを生み出そう</h1>
+      <p class="lead" style="font-weight:700; margin-bottom:.4rem;">文章づくり・企画づくりをAIに手伝ってもらう</p>
+      <p class="lead">「何を書くか」をAIと一緒に考えます。プロンプトを一から考えなくても、目的に応じたテンプレートをコピーし、必要な部分だけ変更して使えるようになります。</p>
       <div class="goal-box">
         <h2>今日できるようになること</h2>
         <ul>
@@ -90,14 +91,14 @@
           <li>思った通りの答えが返らないときに、追加の一言で改善できる</li>
         </ul>
       </div>
-      <a href="../index.html#courses" class="btn btn-outline btn-sm">← トップページへ戻る</a>
+      <a href="../index.html#steps" class="btn btn-outline btn-sm">← トップページへ戻る</a>
     </div>
   </section>
 
-  <!-- ===== 講座の流れ ===== -->
+  <!-- ===== STEPの流れ ===== -->
   <section class="section-tight">
     <div class="container">
-      <h2 class="h-section">講座の流れ</h2>
+      <h2 class="h-section">STEPの流れ</h2>
       <div class="step-list">
         <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>基本を知る</strong><span>ChatGPTを使うときの4つのポイント</span></div></div>
         <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>AIにプロンプトを作らせる</strong><span>プロンプトを作るためのプロンプトを知る</span></div></div>
@@ -760,7 +761,7 @@ POPのサイズ：</div>
       <div class="accordion">
         <div class="accordion-item">
           <button class="accordion-trigger" aria-expanded="false" aria-controls="c1faq1">ChatGPTの有料版は必要ですか<span class="chevron">▾</span></button>
-          <div id="c1faq1" class="accordion-panel"><p class="mb-0">無料版でも本講座の内容は実践できます。学校で契約しているアカウントの種類を確認してください。</p></div>
+          <div id="c1faq1" class="accordion-panel"><p class="mb-0">無料版でもこのSTEPの内容は実践できます。学校で契約しているアカウントの種類を確認してください。</p></div>
         </div>
         <div class="accordion-item">
           <button class="accordion-trigger" aria-expanded="false" aria-controls="c1faq2">出力結果をそのまま配布してよいですか<span class="chevron">▾</span></button>
@@ -774,12 +775,12 @@ POPのサイズ：</div>
     </div>
   </section>
 
-  <!-- ===== 次の講座へのリンク ===== -->
+  <!-- ===== 次のSTEPへのリンク ===== -->
   <section class="section-narrow">
     <div class="container">
       <div class="course-pager">
-        <a href="course03-slido.html" class="card card-hover pager-link"><span class="pager-label">前へ</span><span class="pager-title">← 事前アンケート: Slido</span></a>
-        <a href="course02-gemini-notebook.html" class="card card-hover pager-link next"><span class="pager-label">次の講座へ</span><span class="pager-title">講座02: Gemini Notebook →</span></a>
+        <a href="step0-slido.html" class="card card-hover pager-link"><span class="pager-label">前のSTEPへ</span><span class="pager-title">← STEP0: みんなの実践を集めよう</span></a>
+        <a href="step2-gemini-notebook.html" class="card card-hover pager-link next"><span class="pager-label">次のSTEPへ</span><span class="pager-title">STEP2: 分かりやすく伝えよう →</span></a>
       </div>
     </div>
   </section>
@@ -791,7 +792,7 @@ POPのサイズ：</div>
       <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
       <div><p class="footer-title">サイトマップ</p><ul>
         <li><a href="../index.html">トップページ</a></li>
-        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="../index.html#steps">STEPで学ぶ</a></li>
         <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
         <li><a href="../cases/dx-cases.html">DX事例集</a></li>
         <li><a href="../community/share.html">実践共有</a></li>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>講座04: GASで実現する学校図書館DX | 学校図書館×ICT研修ポータル</title>
-<meta name="description" content="Googleフォーム・スプレッドシート・GASを組み合わせて、読書通帳や集計、図書館日誌などを仕組み化する学校図書館DXの事例を紹介します。">
+<title>STEP4 学校図書館DXへ(Google Workspace＋GAS) | 学校図書館×ICT研修ポータル</title>
+<meta name="description" content="学校図書館の困りごとを解決するストーリーの最後、STEP4。Googleフォーム・スプレッドシート・GASを組み合わせて、読書通帳や集計、図書館日誌などを仕組み化する学校図書館DXの事例を紹介します。">
 <link rel="canonical" href="【ここにこのページの公開URLを入力】">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
     <a href="../index.html" class="site-logo"><span class="logo-icon" aria-hidden="true">📚</span>学校図書館×ICT研修</a>
     <nav class="nav-desktop" aria-label="メインメニュー">
       <a href="../index.html">ホーム</a>
-      <a href="../index.html#courses">本日の講座</a>
+      <a href="../index.html#steps">STEPで学ぶ</a>
       <a href="../prompts/prompt-library.html">プロンプト集</a>
       <a href="../cases/dx-cases.html">DX事例</a>
       <a href="../community/share.html">実践共有</a>
@@ -43,14 +43,14 @@
 <nav id="drawer" class="drawer" aria-label="サイト内メニュー">
   <button id="drawerClose" class="drawer-close" aria-label="メニューを閉じる">&times;</button>
   <ul><li><a href="../index.html">ホーム</a></li><li><a href="../index.html#purpose">目的から探す</a></li></ul>
-  <h3>本日の講座</h3>
+  <h3>STEPで学ぶ</h3>
   <ul>
-    <li><a href="../index.html#courses">講座一覧(全4講座)</a></li>
-    <li><a href="course03-slido.html">事前アンケート: Slido</a></li>
-    <li><a href="course01-chatgpt.html">講座01: ChatGPT</a></li>
-    <li><a href="course02-gemini-notebook.html">講座02: Gemini Notebook</a></li>
-    <li><a href="course04-canva-website.html">講座03: Canva</a></li>
-    <li><a href="course05-gas-dx.html" data-nav-link>講座04: GAS</a></li>
+    <li><a href="../index.html#steps">STEP一覧を見る</a></li>
+    <li><a href="step0-slido.html">STEP0: みんなの実践を集めよう</a></li>
+    <li><a href="step1-chatgpt.html">STEP1: AIでアイデアを生み出そう</a></li>
+    <li><a href="step2-gemini-notebook.html">STEP2: 分かりやすく伝えよう</a></li>
+    <li><a href="step3-canva-website.html">STEP3: 発信しよう</a></li>
+    <li><a href="step4-gas-dx.html" data-nav-link>STEP4: 学校図書館DXへ</a></li>
   </ul>
   <h3>研修後も使う</h3>
   <ul>
@@ -71,17 +71,18 @@
 <main id="main">
   <section class="course-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#courses">本日の講座</a><span>›</span><span>講座04</span></p>
+      <p class="breadcrumb"><a href="../index.html">トップ</a><span>›</span><a href="../index.html#steps">STEPで学ぶ</a><span>›</span><span>STEP4</span></p>
       <div class="progress-bar-wrap">
-        <p class="progress-label">講座04 / 4</p>
+        <p class="progress-label">STEP4 / STEP4</p>
         <div class="progress-track"><div class="progress-fill" style="width:100%;"></div></div>
       </div>
       <div class="course-meta-row">
-        <span class="tool-badge tool-gas">⚙️ GAS</span>
+        <span class="tool-badge tool-gas">⚙️ Google Workspace＋GAS</span>
         <span class="pill-time">⏱ 所要時間 約10分</span>
       </div>
-      <h1 class="h-section">GASで実現する学校図書館DX</h1>
-      <p class="lead">90分研修ではWebアプリを一から制作する演習は行いません。「現在の困りごとを、Google WorkspaceとGASでどのように仕組み化できるか」を事例として紹介します。</p>
+      <h1 class="h-section">学校図書館DXへ</h1>
+      <p class="lead" style="font-weight:700; margin-bottom:.4rem;">繰り返し作業を仕組み化する</p>
+      <p class="lead">最後は「頑張る」ではなく「仕組みで解決する」という考え方を紹介します。90分研修ではWebアプリを一から制作する演習は行いません。「現在の困りごとを、Google WorkspaceとGASでどのように仕組み化できるか」を事例として紹介します。</p>
       <div class="goal-box">
         <h2>今日できるようになること</h2>
         <ul>
@@ -90,7 +91,7 @@
           <li>「小さく改善する」という考え方が分かる</li>
         </ul>
       </div>
-      <a href="../index.html#courses" class="btn btn-outline btn-sm">← トップページへ戻る</a>
+      <a href="../index.html#steps" class="btn btn-outline btn-sm">← トップページへ戻る</a>
     </div>
   </section>
 
@@ -217,7 +218,7 @@
   <section class="section-narrow">
     <div class="container">
       <div class="course-pager">
-        <a href="course04-canva-website.html" class="card card-hover pager-link"><span class="pager-label">前の講座へ</span><span class="pager-title">← 講座03: Canva</span></a>
+        <a href="step3-canva-website.html" class="card card-hover pager-link"><span class="pager-label">前のSTEPへ</span><span class="pager-title">← STEP3: 発信しよう</span></a>
         <a href="../prompts/prompt-library.html" class="card card-hover pager-link next"><span class="pager-label">研修後も使う</span><span class="pager-title">プロンプト集を開く →</span></a>
       </div>
     </div>
@@ -230,7 +231,7 @@
       <div><p class="footer-title">学校図書館×ICT研修ポータル</p><p class="text-sm" style="color:#b6b9cc;">講師: 和田 倫周</p></div>
       <div><p class="footer-title">サイトマップ</p><ul>
         <li><a href="../index.html">トップページ</a></li>
-        <li><a href="../index.html#courses">講座一覧</a></li>
+        <li><a href="../index.html#steps">STEPで学ぶ</a></li>
         <li><a href="../prompts/prompt-library.html">プロンプト集</a></li>
         <li><a href="../cases/dx-cases.html">DX事例集</a></li>
         <li><a href="../community/share.html">実践共有</a></li>
