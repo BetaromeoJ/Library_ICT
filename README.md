@@ -127,10 +127,10 @@ python3 -m http.server 8000
 `community/share.html` には、次のリンクが設定済みです。
 
 - 実践共有フォーム(Googleフォーム) … 「実践を共有する」ボタン
-- 質問(Facebookメッセンジャー、`https://www.facebook.com/wowwdarling`) … 「質問を送る」ボタン
+- 質問(メールアドレス、`michihirowadarin@gmail.com`) … 「質問を送る」のコピーボタン
 - みんなの実践を見る(閲覧権限で共有したGoogleスプレッドシート) … 「みんなの実践を見る」ボタン
 
-URLを変更する場合は、`community/share.html` 内の該当する `href` 属性を書き換えてください。
+URLを変更する場合は `community/share.html` 内の該当する `href` 属性を、メールアドレスを変更する場合は同ファイル内の `#q-email` のテキストを書き換えてください。
 
 ---
 
