@@ -120,17 +120,17 @@ python3 -m http.server 8000
 - `courses/step0-slido.html` 内の `https://app.sli.do/event/dhfZVaXE3bcz9fYbUkzd8F` という文字列を、新しい参加URLに置き換える(2か所)
 - 新しいQRコード画像を用意し、同じファイル名(`assets/images/placeholders/slido-qr.png`)で上書き保存する(HTMLの変更は不要)
 
-`community/share.html` の「みんなの実践を見る」ボタンのリンク先にもSlidoのURLを使う場合は、同様に `href` を差し替えてください。
-
 ---
 
 ## 8. GoogleフォームのURL差し替え方法
 
-`community/share.html` 内の以下の `href` 属性を、実際のGoogleフォームURLに書き換えます。
+`community/share.html` には、次のリンクが設定済みです。
 
-- `【ここにGoogleフォームURLを入力】` … 実践共有フォーム
-- `【ここに質問用GoogleフォームURLを入力】` … 質問フォーム
-- `【ここに回答公開用URLまたはSlido URLを入力】` … 回答閲覧用ページ
+- 実践共有フォーム(Googleフォーム) … 「実践を共有する」ボタン
+- 質問(Facebookメッセンジャー、`https://www.facebook.com/wowwdarling`) … 「質問を送る」ボタン
+- みんなの実践を見る(閲覧権限で共有したGoogleスプレッドシート) … 「みんなの実践を見る」ボタン
+
+URLを変更する場合は、`community/share.html` 内の該当する `href` 属性を書き換えてください。
 
 ---
 
@@ -222,7 +222,6 @@ STEPページにデモ動画を追加したい場合は、任意の場所に次�
 - [ ] 著作情報・書影を差し替えた(`index.html` 内の書籍カード、`assets/images/book01.jpg` / `book02.jpg`)
 - [ ] AmazonリンクのURLを差し替えた
 - [ ] SlidoイベントコードとURL、QRコードを差し替えた(`courses/step0-slido.html`)
-- [ ] GoogleフォームのURL(実践共有・質問)を差し替えた(`community/share.html`)
 - [ ] Canva学校図書館サイトURLを差し替えた(`resources/resources.html` 等)
 - [ ] YouTube動画URLを埋め込んだ(必要なSTEPページ)
 - [ ] 問い合わせ先を差し替えた(全ページのフッター)
@@ -243,11 +242,8 @@ STEPページにデモ動画を追加したい場合は、任意の場所に次�
 | 著作情報 | `index.html`(書籍カード) |
 | Amazonリンク | `index.html`(書籍カード内 `href`) |
 | Slidoイベントコード | `courses/step0-slido.html` |
-| Slido URL | `courses/step0-slido.html`, `community/share.html` |
+| Slido URL | `courses/step0-slido.html` |
 | Slido QRコード | `courses/step0-slido.html` |
-| GoogleフォームURL(実践共有) | `community/share.html` |
-| 質問フォームURL | `community/share.html` |
-| 実践共有URL(回答公開) | `community/share.html` |
 | Canva学校図書館サイトURL | `resources/resources.html` |
 | YouTube動画URL | 各 `courses/*.html` の `.video-frame` |
 | 問い合わせ先 | 全ページのフッター |
