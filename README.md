@@ -223,9 +223,8 @@ STEPページにデモ動画を追加したい場合は、任意の場所に次�
 - [ ] AmazonリンクのURLを差し替えた
 - [ ] SlidoイベントコードとURL、QRコードを差し替えた(`courses/step0-slido.html`)
 - [ ] GoogleフォームのURL(実践共有・質問)を差し替えた(`community/share.html`)
-- [ ] CanvaテンプレートURL・Canva学校図書館サイトURLを差し替えた(`resources/resources.html` 等)
+- [ ] Canva学校図書館サイトURLを差し替えた(`resources/resources.html` 等)
 - [ ] YouTube動画URLを埋め込んだ(必要なSTEPページ)
-- [ ] 配布資料URLを差し替えた(`resources/resources.html`)
 - [ ] 問い合わせ先を差し替えた(全ページのフッター)
 - [ ] GitHub Pages公開URLを確定し、各ページの `canonical` とOGPコメントを差し替えた
 - [ ] OGP画像を準備し、設定した
@@ -249,10 +248,8 @@ STEPページにデモ動画を追加したい場合は、任意の場所に次�
 | GoogleフォームURL(実践共有) | `community/share.html` |
 | 質問フォームURL | `community/share.html` |
 | 実践共有URL(回答公開) | `community/share.html` |
-| CanvaテンプレートURL | `resources/resources.html` |
 | Canva学校図書館サイトURL | `resources/resources.html` |
 | YouTube動画URL | 各 `courses/*.html` の `.video-frame` |
-| 配布資料URL | `resources/resources.html` |
 | 問い合わせ先 | 全ページのフッター |
 | GitHub Pages公開URL | 全ページの `<link rel="canonical">`、OGPコメント |
 | OGP画像 | 全ページの `<head>` 内OGPコメント |
