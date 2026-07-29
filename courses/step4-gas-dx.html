@@ -82,11 +82,10 @@
       </div>
       <h1 class="h-section">AIとつくる図書館日誌Webアプリ</h1>
       <p class="lead" style="font-weight:700; margin-bottom:.4rem;">ChatGPTとGoogle Apps Scriptで、アイデアを仕組みに変える</p>
-      <p class="lead">ChatGPTとGoogle Apps Scriptを使って、学校図書館の「記録したい」をWebアプリに変えます。コードを一から書く必要はありません。作りたいものをChatGPTに伝え、アイデア整理、画面設計、仕様書作成、コード生成、実装、公開までを体験します。</p>
+      <p class="lead">ChatGPTとGoogle Apps Scriptを使って、学校図書館の「記録したい」をWebアプリに変えます。コードを一から書く必要はありません。作りたいものをChatGPTに伝え、アイデア整理、仕様書作成、コード生成、実装、公開までを体験します。</p>
 
       <div class="tag-list" style="justify-content:center; margin:1.4rem 0;" aria-label="講座の流れ">
         <span class="tag-pill">アイデア</span><span aria-hidden="true">→</span>
-        <span class="tag-pill">画面イメージ</span><span aria-hidden="true">→</span>
         <span class="tag-pill">仕様書</span><span aria-hidden="true">→</span>
         <span class="tag-pill">コード</span><span aria-hidden="true">→</span>
         <span class="tag-pill">実装</span><span aria-hidden="true">→</span>
@@ -104,7 +103,6 @@
         <ul>
           <li>学校図書館の困りごとからWebアプリのアイデアを考えられる</li>
           <li>ChatGPTを使って必要な機能を整理できる</li>
-          <li>ChatGPTを使って画面イメージを作成できる</li>
           <li>ChatGPTを使って簡単な仕様書を作成できる</li>
           <li>ChatGPTにGASの完全版コードを生成してもらえる</li>
           <li>GoogleスプレッドシートのApps Scriptへコードを実装できる</li>
@@ -118,11 +116,10 @@
         <a href="#gas-prepare" class="tag-pill">事前準備</a>
         <a href="#gas-step1" class="tag-pill">工程1 考える</a>
         <a href="#gas-step2" class="tag-pill">工程2 整理する</a>
-        <a href="#gas-step3" class="tag-pill">工程3 画面</a>
-        <a href="#gas-step4" class="tag-pill">工程4 仕様書</a>
-        <a href="#gas-step5" class="tag-pill">工程5 コード</a>
-        <a href="#gas-step6" class="tag-pill">工程6 実装</a>
-        <a href="#gas-step7" class="tag-pill">工程7 公開</a>
+        <a href="#gas-step4" class="tag-pill">工程3 仕様書</a>
+        <a href="#gas-step5" class="tag-pill">工程4 コード</a>
+        <a href="#gas-step6" class="tag-pill">工程5 実装</a>
+        <a href="#gas-step7" class="tag-pill">工程6 公開</a>
         <a href="#gas-check" class="tag-pill">動作確認</a>
         <a href="#gas-faq" class="tag-pill">困ったとき</a>
         <a href="#gas-apply" class="tag-pill">応用例</a>
@@ -136,7 +133,7 @@
   <!-- ===== 講座全体のロードマップ ===== -->
   <section id="gas-flow" class="section-tight">
     <div class="container">
-      <h2 class="h-section">講座の流れ(工程1〜7)</h2>
+      <h2 class="h-section">講座の流れ(工程1〜6)</h2>
       <p class="lead">この講座では、完成済みのコードをコピーするのではなく、ChatGPTと対話しながら、自分の学校図書館に必要な図書館日誌Webアプリを考えます。</p>
       <div class="timeline">
         <div class="timeline-item">
@@ -151,26 +148,21 @@
         </div>
         <div class="timeline-item">
           <p class="timeline-time">工程3</p>
-          <p class="timeline-title">画面イメージを作る</p>
-          <p class="timeline-desc">Webアプリの画面構成を、テキスト形式で可視化します。</p>
-        </div>
-        <div class="timeline-item">
-          <p class="timeline-time">工程4</p>
           <p class="timeline-title">仕様書を作る</p>
           <p class="timeline-desc">入力項目、保存内容、表示方法などを設計図として整理します。</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">工程5</p>
+          <p class="timeline-time">工程4</p>
           <p class="timeline-title">コードを生成する</p>
           <p class="timeline-desc">仕様書をもとに、ChatGPTへCode.gsとIndex.htmlの完全版を生成してもらいます。</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">工程6</p>
+          <p class="timeline-time">工程5</p>
           <p class="timeline-title">Apps Scriptへ実装する</p>
           <p class="timeline-desc">Googleスプレッドシートに紐づくApps Scriptへコードを貼り付けます。</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">工程7</p>
+          <p class="timeline-time">工程6</p>
           <p class="timeline-title">デプロイして動かす</p>
           <p class="timeline-desc">Webアプリとして公開し、入力内容がスプレッドシートへ保存されることを確認します。</p>
         </div>
@@ -322,78 +314,9 @@ GAS初心者が最初に作るWebアプリとして簡単な形に整理して�
   </section>
 
   <!-- ===== 工程3 ===== -->
-  <section id="gas-step3" class="section bg-ivory rounded-section">
-    <div class="container">
-      <h2 class="h-section">工程3　コードを書く前に画面をイメージする</h2>
-      <p class="lead">いきなりコードを生成するのではなく、どのような画面になるのかを先に確認します。画面イメージを作ることで、入力項目の多さや、操作の分かりにくさに気付くことができます。</p>
-
-      <div class="prompt-card">
-        <div class="prompt-head">
-          <div><h4>プロンプト: テキスト形式の画面案を作る</h4><p class="prompt-scene">活用場面: 画面レイアウトをテキストのワイヤーフレームで確認する</p></div>
-          <button class="copy-btn" data-copy-target="#p-gas-screen"><span class="copy-label">コピー</span></button>
-        </div>
-        <div id="p-gas-screen" class="prompt-body">先ほど考えた図書館日誌Webアプリについて、
-画面のレイアウトをテキスト形式のワイヤーフレームで作成してください。
-
-条件：
-・スマートフォンで見やすい縦長の画面
-・入力欄は上部に配置する
-・登録ボタンを分かりやすくする
-・登録済みの日誌は下部に一覧表示する
-・入力項目の必須・任意が分かるようにする
-・学校図書館らしい、親しみやすい画面にする
-・文字やボタンを小さくしすぎない
-・操作の流れが直感的に分かるようにする
-・画面に必要な項目を省略しない
-
-コードはまだ作成せず、
-画面構成だけを分かりやすく示してください。</div>
-      </div>
-
-      <div class="card">
-        <p style="font-weight:800; margin-bottom:.6rem;">画面イメージの例(あくまで一例です)</p>
-        <pre style="white-space:pre-wrap; font-family:inherit; font-size:.85rem; line-height:1.7; background:var(--color-bg-soft); border-radius:var(--radius-sm); padding:1rem; margin:0;">┌────────────────────────┐
-│ 📚 図書館日誌                         │
-├────────────────────────┤
-│ 日付                                  │
-│ [ 2026年7月31日 ]                     │
-│                                       │
-│ 記録者                                │
-│ [                     ]               │
-│                                       │
-│ 今日の出来事                          │
-│ [                     ]               │
-│ [                     ]               │
-│                                       │
-│ 気付いたこと                          │
-│ [                     ]               │
-│                                       │
-│          [ 日誌を保存する ]           │
-├────────────────────────┤
-│ これまでの日誌                        │
-│ 7月31日　〇〇〇                        │
-│ 7月30日　〇〇〇                        │
-└────────────────────────┘</pre>
-        <p class="text-sm text-sub" style="margin:.8rem 0 0;">この画面はあくまで一例です。参加者ごとに異なる画面になって構いません。</p>
-      </div>
-
-      <p style="font-weight:800; margin:1.2rem 0 .6rem;">確認項目</p>
-      <div class="grid grid-3">
-        <div class="card text-sm">入力欄が多すぎないか</div>
-        <div class="card text-sm">保存ボタンが見つけやすいか</div>
-        <div class="card text-sm">スマートフォンで操作しやすいか</div>
-        <div class="card text-sm">必須項目が分かりやすいか</div>
-        <div class="card text-sm">一覧に必要な情報が表示されているか</div>
-        <div class="card text-sm">長い文章を入力する欄が必要か</div>
-        <div class="card text-sm">毎日無理なく入力できそうか</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 工程4 ===== -->
   <section id="gas-step4" class="section">
     <div class="container">
-      <h2 class="h-section">工程4　作りたい内容を簡単な仕様書にする</h2>
+      <h2 class="h-section">工程3　作りたい内容を簡単な仕様書にする</h2>
       <p class="lead">仕様書とは、「どのようなアプリを作るのか」を整理した設計図です。専門的な文書である必要はありません。ChatGPTが目的に合ったコードを生成できるように、必要な情報を整理することが目的です。</p>
 
       <div class="prompt-card">
@@ -452,10 +375,10 @@ Google Apps ScriptでWebアプリを作るための簡単な仕様書を作成�
     </div>
   </section>
 
-  <!-- ===== 工程5 ===== -->
+  <!-- ===== 工程4 ===== -->
   <section id="gas-step5" class="section bg-ivory rounded-section">
     <div class="container">
-      <h2 class="h-section">工程5　ChatGPTに完全版コードを作ってもらう</h2>
+      <h2 class="h-section">工程4　ChatGPTに完全版コードを作ってもらう</h2>
       <p class="lead">仕様書が完成したら、ChatGPTにGASのコードを生成してもらいます。コードを一から自分で書くのではなく、仕様書を正確にAIへ渡すことが重要です。</p>
 
       <div class="prompt-card">
@@ -548,10 +471,10 @@ GAS初心者にも扱いやすい、できるだけシンプルなコードに�
     </div>
   </section>
 
-  <!-- ===== 工程6 ===== -->
+  <!-- ===== 工程5 ===== -->
   <section id="gas-step6" class="section">
     <div class="container">
-      <h2 class="h-section">工程6　Apps Scriptへ実装する</h2>
+      <h2 class="h-section">工程5　Apps Scriptへ実装する</h2>
       <p class="lead">初心者が迷わないよう、番号付きの手順で進めます。</p>
       <div class="step-list">
         <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>Googleスプレッドシートを作る</strong><span>新しいGoogleスプレッドシートを作成します。ファイル名の例: 「図書館日誌Webアプリ」</span></div></div>
@@ -577,10 +500,10 @@ GAS初心者にも扱いやすい、できるだけシンプルなコードに�
     </div>
   </section>
 
-  <!-- ===== 工程7 ===== -->
+  <!-- ===== 工程6 ===== -->
   <section id="gas-step7" class="section bg-ivory rounded-section">
     <div class="container">
-      <h2 class="h-section">工程7　Webアプリとして公開する</h2>
+      <h2 class="h-section">工程6　Webアプリとして公開する</h2>
       <div class="step-list">
         <div class="step-item"><span class="step-num">1</span><div class="step-text"><strong>デプロイを開く</strong><span>Apps Script画面右上の「デプロイ」を押します。</span></div></div>
         <div class="step-item"><span class="step-num">2</span><div class="step-text"><strong>新しいデプロイ</strong><span>「新しいデプロイ」を選択します。</span></div></div>
@@ -829,7 +752,7 @@ GAS初心者にも扱いやすい、できるだけシンプルなコードに�
   <section class="section bg-ivory rounded-section">
     <div class="container text-center">
       <p class="h-section" style="max-width:44rem; margin:0 auto 1rem;">今日作ったのは、図書館日誌だけではありません。<br>「困りごとを見つけ、AIと一緒に設計し、仕組みに変える方法」を学びました。</p>
-      <p class="lead" style="max-width:44rem; margin:0 auto 1rem;">図書館日誌を作ることそのものが最終目的ではありません。今日体験した「考える→画面を考える→仕様書を作る→コードを作る→実装する→公開する」という流れは、学校図書館のさまざまな業務改善に応用できます。</p>
+      <p class="lead" style="max-width:44rem; margin:0 auto 1rem;">図書館日誌を作ることそのものが最終目的ではありません。今日体験した「考える→仕様書を作る→コードを作る→実装する→公開する」という流れは、学校図書館のさまざまな業務改善に応用できます。</p>
       <p class="lead" style="max-width:44rem; margin:0 auto 1.6rem;">コードをすべて理解してから始める必要はありません。まずは、自分が解決したい課題を言葉にし、AIへ正確に伝えることから始めましょう。</p>
       <div class="hero-actions" style="justify-content:center;">
         <a href="../index.html#steps" class="btn btn-primary">トップページへ戻る</a>
