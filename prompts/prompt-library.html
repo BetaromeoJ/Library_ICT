@@ -94,6 +94,7 @@
             <button class="chip" data-filter-category="event" aria-pressed="false">イベント企画</button>
             <button class="chip" data-filter-category="week" aria-pressed="false">読書週間</button>
             <button class="chip" data-filter-category="newbook" aria-pressed="false">新刊紹介</button>
+            <button class="chip" data-filter-category="magazine" aria-pressed="false">雑誌表紙</button>
             <button class="chip" data-filter-category="exhibit" aria-pressed="false">展示企画</button>
             <button class="chip" data-filter-category="orientation" aria-pressed="false">図書館オリエンテーション</button>
             <button class="chip" data-filter-category="quiz" aria-pressed="false">クイズ</button>
@@ -665,6 +666,21 @@ POPのサイズ：</div>
 特に紹介したいポイント：
 配架場所・分類番号：</div>
           <p class="prompt-note">⚠ 本の表紙画像は著作物です。図書館の掲示物作成という目的の範囲で利用し、SNS等での二次利用や無関係な用途への流用は避けてください。</p>
+        </article>
+
+        <article class="prompt-card" id="magazine-01" data-item="magazine-01" data-category="magazine" data-school="elementary middle high" data-search="雑誌 表紙 タイポグラフィ 掲示 デザイン">
+          <div class="prompt-head">
+            <div><h4>雑誌表紙プロンプト</h4><p class="prompt-scene">カテゴリ: 雑誌表紙 ／ 対象校種: 全校種(画像添付・画像生成が必要)</p></div>
+            <div class="flex gap-sm items-center">
+              <button class="fav-btn" data-fav-id="magazine-01" aria-label="お気に入りに追加" aria-pressed="false">☆</button>
+              <button class="copy-btn" data-copy-target="#pb-magazine"><span class="copy-label">コピー</span></button>
+            </div>
+          </div>
+          <p class="text-sm text-sub" style="margin:0 0 .6rem;">⚠ このプロンプトは、表紙に使いたい<strong>画像を添付した状態</strong>でChatGPTに送信してください。画像生成に対応したモデル・プランでご利用ください。文中の【＊＊＊＊(ここにタイトルを入れる)】は、実際に使いたいタイトルに書き換えてください。詳しい使い方は<a href="../courses/step1-chatgpt.html">STEP1</a>を参照してください。</p>
+          <div id="pb-magazine" class="prompt-body">添付の画像を分析し、【＊＊＊＊（ここにタイトルを入れる）】をタイトルにしたプレミアムなビューティー＆カルチャー誌の表紙を制作してください。文末のプロフィールから編集テーマ・特集タイトル・見出し・コピーを自動生成。
+タイトルは表紙の30〜50％を占める巨大タイポグラフィとして配置し、文字と人物が重なる大胆なレイアウトにしてください。強いジャンプ率、余白設計、サイズコントラスト、非対称レイアウトを活用したタイポグラフィ主導のエディトリアルデザイン。
+SNSバナーではなく、書店で手に取りたくなる高級雑誌の表紙。ファッション広告・高級コスメ広告レベルの写真品質、洗練された色彩設計、雑誌として成立する多数の見出しと情報階層を持たせてください。</div>
+          <p class="prompt-note">⚠ 添付する画像や人物の肖像権・著作権に配慮してください。児童生徒が写っている画像は使用しないでください。</p>
         </article>
 
         <article class="prompt-card" id="exhibit-01" data-item="exhibit-01" data-category="exhibit" data-school="elementary middle high" data-search="展示 テーマ展示 掲示">

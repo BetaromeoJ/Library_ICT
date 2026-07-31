@@ -161,7 +161,7 @@ STEPページにデモ動画を追加したい場合は、任意の場所に次�
 6. `data-copy-target` と、対応する `<div id="...">` の `id` … コピー対象のプロンプト本文
 7. プロンプト本文(`.prompt-body`)を書き換える
 
-**カテゴリスラッグ一覧**: `letter`(図書館だより) `pop`(POP) `recommend`(おすすめ本紹介) `event`(イベント企画) `week`(読書週間) `newbook`(新刊紹介) `exhibit`(展示企画) `orientation`(図書館オリエンテーション) `quiz`(クイズ) `worksheet`(ワークシート) `survey`(アンケート) `analysis`(集計・分析) `parent`(保護者向け文書) `video`(動画構成) `website`(ホームページ文章) `office`(校務効率化)
+**カテゴリスラッグ一覧**: `letter`(図書館だより) `pop`(POP) `recommend`(おすすめ本紹介) `event`(イベント企画) `week`(読書週間) `newbook`(新刊紹介) `magazine`(雑誌表紙) `exhibit`(展示企画) `orientation`(図書館オリエンテーション) `quiz`(クイズ) `worksheet`(ワークシート) `survey`(アンケート) `analysis`(集計・分析) `parent`(保護者向け文書) `video`(動画構成) `website`(ホームページ文章) `office`(校務効率化)
 
 新しいカテゴリを追加する場合は、フィルターの `<button class="chip" data-filter-category="...">` も追加してください。
 
